@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version-file: .python-version }
       - run: pip install -r requirements-ci.txt
       - run: ruff check . --config enforce/python/pyproject.toml
@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version-file: .python-version }
       - run: pip install pyyaml
       - run: python3 scripts/check_waivers.py
