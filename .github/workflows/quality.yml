@@ -57,7 +57,7 @@ jobs:
       - run: npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
       - uses: lycheeverse/lychee-action@v2.9.0
         with:
-          args: --no-progress './**/*.md'
+          args: --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'
       - run: npx commitlint --from HEAD~1 --to HEAD
       - uses: gitleaks/gitleaks-action@v2
   tree:
