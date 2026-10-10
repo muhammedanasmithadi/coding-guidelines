@@ -1,0 +1,38 @@
+name: quality
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: EditorConfig check
+        uses: editorconfig-checker/action@v3
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+      - name: Pre-commit
+        uses: pre-commit/action@v3.0.1
+      - name: Python lint/format
+        run: |
+          pip install ruff black coverage lizard radon pip-audit
+          ruff check .
+          black --check .
+          lizard -C 15 -L 200 .
+          pip-audit --strict
+      - name: TS lint/format/typecheck
+        run: |
+          npm ci --ignore-scripts || npm install --no-audit --no-fund
+          npx prettier --check .
+          npx eslint . --max-warnings=0
+          npx tsc --noEmit
+      - name: Links/spell
+        run: |
+          npx cspell --no-progress --fail-fast "**/*.md"
+          lychee --no-progress --fail "**/*.md"
+      - name: Waiver expiry check
+        run: |
+          python3 scripts/check_waivers.py

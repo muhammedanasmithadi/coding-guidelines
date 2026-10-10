@@ -1,0 +1,9 @@
+# Owners
+
+/docs/ @guidelines-core
+/docs/languages/python.md @python-owners
+/docs/languages/typescript.md @ts-owners
+/enforce/ @platform-team
+checks/ @platform-team
+.github/workflows/quality.yml @platform-team
+waivers/ @guidelines-core

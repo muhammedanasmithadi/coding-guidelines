@@ -1,0 +1,8 @@
+Dual license:
+
+- Code, configs, examples, workflows: Apache License 2.0 (SPDX: Apache-2.0).
+  Full text: https://www.apache.org/licenses/LICENSE-2.0
+- Docs in `docs/` and `checks/*.md`: Creative Commons Attribution 4.0 (SPDX: CC-BY-4.0).
+  Full text: https://creativecommons.org/licenses/by/4.0/
+
+Reuse: keep copyright notice. Cite source for docs.

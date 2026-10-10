@@ -1,0 +1,17 @@
+# Migration for legacy code
+
+New repos adopt strict gates day one. Legacy repos use baseline + ratchet.
+
+## Steps
+
+1. Generate baseline: `scripts/make-baseline.sh` writes current violations to `waivers/baseline.<tool>.json`.
+2. CI blocks new violations only. Old violations burn down.
+3. Set burn-down SLO: e.g. reduce baseline 10% per sprint.
+4. Remove baseline entries as code is fixed. Delete baseline file at zero.
+5. No new repo adopts with a baseline without owner approval.
+
+## Rules
+
+- Baseline files live in `waivers/`, carry owner + date.
+- No edit to baseline without PR + CODEOWNER review.
+- Ratchet never loosens: thresholds move one direction (stricter).

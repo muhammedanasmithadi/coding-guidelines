@@ -1,0 +1,6 @@
+version: "0.2"
+dictionaries: ["typescript", "python", "softwareTerms"]
+dictionaryDefinitions: []
+ignorePaths: ["node_modules/**", ".git/**", "waivers/baseline.*"]
+words: ["gofmt", "rustfmt", "clippy", "squawk", "hadolint", "tflint", "kubeconform", "trivy", "semgrep"]
+flagWords: []

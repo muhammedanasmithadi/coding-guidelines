@@ -1,0 +1,9 @@
+.ruff_cache/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.venv/
+cover.out
+sbom.json
+waivers/baseline.*.json
