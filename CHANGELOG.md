@@ -2,6 +2,13 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.8.0] - 2026-10-10
+### Fixed
+- Validation pass: restored log-level definitions, restored 3 dropped source URLs, recorded ADR template wording change.
+- Hardened `check_tree.py`: skips build artifacts (fixes red-on-clean-tree), filename-only orphan matching, `^## Examples` regex, crash-proof waiver/version handling, dangling-link check, package.json version enforcement.
+- Closed wiring gaps: `package.json` 0.7.0, commitlint deps + CI step, `pyyaml`/`pytest` in CI deps, fixed 4 doc mistakes (config filename, docstring, typo, mypy scope), labeled fleet-vs-traffic rollout.
+- Tests: 14 pass, 94% total. CSpell 0 on 67 files.
+
 ## [0.7.0] - 2026-10-10
 ### Added
 - Split all consolidated stubs: 06/07/08/09, 10/11, 12/13/14/15, 16/17, 18/19/20/21/22/23 — each with rule+threshold+command+source+waiver+examples.

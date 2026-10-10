@@ -79,7 +79,7 @@ Avoid: no limits/probes, single replica. Noisy neighbor OOMs node. Drain takes f
 
 ## Flags / canary
 
-Do: OpenFeature flag + canary 5%->25%->100% (single TEAM CHOICE standard) + auto-rollback on burn. Kill-switch per flag.
+Do: OpenFeature flag + canary (traffic) 5%->25%->100% (single TEAM CHOICE standard) + auto-rollback on burn. Kill-switch per flag.
 Avoid: Friday big-bang 100%. 100% blast radius, manual rollback, data repair 6h.
 
 ## SLOs

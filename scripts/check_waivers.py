@@ -19,14 +19,31 @@ MAX_DAYS = 90  # TEAM CHOICE: waiver may extend at most 90d past today
 def load_entries(path: pathlib.Path) -> list[dict]:
     if not path.exists():
         return []
-    return yaml.safe_load(path.read_text()) or []
+    try:
+        data = yaml.safe_load(path.read_text())
+    except yaml.YAMLError as e:
+        raise ValueError(f"invalid YAML: {e}") from e
+    if data is None:
+        return []
+    if not isinstance(data, list):
+        raise ValueError("top level must be a list")
+    for w in data:
+        if not isinstance(w, dict):
+            raise ValueError(f"entry must be a mapping: {w!r}")
+    return data
+
+
+def _expiry(w: dict) -> dt.date | None:
+    if "expires" not in w:
+        return None
+    return dt.date.fromisoformat(str(w["expires"]))
 
 
 def find_expired(path: pathlib.Path, today: dt.date) -> list[tuple[str, str]]:
     expired = []
     for w in load_entries(path):
-        exp = dt.date.fromisoformat(str(w["expires"]))
-        if exp < today:
+        exp = _expiry(w)
+        if exp is not None and exp < today:
             expired.append((w.get("id", "?"), str(w.get("expires"))))
     return expired
 
@@ -39,6 +56,9 @@ def find_invalid(path: pathlib.Path, today: dt.date) -> list[str]:
             problems.append(f"{wid}: missing owner")
         if not w.get("rule"):
             problems.append(f"{wid}: missing rule")
+        if "expires" not in w:
+            problems.append(f"{wid}: missing expires")
+            continue
         try:
             exp = dt.date.fromisoformat(str(w["expires"]))
         except ValueError:

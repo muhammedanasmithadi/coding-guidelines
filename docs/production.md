@@ -5,7 +5,7 @@
 - Drain on SIGTERM. Respect `terminationGracePeriodSeconds` (default 30).
 
 ## Release
-- Flag features (OpenFeature) with per-flag kill-switch. Roll canary `5%→25%→100%` (TEAM CHOICE, single standard). Auto-rollback on SLO burn.
+- Flag features (OpenFeature) with per-flag kill-switch. Roll canary (traffic) `5%→25%→100%` (TEAM CHOICE, single standard). Auto-rollback on SLO burn.
 - Define SLOs/SLIs + error budgets. Example: 99.9%/30d ≈ 43min budget (99.9%/28d ≈ 40min). Burn: fast 14.4x/1h page, slow 6x/6h ticket (SRE workbook 30d values). HPA on p95 requires Prometheus Adapter custom metric, not native. Source: https://sre.google/workbook/table-of-contents/
 
 ## Data/Privacy

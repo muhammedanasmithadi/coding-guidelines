@@ -1,4 +1,4 @@
-"""Tests for scripts/check-waivers gate logic."""
+"""Tests for scripts/check_waivers gate logic."""
 
 from __future__ import annotations
 
@@ -84,3 +84,26 @@ def test_over_90d_and_missing_owner_fail(tmp_path: pathlib.Path) -> None:
     assert any("missing owner" in p for p in invalid)
     assert any("exceeds 90d" in p for p in invalid)
     assert main(path) == 1
+
+
+def test_missing_expires_is_invalid_not_crash(tmp_path: pathlib.Path) -> None:
+    path = write_waivers(
+        tmp_path,
+        [{"id": "W9", "rule": "r", "reason": "t", "owner": "@t"}],
+    )
+    assert find_expired(path, dt.date.today()) == []
+    assert any("missing expires" in p for p in find_invalid(path, dt.date.today()))
+    assert main(path) == 1
+
+
+def test_malformed_yaml_reports_not_crash(tmp_path: pathlib.Path) -> None:
+    wdir = tmp_path / "waivers"
+    wdir.mkdir(parents=True, exist_ok=True)
+    path = wdir / "active.yml"
+    path.write_text("::: not yaml [[[\n- just a string\n")
+    try:
+        find_expired(path, dt.date.today())
+        crashed = False
+    except ValueError:
+        crashed = True
+    assert crashed
