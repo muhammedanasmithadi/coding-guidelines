@@ -2,6 +2,15 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.10.0] - 2026-10-10
+
+### Added
+
+- CI split into parallel jobs (lint, python, typescript, contract, docs, tree). Coverage gate runs in CI (was local-only).
+- `examples/minimal/openapi.yaml`: pristine contract, spectral-clean. Contract job lints it every build.
+- `codeql.yml`: CodeQL python+javascript analysis on push/PR/weekly.
+- Deferred honestly: hadolint/squawk/k6/trivy/SBOM need repo targets that do not exist yet; recorded here, not faked.
+
 ## [0.9.0] - 2026-10-10
 
 ### Added

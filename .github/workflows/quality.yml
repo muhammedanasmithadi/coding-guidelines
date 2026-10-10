@@ -4,45 +4,66 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  quality:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: editorconfig-checker/action-editorconfig-checker@main
+      - uses: pre-commit/action@v3.0.1
+  python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
+      - run: pip install ruff black coverage lizard radon pip-audit mypy pyyaml pytest
+      - run: ruff check . --config enforce/python/pyproject.toml
+      - run: black --check scripts/ tests/ --config enforce/python/pyproject.toml
+      - run: lizard -C 15 -L 200 .
+      - run: radon cc -s -n B scripts/ tests/
+      - run: mypy scripts/
+      - run: coverage run -m pytest && coverage report --include="scripts/*,tests/*" --fail-under=80
+      - run: pip-audit --strict
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
       - uses: actions/setup-node@v4
-        with: { node-version: '22' }
-      - name: EditorConfig check
-        uses: editorconfig-checker/action-editorconfig-checker@main
-      - name: Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-      - name: Pre-commit
-        uses: pre-commit/action@v3.0.1
-      - name: Python lint/format
-        run: |
-          pip install ruff black coverage lizard radon pip-audit mypy pyyaml pytest
-          ruff check . --config enforce/python/pyproject.toml
-          black --check scripts/ tests/ --config enforce/python/pyproject.toml
-          lizard -C 15 -L 200 .
-          radon cc -s -n B scripts/ tests/
-          mypy scripts/
-          pip-audit --strict
-      - name: TS lint/format/typecheck
-        run: |
-          npm ci --ignore-scripts || npm install --no-audit --no-fund
-          npx prettier --check .
-          npx eslint . --max-warnings=0
-          npx tsc --noEmit
-          npm audit --audit-level=high
-      - name: Links/spell
-        run: |
-          npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
-          lychee --no-progress "**/*.md"
-      - name: Commit messages
-        run: |
-          npx commitlint --from HEAD~1 --to HEAD
-      - name: Waiver expiry check
-        run: |
-          python3 scripts/check_waivers.py
-          python3 scripts/check_tree.py
+        with: { node-version: '22', cache: npm }
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - run: npx prettier --check .
+      - run: npx eslint . --max-warnings=0
+      - run: npx tsc --noEmit
+      - run: npm audit --audit-level=high
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: npm }
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - run: npx @stoplight/spectral-cli lint examples/minimal/openapi.yaml -r enforce/.spectral.yaml
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: npm }
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - run: npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
+      - run: lychee --no-progress "**/*.md"
+      - run: npx commitlint --from HEAD~1 --to HEAD
+      - uses: gitleaks/gitleaks-action@v2
+  tree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pyyaml
+      - run: python3 scripts/check_waivers.py
+      - run: python3 scripts/check_tree.py

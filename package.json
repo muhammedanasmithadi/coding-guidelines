@@ -1,7 +1,7 @@
 {
   "name": "coding-guidelines",
   "private": true,
-  "version": "0.9.0",
+  "version": "0.10.0",
   "scripts": {
     "check": "prettier --check . && eslint . --max-warnings=0 && tsc --noEmit"
   },
