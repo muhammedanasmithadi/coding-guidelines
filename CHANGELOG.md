@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.12.2] - 2026-10-10
+
+### Fixed
+
+- CI fully green (6/6 quality jobs + CodeQL): pinned hook tool versions, docs job full history, first-party lychee scope, live SRE URL.
+
 ## [0.12.1] - 2026-10-10
 
 ### Fixed
