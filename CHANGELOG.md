@@ -2,6 +2,13 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.3.0] - 2026-10-10
+### Added
+- Self-verifying: `tests/test_check_waivers.py` (98% total, script 97%), `Makefile check/test`, `package.json`, git init.
+- Refactored `scripts/check_waivers.py` to importable `find_expired()` + `main()` for testability. Renamed to `snake_case` per naming rule.
+### Changed
+- `Makefile test` reports `--include="scripts/*,tests/*"`.
+
 ## [0.2.0] - 2026-10-10
 ### Changed
 - Strict gates: `tsc --noEmit` and `cspell` + `lychee` now block. Removed `|| true`.
