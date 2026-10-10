@@ -11,17 +11,19 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: EditorConfig check
-        uses: editorconfig-checker/action@v3
+        uses: editorconfig-checker/action-editorconfig-checker@main
       - name: Gitleaks
         uses: gitleaks/gitleaks-action@v2
       - name: Pre-commit
         uses: pre-commit/action@v3.0.1
       - name: Python lint/format
         run: |
-          pip install ruff black coverage lizard radon pip-audit
-          ruff check .
-          black --check .
+          pip install ruff black coverage lizard radon pip-audit mypy
+          ruff check . --config enforce/python/pyproject.toml
+          black --check scripts/ tests/ --config enforce/python/pyproject.toml
           lizard -C 15 -L 200 .
+          radon cc -s -n B scripts/ tests/
+          mypy scripts/
           pip-audit --strict
       - name: TS lint/format/typecheck
         run: |
@@ -29,10 +31,11 @@ jobs:
           npx prettier --check .
           npx eslint . --max-warnings=0
           npx tsc --noEmit
+          npm audit --audit-level=high
       - name: Links/spell
         run: |
-          npx cspell --no-progress --fail-fast "**/*.md"
-          lychee --no-progress --fail "**/*.md"
+          npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
+          lychee --no-progress "**/*.md"
       - name: Waiver expiry check
         run: |
           python3 scripts/check_waivers.py

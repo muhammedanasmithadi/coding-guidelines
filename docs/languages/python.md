@@ -4,11 +4,11 @@ Sources: PEP 8 https://peps.python.org/pep-0008/, Google Python https://google.g
 
 ## Enforce
 
-- Format: `black --check .` (line length 88).
-- Lint: `ruff check .` (select I, TID, B, UP).
-- Types: `mypy src/` where typed.
-- Test: `coverage run -m pytest && coverage report --fail-under=80`.
-- Complexity: `radon cc -s -n B src/`, `lizard -C 15 -L 200`.
+- Format: `black --check .` (line length 88, TEAM CHOICE override of PEP 8's 79 / Google's 80).
+- Lint: `ruff check . --config enforce/python/pyproject.toml` (select E, F, I, B, BLE, UP, TID, SIM).
+- Types: `mypy --strict scripts/ src/` (strict forbids untyped defs).
+- Test: `coverage run -m pytest && coverage report --fail-under=80` (80 = TEAM CHOICE).
+- Complexity: `radon cc -s -n B src/`, `lizard -C 15 -L 200` (C15 = upstream default, L200 = TEAM CHOICE vs upstream 1000).
 
 ## Rules
 

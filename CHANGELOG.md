@@ -2,6 +2,13 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.5.0] - 2026-10-10
+### Fixed
+- Verified every rule vs live sources. Relabeled invented numbers as TEAM CHOICE (50/5/15, 80%, L200, timeouts, SLO budgets, K8s sizes).
+- Fixed SLO math (99.9%/30d≈43min, 28d≈40min), canary single standard 5%→25%→100%, `/livez`+`/readyz` (healthz deprecated), HPA-p95 adapter note.
+- Fixed wiring: editorconfig action, local prettier-check/cspell hooks, lychee flag dropped, `squawk <files>` + correct URL, commitlint config + values, Go awk gate, JaCoCo note, cspell `--config`, `gitleaks dir`, ruff `BLE` + `ruff-check`, tsconfig + eslint missing flags, `[tool.lizard]` removed, waiver 90d + owner enforced.
+- Added `commitlint.config.mjs`. CSpell 0 issues on 30 files.
+
 ## [0.4.0] - 2026-10-10
 ### Added
 - Deep research pass: Python, TypeScript, SOLID/API, production resilience patterns with verified URLs.

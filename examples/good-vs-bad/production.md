@@ -9,20 +9,21 @@ Avoid: `print(f"got {user} {password}")`. unfilterable, leaks secrets. MTTR 10mi
 
 ## Tracing
 
-Do: OTel SDK + OTLP + W3C `traceparent` propagation. Sample 10%, 100% on errors.
+Do: OTel SDK + OTLP + W3C `traceparent` propagation. Sample 10% head (TEAM CHOICE), 100% on errors via tail sampler/Collector.
 Avoid: custom `X-Request-ID` in one hop only. p99 jump root cause stays hidden 3 days.
 
 ## Metrics
 
-Do: RED per route + USE per node in Prometheus. Alert on SLO burn only.
+Do: RED per route + USE per node in Prometheus (TEAM CHOICE cardinality). Alert on SLO burn only.
 Avoid: `tail -f | grep ERROR`, avg latency only. Tail regression missed. High-cardinality `user_id` label OOMs Prometheus.
 
 ## Timeouts / breaker
 
-Do:
+Do (TEAM CHOICE numbers, calibrate per downstream p99):
 ```python
 client = httpx.AsyncClient(timeout=httpx.Timeout(0.8, connect=0.2))
 # retry 3x timeout/connect only, full jitter, breaker 20 fails/30s, Idempotency-Key on POST
+# (Microsoft/Azure term: Repeatability-Request-ID; Stripe term: Idempotency-Key)
 ```
 
 Avoid: `while True: requests.get(url)` no timeout. Fixed 1s retry x10. Retry on 4xx charge. Causes retry storm, cascade.
@@ -34,7 +35,7 @@ Avoid: none, or single `/health` hitting DB. No readiness sends traffic to warmi
 
 ## Shutdown
 
-Do: `SIGTERM` -> stop accept, drain 25s, close pools. `terminationGracePeriodSeconds: 30` + `preStop sleep 5`.
+Do: `SIGTERM` -> stop accept, drain 25s, close pools. `terminationGracePeriodSeconds: 30` (default) + `preStop sleep 5` (TEAM CHOICE).
 Avoid: ignore `SIGTERM`, grace 0. Every deploy drops in-flight checkouts.
 
 ## Secrets
@@ -62,7 +63,7 @@ os.system(f"convert {upload} out.png")  # RCE
 
 ## Dockerfile
 
-Do:
+Do (tag + UID are TEAM CHOICE; replace `<digest>` with real sha256, never ship literally):
 ```dockerfile
 FROM python:3.12.3-slim-bookworm@sha256:<digest>
 RUN useradd -r -u 65532 app
@@ -73,15 +74,15 @@ Avoid: `FROM python:latest` as root. RCE runs as host root. `latest` drifts CVEs
 
 ## K8s
 
-Do: `requests 100m/128Mi`, `limits 500m/512Mi`, probes, `PDB minAvailable: 2`, HPA on p95/RPS.
+Do (numbers are TEAM CHOICE per workload, load-test them): `requests 100m/128Mi`, `limits 500m/512Mi`, probes, `PDB minAvailable: 2` (needs replicas >=3), HPA on p95/RPS via Prometheus Adapter custom metric (not native).
 Avoid: no limits/probes, single replica. Noisy neighbor OOMs node. Drain takes full outage.
 
 ## Flags / canary
 
-Do: OpenFeature flag + canary 1%->10%->100% + auto-rollback on burn. Kill-switch per flag.
+Do: OpenFeature flag + canary 5%->25%->100% (single TEAM CHOICE standard) + auto-rollback on burn. Kill-switch per flag.
 Avoid: Friday big-bang 100%. 100% blast radius, manual rollback, data repair 6h.
 
 ## SLOs
 
-Do: 99.9%/28d = 43min budget. Fast-burn 14.4x/1h page, slow-burn 6x/6h ticket. Freeze deploys when exhausted.
+Do: 99.9%/30d ≈ 43min budget (99.9%/28d ≈ 40min). Fast-burn 14.4x/1h page, slow-burn 6x/6h ticket (SRE workbook 30d values). Freeze deploys when exhausted (TEAM CHOICE policy).
 Avoid: alert `CPU>80%`, any 500 to `#alerts`. 300/day spam, real page ignored.

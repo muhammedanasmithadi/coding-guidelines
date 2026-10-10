@@ -3,10 +3,10 @@
 Full service example. Copies minimal + adds:
 
 - `openapi.yaml` + `spectral lint` + `oasdiff breaking`
-- `migrations/` + `squawk lift`
+- `migrations/` + `squawk ./migrations/*.sql`
 - `Dockerfile` + `hadolint`
 - `k8s/` + `kubeconform`
-- `src/` with OTel, `/healthz` `/readyz`, graceful shutdown
+- `src/` with OTel, `/livez` `/readyz`, graceful shutdown
 - k6 load test in `tests/load/`
 
 See `docs/production.md` for required endpoints and budgets.

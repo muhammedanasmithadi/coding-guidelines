@@ -19,7 +19,7 @@ Avoid: unbounded `GET /orders` returning 2M rows. OOM, timeout. Adding paging la
 
 ## Idempotency
 
-Do: `PUT /orders/client-uuid-1` retry-safe. `POST /charge` carries `Idempotency-Key`.
+Do: `PUT /orders/client-uuid-1` retry-safe. `POST /charge` carries `Idempotency-Key` (Stripe term; Microsoft/Azure term is `Repeatability-Request-ID`).
 Avoid: `POST /orders` creating duplicate on retry. Retry doubles charge.
 
 ## gRPC numbering

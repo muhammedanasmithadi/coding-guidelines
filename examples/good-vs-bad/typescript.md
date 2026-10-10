@@ -96,7 +96,7 @@ function handleCreate(b: any) {
 
 ## 6. Async — AbortController
 
-Do:
+Do (timeout `5s` is TEAM CHOICE):
 ```ts
 export async function fetchWithTimeout(url: string, ms = 5_000): Promise<Response> {
   const ctl = new AbortController();
@@ -133,9 +133,11 @@ expect(r.ok).toBe(true);
 
 ## 8. tsconfig strict
 
-Do (`tsconfig.json`):
+Enforced file is `enforce/typescript/tsconfig.json` (`noEmit: true` for typecheck-only CI). Use `noEmitOnError` instead only for build emits.
+
+Do (`tsconfig.json`, matches `enforce/typescript/tsconfig.json`):
 ```json
-{ "compilerOptions": { "strict": true, "noUncheckedIndexedAccess": true, "exactOptionalPropertyTypes": true, "noEmitOnError": true } }
+{ "compilerOptions": { "strict": true, "noUncheckedIndexedAccess": true, "exactOptionalPropertyTypes": true, "noImplicitOverride": true, "verbatimModuleSyntax": true, "isolatedModules": true, "noEmit": true } }
 ```
 
 Avoid:

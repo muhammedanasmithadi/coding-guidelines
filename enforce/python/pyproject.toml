@@ -1,5 +1,5 @@
 [tool.black]
-line-length = 88
+line-length = 88 # TEAM CHOICE override: PEP 8 mandates 79, Google Python 80
 target-version = ["py312"]
 
 [tool.ruff]
@@ -7,7 +7,7 @@ line-length = 88
 target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP", "TID", "SIM"]
+select = ["E", "F", "I", "B", "BLE", "UP", "TID", "SIM"]
 ignore = []
 
 [tool.ruff.lint.flake8-tidy-imports]
@@ -18,9 +18,13 @@ branch = true
 source = ["src", "scripts"]
 
 [tool.coverage.report]
+# TEAM CHOICE: 80% floor is local policy, not a coverage.py default
 fail_under = 80
 show_missing = true
 
-[tool.lizard]
-CCN = 15
-length = 200
+[tool.mypy]
+strict = true
+
+# NOTE: lizard thresholds live in CLI flags (lizard -C 15 -L 200).
+# lizard reads no pyproject section, so no [tool.lizard] here.
+# -C 15 is upstream default. -L 200 is TEAM CHOICE (upstream default 1000).

@@ -10,7 +10,7 @@ import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 
-from check_waivers import find_expired, main  # noqa: E402
+from check_waivers import find_expired, find_invalid, main  # noqa: E402
 
 
 def write_waivers(tmp: pathlib.Path, entries: list[dict]) -> pathlib.Path:
@@ -42,6 +42,7 @@ def test_future_waiver_passes(tmp_path: pathlib.Path) -> None:
         ],
     )
     assert find_expired(path, dt.date.today()) == []
+    assert find_invalid(path, dt.date.today()) == []
     assert main(path) == 0
 
 
@@ -61,4 +62,25 @@ def test_expired_fails(tmp_path: pathlib.Path) -> None:
         ],
     )
     assert find_expired(path, dt.date.today()) == [("WAIV-E", past)]
+    assert main(path) == 1
+
+
+def test_over_90d_and_missing_owner_fail(tmp_path: pathlib.Path) -> None:
+    far = (dt.date.today() + dt.timedelta(days=91)).isoformat()
+    path = write_waivers(
+        tmp_path,
+        [
+            {
+                "id": "WAIV-L",
+                "rule": "example",
+                "reason": "t",
+                "owner": "",
+                "expires": far,
+                "issue": "https://example.com/3",
+            }
+        ],
+    )
+    invalid = find_invalid(path, dt.date.today())
+    assert any("missing owner" in p for p in invalid)
+    assert any("exceeds 90d" in p for p in invalid)
     assert main(path) == 1

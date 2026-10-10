@@ -2,5 +2,5 @@ version: "0.2"
 dictionaries: ["typescript", "python", "softwareTerms"]
 dictionaryDefinitions: []
 ignorePaths: ["node_modules/**", ".git/**", "waivers/baseline.*"]
-words: ["gofmt", "rustfmt", "clippy", "squawk", "hadolint", "tflint", "kubeconform", "trivy", "semgrep", "dataclass", "dataclasses", "structlog", "pydantic", "isinstance", "asyncio", "pytest", "mypy", "neverthrow", "unawaited", "zod", "fast-check", "keycloak", "otel", "traceparent", "backfill", "canarying", "Liskov", "MTTR", "livez", "readyz", "unfilterable"]
+words: ["gofmt", "rustfmt", "clippy", "squawk", "hadolint", "tflint", "kubeconform", "trivy", "semgrep", "dataclass", "dataclasses", "structlog", "pydantic", "isinstance", "asyncio", "pytest", "mypy", "neverthrow", "unawaited", "zod", "fast-check", "keycloak", "otel", "traceparent", "backfill", "canarying", "Liskov", "MTTR", "livez", "readyz", "unfilterable", "CLDR", "COVEREDRATIO", "coverprofile", "cyclonedx", "golangci", "healthz", "jacoco", "lockfiles", "Lockfiles", "nolint", "oasdiff", "WAIV", "WCAG"]
 flagWords: []
