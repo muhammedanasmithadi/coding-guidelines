@@ -128,3 +128,19 @@ def test_bad_waivers_fail(tmp_path: pathlib.Path) -> None:
     assert check_waivers(root) != []
     (root / "waivers" / "active.yml").write_text("::: not yaml [[[\n- {id: x}\n")
     assert check_waivers(root) != []
+
+
+def test_comments_banned_except_directives(tmp_path: pathlib.Path) -> None:
+    from check_tree import check_comments
+
+    root = make_tree(tmp_path)
+    (root / "x.py").write_text("import os  # noqa: F401\n# explain\n")
+    (root / "y.sh").write_text("#!/usr/bin/env bash\n# usage note\n")
+    (root / "z.yaml").write_text("a: 1  # trailing\n")
+    (root / "w.mjs").write_text('const u = "https://x.y/z";\n// narrate\n')
+    problems = check_comments(root)
+    assert "x.py:2: comment" in problems
+    assert "y.sh:2: comment" in problems
+    assert "z.yaml:1: comment" in problems
+    assert "w.mjs:2: comment" in problems
+    assert not [p for p in problems if "x.py:1" in p]

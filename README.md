@@ -22,6 +22,15 @@ principle-level check exists.
 - `examples/` — minimal/full adopters + good-vs-bad diffs. CI tests them against current configs.
 - `waivers/` — temporary exceptions with expiry. CI fails on expired waiver.
 
+## Scripts
+
+- `scripts/bootstrap.sh` — one-command golden path: toolchain + hooks + local gates.
+- `scripts/check-drift.sh <tag>` — diffs local `enforce/` + `checks/` against a released tag (advisory).
+- `scripts/check-freshness.sh` — reports pinned-vs-latest drift (advisory).
+- `scripts/run-codemod.sh <sgconfig.yml> [path]` — ast-grep codemod scan across adopters.
+- `scripts/make-baseline.sh` — writes current violations to `waivers/baseline.<tool>.json` for ratchet mode.
+- `scripts/check_waivers.py`, `scripts/check_tree.py` — CI gates (also run via `make check`).
+
 ## Versioning
 
 MAJOR = breaking gate. MINOR = new check. PATCH = fix/clarify. See `CHANGELOG.md`.

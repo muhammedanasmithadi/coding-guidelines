@@ -5,8 +5,14 @@
 - Fail fast. Validate at boundary. Return typed errors.
 - Delete duplication by abstraction only when the third use appears.
 - Prefer composition over inheritance. Keep interfaces narrow.
+- No comments in code. Code reads by reading it: names, structure, tests.
+  Behavior is documented in README and docs, never beside the code. Banned:
+  explanations of what code does, commented-out code, section banners, personal
+  notes. Allowed: machine directives (`noqa`, `pragma`, `type:`, `fmt:`,
+  `isort:`, shebang) and nothing else. Rationale that must survive lives in
+  docs/ADRs with an ID, not in a comment.
 
-Check: Ruff, ESLint, golangci-lint enforce size/complexity (see `docs/languages/`). Other languages per `docs/adr/0003-supported-languages.md`. Review enforces the rest — see PR checklist.
+Check: Ruff, ESLint, golangci-lint enforce size/complexity (see `docs/languages/`). `ERA001`/`F841` delete dead and commented-out code. Other languages per `docs/adr/0003-supported-languages.md`. Review enforces the rest — see PR checklist.
 Sources: Clean Code, https://martinfowler.com/books/refactoring.html, https://web.stanford.edu/~ouster/cgi-bin/book.php
 
 ## Examples

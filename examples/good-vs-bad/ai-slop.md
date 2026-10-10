@@ -31,3 +31,18 @@ AI agents dodge work with plausible comments. These are blocking review findings
 - Broad `except` + "handled elsewhere" with no handler named → `BLE001`; name the handler or let it propagate.
 - "Out of scope" with no follow-up issue → file the issue in the same PR or do the work.
 - Fake completion summaries ("all tests pass", "verified") → each claim links its artifact (test node ID, CI run URL, command output). Unlinked claims are treated as untested.
+
+## Narrative comments (code must read without them)
+
+```python
+# avoid: comment restates the line; delete it
+# increment the counter by one
+counter += 1
+
+# do: name carries meaning, no comment needed
+completed_orders += 1
+```
+
+Allowed: machine directives only (`noqa`, `pragma`, `type:`, shebang). Rationale
+that must survive lives in docs/ADRs with an ID, never in a comment.
+See `docs/01-principles.md`.

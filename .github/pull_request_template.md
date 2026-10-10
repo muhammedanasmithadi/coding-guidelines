@@ -6,6 +6,8 @@
 - [ ] Migration note for existing repos
 - [ ] OWASP Top 10 considered for auth/billing/PII changes
 - [ ] Waiver needed? Filed in `waivers/active.yml` with expiry
+- [ ] Every new check declares its exact file scope (hook `files:`/`types:`, CI paths) — no unbounded scans
+- [ ] No comments in code (machine directives only: `noqa`, `pragma`, `type:`, shebang)
 
 ## AI-generated code (required if any part is AI-assisted)
 

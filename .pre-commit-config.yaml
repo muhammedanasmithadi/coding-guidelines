@@ -35,8 +35,4 @@ repos:
         entry: npx cspell lint --no-progress --no-summary --config enforce/cspell.yaml
         language: system
         types: [text]
-  - repo: https://github.com/lycheeverse/lychee
-    rev: v0.15.1
-    hooks:
-      - id: lychee
-        args: ['--no-progress', '**/*.md']
+        files: \.md$

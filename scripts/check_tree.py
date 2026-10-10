@@ -43,8 +43,97 @@ TEXT_SUFFIXES = {
 }
 VERSION_RE = re.compile(r"^## \[([0-9]+\.[0-9]+\.[0-9]+)\]", re.MULTILINE)
 EXAMPLES_HEADER_RE = re.compile(r"^## Examples\b", re.MULTILINE)
-# docs/adr holds decision records, not guides: exempt from the Examples rule.
 EXEMPT_DIRS = {"docs/adr"}
+COMMENT_SCAN_SUFFIXES = {".py", ".mjs", ".js", ".ts", ".sh", ".yml", ".yaml", ".toml"}
+COMMENT_SCAN_NAMES = {"Makefile"}
+DIRECTIVE_RE = re.compile(
+    r"(#\s*(noqa|pragma|type:|fmt:|isort:|cspell:|!|coding[:=])|//\s*eslint-(disable|enable))"
+)
+
+
+def _strip_line_strings(line: str) -> str:
+    out = []
+    quote: str | None = None
+    i = 0
+    while i < len(line):
+        ch = line[i]
+        if quote is None and ch in "\"'":
+            quote = ch
+        elif quote is not None and ch == quote and line[i - 1] != "\\":
+            quote = None
+            out.append(" ")
+            i += 1
+            continue
+        if quote is None:
+            out.append(ch)
+        else:
+            out.append(" ")
+        i += 1
+    return "".join(out)
+
+
+def _comment_problems_py(path: pathlib.Path, rel: str) -> list[str]:
+    import io
+    import tokenize
+
+    problems = []
+    try:
+        tokens = tokenize.generate_tokens(io.StringIO(path.read_text()).readline)
+        for tok in tokens:
+            if tok.type != tokenize.COMMENT:
+                continue
+            if DIRECTIVE_RE.search(tok.string):
+                continue
+            problems.append(f"{rel}:{tok.start[0]}: comment")
+    except (OSError, SyntaxError, tokenize.TokenError):
+        problems.append(f"{rel}: unparseable")
+    return problems
+
+
+def _comment_problems_lines(path: pathlib.Path, rel: str, marker: str) -> list[str]:
+    problems = []
+    for n, line in enumerate(path.read_text().splitlines(), 1):
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("#!") and n == 1:
+            continue
+        code = _strip_line_strings(line)
+        idx = code.find(marker)
+        if idx == -1:
+            continue
+        if code[:idx].strip():
+            if marker == "#" or not stripped.startswith("//"):
+                if DIRECTIVE_RE.search(line[idx:]):
+                    continue
+                problems.append(f"{rel}:{n}: comment")
+        else:
+            if DIRECTIVE_RE.search(stripped):
+                continue
+            problems.append(f"{rel}:{n}: comment")
+    return problems
+
+
+def check_comments(root: pathlib.Path = ROOT) -> list[str]:
+    problems = []
+    for p in root.rglob("*"):
+        if not p.is_file():
+            continue
+        rel = p.relative_to(root)
+        if any(d in rel.parts for d in SKIP_DIRS):
+            continue
+        if p.name in SKIP_NAMES or p.suffix == ".pyc":
+            continue
+        if p.suffix == ".py":
+            problems += _comment_problems_py(p, str(rel))
+        elif p.suffix in (".mjs", ".js", ".ts"):
+            problems += _comment_problems_lines(p, str(rel), "//")
+        elif (
+            p.suffix in (".sh", ".yml", ".yaml", ".toml")
+            or p.name in COMMENT_SCAN_NAMES
+        ):
+            problems += _comment_problems_lines(p, str(rel), "#")
+    return problems
 
 
 def check_files(root: pathlib.Path = ROOT) -> list[str]:
@@ -163,6 +252,7 @@ def main(root: pathlib.Path = ROOT) -> int:
         + check_examples_linked(root)
         + check_dangling(root)
         + check_docs_examples(root)
+        + check_comments(root)
         + check_waivers(root)
     )
     if problems:

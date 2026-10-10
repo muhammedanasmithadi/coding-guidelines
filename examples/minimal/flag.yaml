@@ -1,5 +1,3 @@
-# Feature flag (OpenFeature)
-
 flags:
   - name: checkout-v2
     type: release

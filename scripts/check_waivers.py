@@ -14,7 +14,7 @@ except ImportError:  # pragma: no cover
     sys.exit(2)
 
 DEFAULT_PATH = pathlib.Path(__file__).resolve().parents[1] / "waivers/active.yml"
-MAX_DAYS = 90  # TEAM CHOICE: waiver may extend at most 90d past today
+MAX_DAYS = 90
 
 
 def load_entries(path: pathlib.Path) -> list[dict[str, Any]]:

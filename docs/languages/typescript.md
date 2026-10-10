@@ -20,4 +20,5 @@ Sources: Google TS https://google.github.io/styleguide/tsguide.html, Airbnb http
 
 - `examples/good-vs-bad/typescript.md` (all 8 patterns)
 - `examples/good-vs-bad/typescript-robust.md` (t3-env, tRPC, caller tests, exhaustive `never`)
+- Root `eslint.config.mjs` ignores `enforce/`: nested `eslint.config.*` files load as configs and the template's type-aware rules need project type info. Template validity is proven by import smoke test in `quality.yml`.
 - Waiver convention: `docs/waivers.md`

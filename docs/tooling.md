@@ -8,6 +8,7 @@ duplicates the lockfiles and rots; deleted in v0.11):
 - Runtimes: `.python-version` (mise, setup-python `version-file`) and `.nvmrc`
   (mise, setup-node `node-version-file`). CI reads the same files developers use.
 - Gitleaks tracks its GitHub Action major (`gitleaks/gitleaks-action@v2`); semgrep has no CI step yet (see `checks/security-gates.md`).
+- Link checking runs only in CI (`lycheeverse/lychee-action`): the pre-commit lychee hook needs a local binary and duplicates the CI gate.
 
 ## Examples
 

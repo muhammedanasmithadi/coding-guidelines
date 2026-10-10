@@ -2,6 +2,17 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.12.0] - 2026-10-10
+
+### Fixed
+
+- Scope discipline (every check declares exact file scope): cspell hook limited to md, lychee hook removed (CI action covers it), `.lycheeignore` excludes `node_modules`, PR checklist requires scope on new checks.
+
+### Added
+
+- Comment ban in code (`docs/01-principles.md`): behavior lives in README/docs, never beside code. Allowed: machine directives only (`noqa`, `pragma`, `type:`, shebang).
+- `check_comments` gate in `check_tree.py` (Python exact via tokenize; JS/SH/YAML/TOML line-based with quote awareness). Caught 2 live violations on first run. Rationale moved to docs before stripping.
+
 ## [0.11.0] - 2026-10-10
 
 ### Fixed

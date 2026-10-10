@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
-# Compares local enforce/ against the released tag. Advisory until P0 rollout.
-# Usage: scripts/check-drift.sh v0.5.0
 TAG="${1:-}"
 if [ -z "$TAG" ]; then echo "usage: check-drift.sh <tag>"; exit 2; fi
 tmp=$(mktemp -d)

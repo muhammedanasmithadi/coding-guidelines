@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
-# Reports pinned-vs-latest drift against the single-source pins
-# (package.json, requirements-ci.txt, .python-version, .nvmrc). Advisory only.
-# Usage: scripts/check-freshness.sh
 npm_v() { npm view "$1" version 2>/dev/null || echo unknown; }
 pypi_v() { python3 -c "import json,urllib.request; print(json.load(urllib.request.urlopen('https://pypi.org/pypi/$1/json', timeout=15))['info']['version'])" 2>/dev/null || echo unknown; }
 echo "== npm =="

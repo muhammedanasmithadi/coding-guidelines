@@ -1,5 +1,5 @@
 [tool.black]
-line-length = 88 # TEAM CHOICE override: PEP 8 mandates 79, Google Python 80
+line-length = 88
 target-version = ["py312"]
 
 [tool.ruff]
@@ -7,10 +7,6 @@ line-length = 88
 target-version = "py312"
 
 [tool.ruff.lint]
-# UP031 demoted (Django evidence: 62% churn, oscillates with UP032 — enforce the
-# f-string end state UP032 instead). TID252 scoped to parent-only (sibling
-# relative imports are legitimate layered-package architecture).
-# TD enforces uniform TODO tags with author + link (TD001/002/003) — no dangling markers.
 select = ["E", "F", "I", "B", "BLE", "UP", "TID", "SIM", "TD", "C901", "PLR0912", "PLR0915", "PLR2004", "S110", "S112", "S113", "S311", "S501", "S502", "S602", "S608", "ERA001", "PT018"]
 ignore = ["UP031"]
 
@@ -22,13 +18,8 @@ branch = true
 source = ["src", "scripts"]
 
 [tool.coverage.report]
-# TEAM CHOICE: 80% floor is local policy, not a coverage.py default
 fail_under = 80
 show_missing = true
 
 [tool.mypy]
 strict = true
-
-# NOTE: lizard thresholds live in CLI flags (lizard -C 15 -L 200).
-# lizard reads no pyproject section, so no [tool.lizard] here.
-# -C 15 is upstream default. -L 200 is TEAM CHOICE (upstream default 1000).

@@ -1,5 +1,3 @@
-# SLO per critical endpoint (Tier-0 example)
-
 endpoints:
   - route: 'POST /checkout'
     tier: 0
