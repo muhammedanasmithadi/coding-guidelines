@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.7.0] - 2026-10-10
+### Added
+- Split all consolidated stubs: 06/07/08/09, 10/11, 12/13/14/15, 16/17, 18/19/20/21/22/23 — each with rule+threshold+command+source+waiver+examples.
+- Expanded `tooling.md`, `metrics.md` (export schema, anti-gaming). ADR-0003 defers Rust/Java/C# with entry rule.
+- `scripts/check_tree.py` + 4 tests: enforces no-NUL/empty, VERSION==CHANGELOG, zero orphaned examples, every doc has Examples, waivers valid. Wired into `make check` and `quality.yml`.
+
 ## [0.6.0] - 2026-10-10
 ### Added
 - Scale-out batch: keyset pagination fix, `scaling.md`, `structure.md`, `testing-gaps.md`, `commits.md`, `a11y-i18n.md` do-vs-avoid examples.

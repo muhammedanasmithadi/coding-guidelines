@@ -16,3 +16,7 @@ Sources: Effective Go https://go.dev/doc/effective_go, `gofmt` https://pkg.go.de
 - `context.Context` first arg on I/O. No goroutine leaks: bound pools, never unbounded `go f()` in a loop.
 
 Other languages (Rust/Java/C#): deferred. Go pilots next after Python/TS.
+
+## Examples
+- `checks/coverage-thresholds.md` (Go cover gate)
+- Waivers: `docs/waivers.md`

@@ -42,3 +42,4 @@ jobs:
       - name: Waiver expiry check
         run: |
           python3 scripts/check_waivers.py
+          python3 scripts/check_tree.py

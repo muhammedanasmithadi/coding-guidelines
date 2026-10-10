@@ -6,7 +6,7 @@
 - Delete duplication by abstraction only when the third use appears.
 - Prefer composition over inheritance. Keep interfaces narrow.
 
-Check: Ruff, ESLint, Clippy, golangci-lint enforce size/complexity. Review enforces the rest.
+Check: Ruff, ESLint, golangci-lint enforce size/complexity (see `docs/languages/`). Other languages per `docs/adr/0003-supported-languages.md`. Review enforces the rest — see PR checklist.
 Sources: Clean Code, https://martinfowler.com/books/refactoring.html, https://web.stanford.edu/~ouster/cgi-bin/book.php
 
 ## Examples

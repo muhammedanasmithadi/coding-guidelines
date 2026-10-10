@@ -11,3 +11,8 @@ Start strict on new repos. Use `docs/migration.md` baseline + ratchet for legacy
 
 7. Browse `examples/good-vs-bad/README.md` for Do/Avoid per pattern.
 8. For fleet use see `docs/ownership.md`, `docs/rollout.md`, `scripts/bootstrap.sh`, `.devcontainer/devcontainer.json`.
+
+## Examples
+- `examples/good-vs-bad/README.md` (Do/Avoid index)
+- `examples/minimal/` (starter files)
+- `scripts/bootstrap.sh` (one-command setup)

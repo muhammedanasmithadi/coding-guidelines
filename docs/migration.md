@@ -15,3 +15,8 @@ New repos adopt strict gates day one. Legacy repos use baseline + ratchet.
 - Baseline files live in `waivers/`, carry owner + date.
 - No edit to baseline without PR + CODEOWNER review.
 - Ratchet never loosens: thresholds move one direction (stricter).
+
+## Examples
+- `waivers/baseline.<tool>.json` (ratchet input)
+- `scripts/make-baseline.sh` (generator)
+- `docs/tech-debt.md` (burn-down tracking)

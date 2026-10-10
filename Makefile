@@ -8,6 +8,7 @@ check-py:
 	uvx ruff format --check . --config enforce/python/pyproject.toml
 	uvx black --check scripts/ tests/ --config enforce/python/pyproject.toml
 	python3 scripts/check_waivers.py
+	python3 scripts/check_tree.py
 
 check-waivers:
 	python3 scripts/check_waivers.py

@@ -20,3 +20,7 @@ Strict gates need an escape hatch with expiry. No silent `nolint`.
 - `nolint`/`noqa`/`eslint-disable` must cite waiver ID: `# noqa: WAIV-001`.
 - CI fails on expired waiver or missing approval.
 - Baseline files for legacy live here too: `waivers/baseline.<tool>.json`.
+
+## Examples
+- `waivers/active.yml` (live waivers)
+- `scripts/check_waivers.py` (CI enforcer)

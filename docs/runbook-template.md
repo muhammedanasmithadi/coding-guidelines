@@ -6,3 +6,7 @@
 - Mitigation: kill-switch/flag name, rollback command, scale command.
 - Escalation: when to SEV1, who pages next, comms channel.
 - Post-incident: postmortem issue link within 48h.
+
+## Examples
+- `examples/minimal/slo.yaml` (alert source this runbook answers)
+- `examples/minimal/postmortem.md` (follow-up record)
