@@ -20,3 +20,9 @@ test:
 
 spell:
 	npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
+
+release:
+	npx prettier --check CHANGELOG.md package.json
+	python3 scripts/check_tree.py
+	npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
+	@echo "release gates passed"

@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.12.1] - 2026-10-10
+
+### Fixed
+
+- Dictionary word `lycheeignore`. Added `make release` (post-edit gates for version files) so version bumps cannot skip spell/tree again.
+
 ## [0.12.0] - 2026-10-10
 
 ### Fixed
