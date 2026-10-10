@@ -25,14 +25,14 @@ repos:
     hooks:
       - id: prettier-check
         name: prettier --check (check semantics, no --write)
-        entry: npx prettier --check --ignore-unknown
+        entry: npx --package=prettier@3.9.9 prettier --check --ignore-unknown
         language: system
         types: [text]
   - repo: local
     hooks:
       - id: cspell
         name: cspell lint
-        entry: npx cspell lint --no-progress --no-summary --config enforce/cspell.yaml
+        entry: npx --package=cspell@10.3.6 cspell lint --no-progress --no-summary --config enforce/cspell.yaml
         language: system
         types: [text]
         files: \.md$
