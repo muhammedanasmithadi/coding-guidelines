@@ -18,5 +18,6 @@ Sources: Effective Go https://go.dev/doc/effective_go, `gofmt` https://pkg.go.de
 Other languages (Rust/Java/C#): deferred. Go pilots next after Python/TS.
 
 ## Examples
+
 - `checks/coverage-thresholds.md` (Go cover gate)
 - Waivers: `docs/waivers.md`

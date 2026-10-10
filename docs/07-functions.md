@@ -5,4 +5,5 @@
 - Check: `lizard -C 15 -L 200 .`, `radon cc -s -n B`, Ruff `B`/`SIM`, ESLint complexity rules. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/functions.md`, `python.md` §2, `typescript.md` §2

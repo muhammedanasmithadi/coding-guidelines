@@ -5,4 +5,5 @@
 - Check: `oasdiff`/`buf breaking` + changelog gate. Waivers: `docs/waivers.md` (breaking-change RFC: `docs/rollout.md`).
 
 ## Examples
+
 - `examples/good-vs-bad/api.md` (SemVer), `commits.md` (changelog entries)

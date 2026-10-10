@@ -8,5 +8,6 @@
 - Check: OTel collector present, `promtool` cardinality, burn-rate alerts. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/production.md` (logging, tracing, metrics)
 - `examples/good-vs-bad/python.md` §5, `typescript.md` §6

@@ -3,6 +3,7 @@
 ## Public surface
 
 Do (`billing/__init__.py` re-exports only public names):
+
 ```python
 from billing.pricing import Pricer
 
@@ -10,6 +11,7 @@ __all__ = ["Pricer"]
 ```
 
 Avoid (deep import ossifies internals):
+
 ```python
 from billing.pricing.v2.impl import _Pricer  # smell: breaks on refactor
 ```

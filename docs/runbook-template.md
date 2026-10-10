@@ -8,5 +8,6 @@
 - Post-incident: postmortem issue link within 48h.
 
 ## Examples
+
 - `examples/minimal/slo.yaml` (alert source this runbook answers)
 - `examples/minimal/postmortem.md` (follow-up record)

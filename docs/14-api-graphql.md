@@ -5,4 +5,5 @@
 - Check: `findBreakingChanges` / schema breaking gate in CI. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/api.md` (connections, deprecation)

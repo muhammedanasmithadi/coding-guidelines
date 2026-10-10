@@ -9,5 +9,6 @@
 No secrets in logs, URLs, or git history. Use Vault / cloud secret manager + rotation.
 
 ## Examples
+
 - `examples/good-vs-bad/production.md` (secrets, auth, injection, Dockerfile, K8s)
 - `docs/threat-model-template.md` (required for auth/billing/PII changes)

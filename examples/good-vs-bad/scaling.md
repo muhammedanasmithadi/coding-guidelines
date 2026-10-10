@@ -3,6 +3,7 @@
 ## Keyset pagination (not offset)
 
 Do (opaque cursor over indexed keyset, `limit≤100` TEAM CHOICE):
+
 ```
 GET /orders?after=opaque&limit=25
 -- WHERE (created_at, id) > (?, ?) ORDER BY created_at, id LIMIT 25
@@ -25,6 +26,7 @@ Avoid: unbounded inbox + infinite retry. Retry storm cascades at 10x traffic.
 ## Concurrency caps
 
 Do:
+
 ```python
 async with asyncio.Semaphore(50):
     await fetch(url)

@@ -20,6 +20,7 @@ Avoid: `tail -f | grep ERROR`, avg latency only. Tail regression missed. High-ca
 ## Timeouts / breaker
 
 Do (TEAM CHOICE numbers, calibrate per downstream p99):
+
 ```python
 client = httpx.AsyncClient(timeout=httpx.Timeout(0.8, connect=0.2))
 # retry 3x timeout/connect only, full jitter, breaker 20 fails/30s, Idempotency-Key on POST
@@ -51,11 +52,13 @@ Avoid: `md5(password)`, JWT `alg:none`, `if header[X-User]==admin`. Priv-esc, PI
 ## Injection
 
 Do:
+
 ```python
 db.execute(text("SELECT * FROM orders WHERE id=:c"), {"c": cid})
 ```
 
 Avoid:
+
 ```python
 query = f"SELECT * FROM users WHERE name='{name}'"  # SQLi
 os.system(f"convert {upload} out.png")  # RCE
@@ -64,6 +67,7 @@ os.system(f"convert {upload} out.png")  # RCE
 ## Dockerfile
 
 Do (tag + UID are TEAM CHOICE; replace `<digest>` with real sha256, never ship literally):
+
 ```dockerfile
 FROM python:3.12.3-slim-bookworm@sha256:<digest>
 RUN useradd -r -u 65532 app

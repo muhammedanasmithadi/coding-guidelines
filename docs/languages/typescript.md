@@ -17,5 +17,6 @@ Sources: Google TS https://google.github.io/styleguide/tsguide.html, Airbnb http
 - Validate at boundary with zod https://zod.dev/.
 
 ## Examples
+
 - `examples/good-vs-bad/typescript.md` (all 8 patterns)
 - Waiver convention: `docs/waivers.md`

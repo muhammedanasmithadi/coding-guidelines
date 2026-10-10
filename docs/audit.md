@@ -12,6 +12,7 @@ Owner rotates. Checklist:
 Record outcome as ADR if a gate changes severity.
 
 ## Examples
+
 - `enforce/versions.lock` (tool versions under audit)
 - `.github/ISSUE_TEMPLATE/audit.md` (quarterly record)
 - `docs/adr/` (outcome of gate changes)

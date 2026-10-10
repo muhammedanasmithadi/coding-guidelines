@@ -5,4 +5,5 @@
 - Check: `squawk ./migrations/*.sql` (https://github.com/sbdchd/squawk). Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/api.md` (expand-contract)

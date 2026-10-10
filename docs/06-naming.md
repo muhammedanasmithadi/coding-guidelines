@@ -6,4 +6,5 @@
 - Check: Ruff (`E`, `I`), ESLint naming rules. Waivers: `docs/waivers.md` (cite ID in `noqa`/disable).
 
 ## Examples
+
 - `examples/good-vs-bad/python.md` §1, `typescript.md` §1

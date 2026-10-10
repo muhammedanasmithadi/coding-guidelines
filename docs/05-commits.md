@@ -8,4 +8,5 @@
 Check: commitlint + lychee for changelog links + cspell for typos.
 
 ## Examples
+
 - `examples/good-vs-bad/commits.md`

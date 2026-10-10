@@ -17,5 +17,6 @@ Sources: PEP 8 https://peps.python.org/pep-0008/, Google Python https://google.g
 - Validate at boundary with pydantic https://docs.pydantic.dev/latest/.
 
 ## Examples
+
 - `examples/good-vs-bad/python.md` (all 10 patterns)
 - Waiver convention: `docs/waivers.md`

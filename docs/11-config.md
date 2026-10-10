@@ -6,4 +6,5 @@
 - Check: schema-validated config (`cuelang`/JSON-schema in CI), `gitleaks dir . -v`. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/python.md` §6 (pydantic-settings), `production.md` (secrets)

@@ -25,6 +25,7 @@ Avoid: `POST /orders` creating duplicate on retry. Retry doubles charge.
 ## gRPC numbering
 
 Do:
+
 ```proto
 message Person { string name = 1; int32 id = 2; }
 ```
@@ -43,6 +44,7 @@ Avoid: `offset/limit`. Inserts skip/dupe rows. Large offsets scan table.
 ## GraphQL evolution
 
 Do:
+
 ```graphql
 name: String! @deprecated(reason: "Use firstName/lastName")
 ```
@@ -57,6 +59,7 @@ Avoid: breaking change in `1.2.3 -> 1.2.4`. `^1.2.3` pulls breakage.
 ## DB expand-contract
 
 Do:
+
 ```sql
 -- 1 expand: ALTER TABLE users ADD COLUMN first_name TEXT;
 -- 2 backfill batches; 3 switch readers; 4 drop old column

@@ -6,4 +6,5 @@
 - Check: `ruff --select BLE`, `@typescript-eslint/no-explicit-any`. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/errors.md`, `python.md` §4, `typescript.md` §4

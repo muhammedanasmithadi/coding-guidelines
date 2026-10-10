@@ -6,4 +6,5 @@
 - Consumers pin this repo by tag (`VERSION` + `CHANGELOG.md`). Drift check: `scripts/check-drift.sh <tag>` (advisory).
 
 ## Examples
+
 - `enforce/versions.lock`, `scripts/check-drift.sh`, `scripts/bootstrap.sh`

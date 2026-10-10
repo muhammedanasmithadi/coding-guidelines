@@ -3,6 +3,7 @@
 ## Quarantine flaky
 
 Do:
+
 ```python
 import pytest
 
@@ -20,6 +21,7 @@ Avoid: leaving flaky in default suite. Main red 30%, everyone re-runs, coverage 
 ## Fake clock / seeded RNG
 
 Do:
+
 ```python
 def test_expiry():
     clock = FakeClock(t0)

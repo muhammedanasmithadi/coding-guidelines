@@ -5,4 +5,5 @@
 - Check: `buf breaking` (or equivalent) in CI against `main`. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/api.md` (numbering, compat)

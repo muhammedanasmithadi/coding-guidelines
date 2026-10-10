@@ -1,6 +1,7 @@
 # Commits — Do vs Avoid
 
 Do (one intent, explains why):
+
 ```
 feat(checkout): add idempotency key
 
@@ -8,6 +9,7 @@ Retries double-charged on timeout. Key dedupes in outbox table.
 ```
 
 Avoid:
+
 ```
 fix stuff
 WIP

@@ -5,6 +5,7 @@ Sources: https://refactoring.guru/, https://learn.microsoft.com/en-us/azure/arch
 ## S — Single Responsibility
 
 Do:
+
 ```python
 class OrderPricer:
     def total(self, items):
@@ -20,6 +21,7 @@ Avoid: `OrderManager` prices + saves + emails + logs. Tax change retests email.
 ## O — Open/Closed
 
 Do:
+
 ```python
 class Discount:
     def apply(self, p): ...
@@ -31,6 +33,7 @@ class VipDiscount(Discount):
 ```
 
 Avoid:
+
 ```python
 if customer.type == "vip":
     ...  # smell: edit tested code per type
@@ -47,6 +50,7 @@ Avoid: `Penguin(Bird).fly() -> raise`. Callers branch on type. Classic `Square(R
 ## I — Interface Segregation
 
 Do:
+
 ```python
 class Printer:
     def print(self, d): ...
@@ -61,6 +65,7 @@ Avoid: `IMachine(print, scan, fax, staple)` forces `SimplePrinter.fax -> raise`.
 ## D — Dependency Inversion
 
 Do:
+
 ```python
 class Notifier(Protocol):
     def send(self, m): ...
@@ -72,6 +77,7 @@ class Checkout:
 ```
 
 Avoid:
+
 ```python
 from smtp import SmtpClient  # smell: concrete in policy, untestable
 

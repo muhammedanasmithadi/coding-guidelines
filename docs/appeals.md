@@ -9,5 +9,6 @@ Contest a blocking gate:
 No personal disputes. Cite data. See `CODE_OF_CONDUCT.md`.
 
 ## Examples
+
 - `docs/waivers.md` (temp waiver while contest is pending)
 - `docs/audit.md` (review contested gates quarterly)

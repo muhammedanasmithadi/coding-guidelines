@@ -5,4 +5,5 @@
 - Check: `ruff --select I`, `eslint import/no-cycle`, export/API linters. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/design-solid.md`, `structure.md`

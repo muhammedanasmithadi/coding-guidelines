@@ -5,4 +5,5 @@
 - Check: breaking-change gate (`oasdiff`/`buf`) fails unannounced removals. Waivers: `docs/waivers.md` (shorten window only with consumer sign-off).
 
 ## Examples
+
 - `examples/good-vs-bad/api.md` (GraphQL `@deprecated`, SemVer)

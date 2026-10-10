@@ -1,6 +1,6 @@
 - id: EXAMPLE-001
   rule: example
   reason: placeholder, replace with real waiver or delete file
-  owner: "@guidelines-core"
+  owner: '@guidelines-core'
   expires: 2026-12-31
   issue: https://example.com/issues/0

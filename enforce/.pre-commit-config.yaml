@@ -39,4 +39,4 @@ repos:
     rev: v0.15.1
     hooks:
       - id: lychee
-        args: ["--no-progress", "**/*.md"]
+        args: ['--no-progress', '**/*.md']

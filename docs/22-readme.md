@@ -5,4 +5,5 @@
 - Check: `lychee` links green, required headings present (review checklist). Waivers: N/A.
 
 ## Examples
+
 - `examples/minimal/README.md`, `examples/full/README.md`

@@ -8,5 +8,6 @@ Applies to all languages. Appendices add tool commands.
 - Errors typed. Logs structured with trace ID.
 
 ## Examples
+
 - `docs/languages/python.md`, `docs/languages/typescript.md`, `docs/languages/go.md`
 - Waivers: `docs/waivers.md`

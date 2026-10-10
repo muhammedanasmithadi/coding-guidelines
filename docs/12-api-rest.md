@@ -7,4 +7,5 @@
 - Check: `spectral lint openapi.yaml`, `oasdiff breaking --fail-on ERR`. Waivers: `docs/waivers.md`.
 
 ## Examples
+
 - `examples/good-vs-bad/api.md` (naming, status, pagination, idempotency), `scaling.md` (keyset)

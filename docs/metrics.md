@@ -10,4 +10,5 @@ Track monthly, per service (schema: `metrics/schema.json`):
 - Export: monthly JSON per service to `metrics/`. Review in quarterly audit (`docs/audit.md`).
 
 ## Examples
+
 - `metrics/schema.json`, `docs/tech-debt.md`, `docs/audit.md`

@@ -7,5 +7,6 @@
 - Residual risk + owner + review date.
 
 ## Examples
+
 - `docs/04-security.md` (gates this template feeds)
 - `examples/good-vs-bad/production.md` (auth, injection, secrets)
