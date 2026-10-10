@@ -1,6 +1,6 @@
 # Production — Do vs Avoid
 
-Sources: OTel https://opentelemetry.io/docs/concepts/signals/traces/, K8s probes https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/, OWASP https://owasp.org/www-project-top-ten/, SRE https://sre.google/sre-book/chapters/service-level-objectives/
+Sources: OTel https://opentelemetry.io/docs/concepts/signals/traces/, K8s probes https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/, OWASP https://owasp.org/www-project-top-ten/, SRE https://sre.google/sre-book/service-level-objectives
 
 ## Logging
 
