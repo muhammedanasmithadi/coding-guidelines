@@ -8,3 +8,4 @@
 ## Examples
 
 - `examples/good-vs-bad/python.md` §6 (pydantic-settings), `production.md` (secrets)
+- `examples/good-vs-bad/typescript-robust.md` §1 (t3-env validated config)

@@ -19,4 +19,5 @@ Sources: Google TS https://google.github.io/styleguide/tsguide.html, Airbnb http
 ## Examples
 
 - `examples/good-vs-bad/typescript.md` (all 8 patterns)
+- `examples/good-vs-bad/typescript-robust.md` (t3-env, tRPC, caller tests, exhaustive `never`)
 - Waiver convention: `docs/waivers.md`

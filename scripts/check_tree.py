@@ -18,6 +18,7 @@ SKIP_DIRS = {
     ".git",
     ".ruff_cache",
     ".pytest_cache",
+    ".mypy_cache",
     "__pycache__",
     "node_modules",
     ".venv",

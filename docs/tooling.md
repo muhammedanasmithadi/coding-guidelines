@@ -1,10 +1,14 @@
 # Tooling
 
-- Pin every check in `enforce/versions.lock` (ruff, black, prettier, eslint, node, python, gitleaks, semgrep, lizard). Weekly Dependabot bump (`.github/dependabot.yml`).
-- Lockfiles required: `package-lock.json`, `poetry.lock`/`uv.lock`, `Cargo.lock`, `go.sum`. CI fails without them.
-- Bump validation: owner approves, `examples/` CI runs green against new versions before rollout (`docs/rollout.md`).
-- Consumers pin this repo by tag (`VERSION` + `CHANGELOG.md`). Drift check: `scripts/check-drift.sh <tag>` (advisory).
+Single source of truth per toolchain — no separate pins file (a versions list
+duplicates the lockfiles and rots; deleted in v0.11):
+
+- JS: exact pins in `package.json` + `package-lock.json` (committed).
+- Python CI: exact pins in `requirements-ci.txt` (monitored by Dependabot pip).
+- Runtimes: `.python-version` (mise, setup-python `version-file`) and `.nvmrc`
+  (mise, setup-node `node-version-file`). CI reads the same files developers use.
+- Gitleaks tracks its GitHub Action major (`gitleaks/gitleaks-action@v2`); semgrep has no CI step yet (see `checks/security-gates.md`).
 
 ## Examples
 
-- `enforce/versions.lock`, `scripts/check-drift.sh`, `scripts/bootstrap.sh`
+- `package.json`, `requirements-ci.txt` (pins under audit), `scripts/check-drift.sh`, `scripts/bootstrap.sh`

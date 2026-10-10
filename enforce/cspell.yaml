@@ -65,5 +65,14 @@ words:
     'singleflight',
     'staticcheck',
     'TIMESTAMPTZ',
+    'Cppcheck',
+    'Holzmann',
+    'MISRA',
+    'postconditions',
+    'Spracklen',
+    'stdlib',
+    'unretrieved',
+    'WCET',
+    'Dogfooded',
   ]
 flagWords: []

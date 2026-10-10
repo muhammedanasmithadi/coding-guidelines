@@ -7,6 +7,7 @@ TEAM CHOICE: 80% floor is local policy, not a tool default.
 - Quarantine flaky: `pytest -m "not quarantine"` (register `quarantine` mark), `go test -shuffle=on -count=3`, `jest --runInBand --detectOpenHandles`.
 - Require mutation report on critical paths: Stryker https://stryker-mutator.io/ (defaults high:80 low:60 break:null), cargo-mutants.
 - No test hits network/disk/clock without fake. Inject clock, seed RNG.
+- Verify adoption with the project's own runner (Django evidence: bare `DiscoverRunner` fails a test that `runtests.py` passes — harness fidelity decides "no regression").
 
 Commands:
 

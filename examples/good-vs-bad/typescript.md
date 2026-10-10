@@ -169,6 +169,5 @@ Avoid:
 ```json
 { "compilerOptions": { "strict": false } }
 
-
 // smell: ships null/any bugs
 ```

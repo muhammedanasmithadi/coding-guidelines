@@ -19,3 +19,6 @@ except RetryableError as e:
 except DomainError as e:
     raise PublicError("charge failed") from e
 ```
+
+Highest-value safe-fix batch (Django evidence: 320 combined hits, mechanical fixes):
+B904 — always `raise ... from err` inside `except`; BLE001 — narrow the except or log.

@@ -2,6 +2,11 @@
 
 Docs + enforcing configs + verified CI. Each rule maps to a command. CI blocks merge on failure.
 
+Principles are normative; tool configs are a reference implementation. Libraries
+are cited as conforming examples, never mandates: any tool that enforces the
+stated principle conforms. A rule names a specific library only when no
+principle-level check exists.
+
 ## Use
 
 1. Read `docs/onboarding.md`.

@@ -7,11 +7,15 @@ line-length = 88
 target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "BLE", "UP", "TID", "SIM"]
-ignore = []
+# UP031 demoted (Django evidence: 62% churn, oscillates with UP032 — enforce the
+# f-string end state UP032 instead). TID252 scoped to parent-only (sibling
+# relative imports are legitimate layered-package architecture).
+# TD enforces uniform TODO tags with author + link (TD001/002/003) — no dangling markers.
+select = ["E", "F", "I", "B", "BLE", "UP", "TID", "SIM", "TD", "C901", "PLR0912", "PLR0915", "PLR2004", "S110", "S112", "S113", "S311", "S501", "S502", "S602", "S608", "ERA001", "PT018"]
+ignore = ["UP031"]
 
 [tool.ruff.lint.flake8-tidy-imports]
-ban-relative-imports = "all"
+ban-relative-imports = "parents"
 
 [tool.coverage.run]
 branch = true

@@ -2,6 +2,23 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.11.0] - 2026-10-10
+
+### Fixed
+
+- CI red causes: pre-commit config moved to root (action requires it), mypy yaml stubs (`types-pyyaml` + config-file in CI and Makefile), cspell full-glob parity, npm HIGHs resolved by upgrades.
+
+### Added
+
+- Latest verified toolchain: python 3.12.15, node 22.23.3, ruff 0.17, black 26, prettier 3.9.9, eslint 10, typescript 5.9.3, cspell 10, commitlint 21, gitleaks 8.30, semgrep 1.180, lizard 1.24. `requirements-ci.txt` pins CI deps; Dependabot monitors it.
+- Django empirical evidence folded in: UP031 demoted, TID252 parent-only, CC warning+waiver framing, MI never-a-gate, B904/BLE001 recipes, harness-fidelity rule.
+- AI-slop guardrails (`ai-slop.md`, PR checklist, S/C901/PLR/ERA/PT/TD rules) + agent task-evasion blocks.
+- Mission-critical tier (`mission-critical.md`), freshness script, principles-first policy (tools are reference implementations).
+
+### Removed
+
+- `enforce/versions.lock` (duplicated lockfiles and rotted). Single source: `package.json` + lockfile, `requirements-ci.txt`, `.python-version`, `.nvmrc` — all read natively by tools and CI.
+
 ## [0.10.0] - 2026-10-10
 
 ### Added

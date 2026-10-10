@@ -1,6 +1,6 @@
 # Onboarding (15 min)
 
-1. Install pinned toolchain: `mise install` (see `enforce/versions.lock`).
+1. Install pinned toolchain: `mise install` (reads `.python-version`, `.nvmrc`).
 2. Install hooks: `pre-commit install`.
 3. Copy starter: `examples/minimal/` shows required files per repo.
 4. Run local gates: `pre-commit run --all-files`.

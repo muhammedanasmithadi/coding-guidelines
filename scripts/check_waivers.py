@@ -5,6 +5,7 @@ from __future__ import annotations
 import datetime as dt
 import pathlib
 import sys
+from typing import Any
 
 try:
     import yaml
@@ -16,7 +17,7 @@ DEFAULT_PATH = pathlib.Path(__file__).resolve().parents[1] / "waivers/active.yml
 MAX_DAYS = 90  # TEAM CHOICE: waiver may extend at most 90d past today
 
 
-def load_entries(path: pathlib.Path) -> list[dict]:
+def load_entries(path: pathlib.Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
     try:
@@ -33,7 +34,7 @@ def load_entries(path: pathlib.Path) -> list[dict]:
     return data
 
 
-def _expiry(w: dict) -> dt.date | None:
+def _expiry(w: dict[str, Any]) -> dt.date | None:
     if "expires" not in w:
         return None
     return dt.date.fromisoformat(str(w["expires"]))

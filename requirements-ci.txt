@@ -1,0 +1,11 @@
+# Pinned CI toolchain (mirrors enforce/versions.lock; monitored by Dependabot pip).
+ruff==0.17.0
+black==26.10.1
+coverage==7.16.2
+lizard==1.24.1
+radon==6.0.1
+pip-audit==2.10.1
+mypy==2.4.0
+types-pyyaml==6.0.12.20260906
+pyyaml==6.0.3
+pytest==9.1.1

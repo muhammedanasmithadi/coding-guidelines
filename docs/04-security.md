@@ -12,3 +12,4 @@ No secrets in logs, URLs, or git history. Use Vault / cloud secret manager + rot
 
 - `examples/good-vs-bad/production.md` (secrets, auth, injection, Dockerfile, K8s)
 - `docs/threat-model-template.md` (required for auth/billing/PII changes)
+- `examples/good-vs-bad/ai-slop.md` (insecure defaults, hallucinated deps)

@@ -13,3 +13,4 @@ Sources: Clean Code, https://martinfowler.com/books/refactoring.html, https://we
 
 - `examples/good-vs-bad/design-solid.md` (S/O/L/I/D, composition, DI)
 - `examples/good-vs-bad/functions.md` (size, CC<15)
+- `examples/good-vs-bad/ai-slop.md` (AI failure modes + catches)
