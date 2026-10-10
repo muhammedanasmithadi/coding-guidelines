@@ -12,3 +12,8 @@ Commands:
 - Python: `coverage run -m pytest && coverage report --fail-under=80`
 - TS: `jest --coverage --coverageThreshold='{"global":{"lines":80,"branches":80}}'`
 - Go: `go test -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'`
+
+## Examples
+- `examples/good-vs-bad/python.md` §9 (fixtures, Hypothesis)
+- `examples/good-vs-bad/typescript.md` §7 (vitest/fast-check)
+- `examples/good-vs-bad/testing-gaps.md` (quarantine, fake clock, mutation)

@@ -8,3 +8,7 @@
 
 Check: Ruff, ESLint, Clippy, golangci-lint enforce size/complexity. Review enforces the rest.
 Sources: Clean Code, https://martinfowler.com/books/refactoring.html, https://web.stanford.edu/~ouster/cgi-bin/book.php
+
+## Examples
+- `examples/good-vs-bad/design-solid.md` (S/O/L/I/D, composition, DI)
+- `examples/good-vs-bad/functions.md` (size, CC<15)

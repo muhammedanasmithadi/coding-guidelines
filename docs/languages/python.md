@@ -15,3 +15,7 @@ Sources: PEP 8 https://peps.python.org/pep-0008/, Google Python https://google.g
 - `snake_case` vars/functions, `CapWords` classes, `UPPER` consts.
 - Imports sorted. No wildcard. Docstrings per PEP 257.
 - Validate at boundary with pydantic https://docs.pydantic.dev/latest/.
+
+## Examples
+- `examples/good-vs-bad/python.md` (all 10 patterns)
+- Waiver convention: `docs/waivers.md`

@@ -13,3 +13,7 @@
 - No cross-package deep imports. Import the package root.
 
 Check: import linters (`ruff --select I`, `eslint import/no-cycle`, `go list -deps` cycle check).
+
+## Examples
+- `examples/good-vs-bad/design-solid.md` (boundaries, no cycles)
+- `examples/good-vs-bad/structure.md` (root vs deep imports)

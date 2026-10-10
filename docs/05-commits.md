@@ -6,3 +6,6 @@
 - No `fixup!`/`WIP` on main. Squash merges keep `type(scope): subject`.
 
 Check: commitlint + lychee for changelog links + cspell for typos.
+
+## Examples
+- `examples/good-vs-bad/commits.md`

@@ -2,6 +2,14 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.6.0] - 2026-10-10
+### Added
+- Scale-out batch: keyset pagination fix, `scaling.md`, `structure.md`, `testing-gaps.md`, `commits.md`, `a11y-i18n.md` do-vs-avoid examples.
+- Templates: threat-model, runbook, postmortem, `slo.yaml`, `flag.yaml`, ADR-0002, `languages/go.md`.
+- Fleet docs: ownership, review-throughput, codemods, tech-debt, rollout, incident, multi-region, observability-budgets.
+- Distribution: `scripts/check-drift.sh`, `bootstrap.sh`, `run-codemod.sh`, `.devcontainer`, `dependabot.yml`, breaking-change RFC template, `metrics/schema.json`, quality `concurrency`.
+- Every doc now links its examples (0 orphaned files).
+
 ## [0.5.0] - 2026-10-10
 ### Fixed
 - Verified every rule vs live sources. Relabeled invented numbers as TEAM CHOICE (50/5/15, 80%, L200, timeouts, SLO budgets, K8s sizes).

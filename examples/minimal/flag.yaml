@@ -1,0 +1,11 @@
+# Feature flag (OpenFeature)
+
+flags:
+  - name: checkout-v2
+    type: release
+    default: false
+    owner: "@team-checkout"
+    expires: "2026-12-31"
+    targeting: { percentage: 5 }
+    kill_switch: true
+    cleanup_ticket: https://example.com/issues/flag-cleanup

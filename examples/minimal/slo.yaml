@@ -1,0 +1,12 @@
+# SLO per critical endpoint (Tier-0 example)
+
+endpoints:
+  - route: "POST /checkout"
+    tier: 0
+    sli: { rate: "2xx/(2xx+5xx)", window: 28d, target: 99.95 }
+    latency: { p95_ms: 300, p99_ms: 800 }
+    budget_policy: freeze-features-when-exhausted
+    alerts:
+      - fast-burn: "14.4x/1h page"
+      - slow-burn: "6x/6h ticket"
+    runbook: docs/runbook-template.md

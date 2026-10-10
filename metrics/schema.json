@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Quality metrics per service, monthly",
+  "type": "object",
+  "required": ["service", "gate_pass_pct", "new_code_coverage", "waiver_count", "waiver_max_age_days", "dora"],
+  "properties": {
+    "service": { "type": "string" },
+    "gate_pass_pct": { "type": "number" },
+    "new_code_coverage": { "type": "number" },
+    "waiver_count": { "type": "integer" },
+    "waiver_max_age_days": { "type": "integer" },
+    "dora": {
+      "type": "object",
+      "required": ["lead_time_p50", "deploy_freq", "cfr", "mttr_p50"],
+      "properties": {
+        "lead_time_p50": { "type": "string" },
+        "deploy_freq": { "type": "string" },
+        "cfr": { "type": "number" },
+        "mttr_p50": { "type": "string" }
+      }
+    }
+  }
+}

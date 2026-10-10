@@ -11,3 +11,8 @@
 ## Data/Privacy
 - Classify PII. Minimize. Set retention/deletion. Test restore (RPO/RTO).
 - Run k6 https://k6.io/ on critical paths. Budget p95/p99 + bundle size + DB query count.
+
+## Examples
+- `examples/good-vs-bad/production.md` (all 14 patterns)
+- `examples/good-vs-bad/scaling.md` (keyset, cache, queues, pools, compat)
+- `examples/minimal/slo.yaml`, `examples/minimal/flag.yaml`

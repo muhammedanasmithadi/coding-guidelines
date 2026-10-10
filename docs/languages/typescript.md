@@ -15,3 +15,7 @@ Sources: Google TS https://google.github.io/styleguide/tsguide.html, Airbnb http
 - `camelCase` vars/functions, `PascalCase` types, `UPPER_SNAKE` consts.
 - No `any` without waiver. Prefer `unknown` + narrow.
 - Validate at boundary with zod https://zod.dev/.
+
+## Examples
+- `examples/good-vs-bad/typescript.md` (all 8 patterns)
+- Waiver convention: `docs/waivers.md`

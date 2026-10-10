@@ -13,3 +13,6 @@
 
 ## Versioning
 - SemVer https://semver.org/. API path `/v1`. Changelog per release.
+
+## Examples
+- `examples/good-vs-bad/api.md` (REST, gRPC, GraphQL, SemVer, migrations)

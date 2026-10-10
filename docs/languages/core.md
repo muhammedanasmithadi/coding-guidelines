@@ -6,3 +6,7 @@ Applies to all languages. Appendices add tool commands.
 - CC<15, file <200 LOC, function <50 lines. Coverage 80% lines/branches.
 - No secrets in code. No TODO without issue link.
 - Errors typed. Logs structured with trace ID.
+
+## Examples
+- `docs/languages/python.md`, `docs/languages/typescript.md`, `docs/languages/go.md`
+- Waivers: `docs/waivers.md`

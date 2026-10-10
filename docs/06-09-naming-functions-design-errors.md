@@ -14,3 +14,8 @@
 ## Errors
 - Type errors. No bare `except`. No swallow. Map to contract: https://cloud.google.com/apis/design/errors
 - Retry retryable only. Backoff+jitter. Set timeouts + deadlines.
+
+## Examples
+- `examples/good-vs-bad/python.md` §§1-4 (naming, functions, errors)
+- `examples/good-vs-bad/typescript.md` §§1-4
+- `examples/good-vs-bad/functions.md`, `errors.md`, `design-solid.md`

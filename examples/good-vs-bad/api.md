@@ -14,8 +14,8 @@ Avoid: `200 {success:false}` for all failures. Clients cannot retry/cache. Monit
 
 ## Pagination
 
-Do: `GET /orders?limit=25&offset=50 -> {value:[...], nextLink:...}`. Cap limit.
-Avoid: unbounded `GET /orders` returning 2M rows. OOM, timeout. Adding paging later breaks.
+Do (keyset cursor, TEAM CHOICE `limit≤100`): `GET /orders?after=opaque&limit=25 -> {value:[...], nextLink:...}` with `(created_at,id)` index. Cap limit.
+Avoid: `offset=500000`. Full scan + skip/dupe on inserts. Unbounded `GET /orders` returns 2M rows. Adding paging later breaks.
 
 ## Idempotency
 
