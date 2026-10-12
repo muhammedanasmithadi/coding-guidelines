@@ -2,7 +2,7 @@
 
 Copy to new repo:
 
-- `enforce/.editorconfig`
+- `.editorconfig` (repo root, discovered upward)
 - `.pre-commit-config.yaml` (repo root; hooks reference `enforce/` configs)
 - `checks/*.md` thresholds in CI
 - `.github/workflows/quality.yml`
