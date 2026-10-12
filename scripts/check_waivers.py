@@ -88,4 +88,8 @@ def main(path: pathlib.Path = DEFAULT_PATH) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    if len(sys.argv) > 1:
+        path = pathlib.Path(sys.argv[1]) / "waivers" / "active.yml"
+    else:
+        path = DEFAULT_PATH
+    sys.exit(main(path))

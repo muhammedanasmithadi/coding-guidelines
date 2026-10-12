@@ -1,0 +1,99 @@
+name: guidelines
+on:
+  workflow_call:
+    inputs:
+      guidelines-ref:
+        description: Pinned guidelines tag, same as the uses ref (e.g. v0.16.0). Required — unpinned audits are not audits.
+        required: true
+        type: string
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with:
+          repository: muhammedanasmithadi/coding-guidelines
+          ref: ${{ inputs.guidelines-ref }}
+          path: guidelines
+      - uses: actions/setup-python@v5
+        with: { python-version-file: guidelines/.python-version }
+      - run: pip install -r guidelines/requirements-ci.txt
+      - run: ruff check . --config guidelines/enforce/python/pyproject.toml
+      - run: lizard -C 15 -L 200 .
+      - run: mypy . --config-file guidelines/enforce/python/pyproject.toml
+      - run: coverage run -m pytest && coverage report --fail-under=80
+      - run: pip-audit --strict
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version-file: guidelines/.nvmrc, cache: npm }
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - uses: actions/checkout@v4
+        with:
+          repository: muhammedanasmithadi/coding-guidelines
+          ref: ${{ inputs.guidelines-ref }}
+          path: guidelines
+      - run: npx --package=oxfmt@0.72.0 oxfmt --check --config guidelines/.oxfmtrc.json .
+      - run: npx --package=oxlint@1.87.0 oxlint --max-warnings 0 --no-error-on-unmatched-pattern --config guidelines/.oxlintrc.json .
+      - run: npx tsc --noEmit
+      - run: npm audit --audit-level=high
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version-file: guidelines/.nvmrc, cache: npm }
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - uses: actions/checkout@v4
+        with:
+          repository: muhammedanasmithadi/coding-guidelines
+          ref: ${{ inputs.guidelines-ref }}
+          path: guidelines
+      - run: npx @stoplight/spectral-cli lint openapi.yaml -r guidelines/enforce/.spectral.yaml
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version-file: guidelines/.nvmrc, cache: npm }
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - uses: actions/checkout@v4
+        with:
+          repository: muhammedanasmithadi/coding-guidelines
+          ref: ${{ inputs.guidelines-ref }}
+          path: guidelines
+      - run: npx cspell --no-progress --fail-fast --config guidelines/enforce/cspell.yaml "**/*.md"
+      - uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'
+      - run: npx commitlint --from HEAD~1 --to HEAD
+      - uses: gitleaks/gitleaks-action@v3
+  tree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with:
+          repository: muhammedanasmithadi/coding-guidelines
+          ref: ${{ inputs.guidelines-ref }}
+          path: guidelines
+      - uses: actions/setup-python@v5
+        with: { python-version-file: guidelines/.python-version }
+      - run: pip install pyyaml
+      - run: python3 guidelines/scripts/check_waivers.py .
+      - run: python3 guidelines/scripts/check_tree.py .
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version-file: guidelines/.python-version }
+      - run: pip install 'semgrep==1.180.0'
+      - run: semgrep scan --config p/default --severity ERROR --error scripts/

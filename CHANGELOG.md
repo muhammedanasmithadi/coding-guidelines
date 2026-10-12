@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.17.0] - 2026-10-12
+
+### Added
+
+- URL adoption: reusable `guidelines` workflow (pinned tag in `uses` + required `guidelines-ref` input; scripts accept a root argument). Proves itself the same way the copy flow does.
+
 ## [0.16.0] - 2026-10-12
 
 ### Added

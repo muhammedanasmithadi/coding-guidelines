@@ -3,6 +3,25 @@
 A repo has adopted these guidelines when every item below verifies green.
 Run the commands; no item is satisfied by assertion.
 
+## Two ways to adopt
+
+**By URL (recommended):** reference the reusable workflow — no file copying, no
+drift, version pinned by tag:
+
+```yaml
+jobs:
+  guidelines:
+    uses: muhammedanasmithadi/coding-guidelines/.github/workflows/reusable.yml@v0.16.0
+    with:
+      guidelines-ref: v0.16.0
+```
+
+The tag in `uses:` and `guidelines-ref` must match. Local hooks still need the
+4 dotfiles + `enforce/` copied (see `examples/minimal/README.md`) — hook
+entries use paths relative to the repo root, so they cannot run from a URL.
+
+**By copy:** follow `examples/minimal/README.md`, proven by `scripts/verify-starter.sh`.
+
 ## Done checklist
 
 - [ ] Local gates green: `pre-commit run --all-files` (or `prek run --all-files`).

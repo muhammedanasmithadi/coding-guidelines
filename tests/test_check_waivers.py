@@ -107,3 +107,17 @@ def test_malformed_yaml_reports_not_crash(tmp_path: pathlib.Path) -> None:
     except ValueError:
         crashed = True
     assert crashed
+
+
+def test_cli_root_override(tmp_path: pathlib.Path) -> None:
+    import subprocess
+
+    wdir = tmp_path / "waivers"
+    wdir.mkdir(parents=True, exist_ok=True)
+    (wdir / "active.yml").write_text("[]\n")
+    script = pathlib.Path(__file__).resolve().parents[1]
+    script = script / "scripts" / "check_waivers.py"
+    proc = subprocess.run(
+        [sys.executable, str(script), str(tmp_path)], capture_output=True, text=True
+    )
+    assert proc.returncode == 0, proc.stdout + proc.stderr

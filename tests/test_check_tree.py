@@ -150,3 +150,15 @@ def test_comments_banned_except_directives(tmp_path: pathlib.Path) -> None:
     assert "z.yaml:1: comment" in problems
     assert "w.mjs:2: comment" in problems
     assert not [p for p in problems if "x.py:1" in p]
+
+
+def test_cli_root_override(tmp_path: pathlib.Path) -> None:
+    import subprocess
+
+    root = make_tree(tmp_path)
+    script = pathlib.Path(__file__).resolve().parents[1]
+    script = script / "scripts" / "check_tree.py"
+    proc = subprocess.run(
+        [sys.executable, str(script), str(root)], capture_output=True, text=True
+    )
+    assert proc.returncode == 0, proc.stdout

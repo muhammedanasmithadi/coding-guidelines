@@ -265,4 +265,5 @@ def main(root: pathlib.Path = ROOT) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    root = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT
+    sys.exit(main(root))
