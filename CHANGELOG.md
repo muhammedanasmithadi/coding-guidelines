@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.16.0] - 2026-10-12
+
+### Added
+
+- Versioned distribution: `release` workflow publishes a bundle tarball per tag (`enforce`, `checks`, gates, starter proof). Adopters can download instead of copying files.
+
 ## [0.15.0] - 2026-10-12
 
 ### Added

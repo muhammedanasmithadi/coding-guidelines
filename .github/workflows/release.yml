@@ -1,0 +1,22 @@
+name: release
+on:
+  push:
+    tags:
+      - 'v*'
+permissions:
+  contents: write
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test "$(cat VERSION)" = "${GITHUB_REF_NAME#v}"
+      - run: >
+          tar -czf coding-guidelines-${GITHUB_REF_NAME}.tar.gz
+          .editorconfig .pre-commit-config.yaml .oxfmtrc.json .oxlintrc.json
+          VERSION CHANGELOG.md enforce checks scripts/check_waivers.py
+          scripts/check_tree.py scripts/verify-starter.sh
+          .github/workflows/quality.yml examples/minimal
+      - uses: softprops/action-gh-release@v3.0.3
+        with:
+          files: coding-guidelines-${{ github.ref_name }}.tar.gz
