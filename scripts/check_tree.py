@@ -47,7 +47,8 @@ EXEMPT_DIRS = {"docs/adr"}
 COMMENT_SCAN_SUFFIXES = {".py", ".mjs", ".js", ".ts", ".sh", ".yml", ".yaml", ".toml"}
 COMMENT_SCAN_NAMES = {"Makefile"}
 DIRECTIVE_RE = re.compile(
-    r"(#\s*(noqa|pragma|type:|fmt:|isort:|cspell:|!|coding[:=])|//\s*eslint-(disable|enable))"
+    r"(#\s*(noqa|pragma|type:|fmt:|isort:|cspell:|!|coding[:=])"
+    r"|//\s*eslint-(disable|enable))"
 )
 
 
