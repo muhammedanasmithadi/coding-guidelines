@@ -39,4 +39,4 @@ Avoid: 100% line coverage that asserts nothing (`assert run()` with no check).
 ## Assert properties, not formatting
 
 Do: match `/id=["']source["']/` — quote style is the formatter's business.
-Avoid: match `/id="source"/` — one Prettier run turns the suite red (observed live).
+Avoid: match `/id="source"/` — one formatter run turns the suite red (observed live).

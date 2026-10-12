@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - uses: editorconfig-checker/action-editorconfig-checker@main
+      - uses: editorconfig-checker/action-editorconfig-checker@v3.0.0
       - uses: pre-commit/action@v3.0.1
   python:
     runs-on: ubuntu-latest
@@ -21,7 +21,6 @@ jobs:
       - run: pip install -r requirements-ci.txt
       - run: ruff check . --config enforce/python/pyproject.toml
       - run: lizard -C 15 -L 200 .
-      - run: radon cc -s -n B scripts/ tests/
       - run: mypy scripts/ --config-file enforce/python/pyproject.toml
       - run: coverage run -m pytest && coverage report --include="scripts/*,tests/*" --fail-under=80
       - run: pip-audit --strict
@@ -59,7 +58,7 @@ jobs:
         with:
           args: --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'
       - run: npx commitlint --from HEAD~1 --to HEAD
-      - uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v3
   tree:
     runs-on: ubuntu-latest
     steps:

@@ -69,6 +69,7 @@ words:
     'singleflight',
     'staticcheck',
     'TIMESTAMPTZ',
+    'typechecks',
     'Cppcheck',
     'oxlint',
     'oxfmt',

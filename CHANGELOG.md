@@ -2,6 +2,23 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.14.0] - 2026-10-12
+
+### Added
+
+- pre-commit-hooks v6.0.0 (changelog reviewed: none of the removed hooks in use), gitleaks-action v3, editorconfig-action pinned v3.0.0, gitleaks hook v8.30.1.
+- prek pilot: verified green end-to-end locally, documented as recommended local runner.
+
+### Removed
+
+- radon (display-only step that could never fail; lizard + ruff cover the gates).
+
+### Evaluated, deferred with evidence
+
+- `typescript@7.0.2` native tsc: typechecks clean, but crashes the service template (typescript-eslint hard-refuses TS 7 at import). Blocked on typescript-eslint TS 7 support.
+- uv audit: needs uv project layout; pip-audit stays.
+- Historical tech mentions scrubbed to present-tense tooling.
+
 ## [0.13.0] - 2026-10-12
 
 ### Added
