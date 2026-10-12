@@ -2,6 +2,20 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.13.0] - 2026-10-12
+
+### Added
+
+- oxlint 1.87.0 + oxfmt 0.72.0 replace eslint + prettier (50-100x / 30x faster; ESLint-compatible IDs, Prettier migrated config; 100/101 files agree, 1 TOML file improved). Service template keeps ESLint/Prettier configs (principles-first).
+- `requirements-ci.txt` without black (ruff format canonicalizes identically, verified zero-diff).
+- Hook rev bumps: editorconfig-checker 3.11.1, gitleaks v8.30.1 (CLI needs no license key).
+
+### Evaluated, deferred with rationale
+
+- `typescript@7.0.2` native tsc: real but breaking major — needs its own validation (plus typescript-eslint peer cap <6.1).
+- Biome (568 rules < oxlint 871), typos (misses novel misspellings), convco (config mismatch), `ty` (0.0.x pre-stable), uv audit (needs project layout), prek pilot (0.x bus factor), pre-commit-hooks v6 (major, review first).
+- `@stoplight/spectral-cli` stays floating: pinning it imports 4 HIGH vulnerabilities into the audited tree.
+
 ## [0.12.2] - 2026-10-10
 
 ### Fixed

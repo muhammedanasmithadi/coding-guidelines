@@ -1,7 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[python]": { "editor.defaultFormatter": "ms-python.black-formatter" },
   "editor.trimAutoWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true

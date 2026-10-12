@@ -22,4 +22,4 @@ Do: `api -> service -> repo`. `billing` imports `orders.api`, never reverse.
 
 Avoid: `orders imports billing; billing imports orders`. Circular, untestable.
 
-Check: `ruff --select I`, `eslint import/no-cycle`.
+Check: `ruff --select I`, import-cycle check.

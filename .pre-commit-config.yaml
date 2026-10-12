@@ -7,11 +7,11 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: 3.1.2
+    rev: 3.11.1
     hooks:
       - id: editorconfig-checker
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.24.0
+    rev: v8.30.1
     hooks:
       - id: gitleaks
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -23,11 +23,19 @@ repos:
         args: [--config, enforce/python/pyproject.toml]
   - repo: local
     hooks:
-      - id: prettier-check
-        name: prettier --check (check semantics, no --write)
-        entry: npx --package=prettier@3.9.9 prettier --check --ignore-unknown
+      - id: oxfmt-check
+        name: oxfmt --check
+        entry: npx --package=oxfmt@0.72.0 oxfmt --check
         language: system
         types: [text]
+        files: \.(md|mjs|js|ts|json|ya?ml|toml|html|css)$
+  - repo: local
+    hooks:
+      - id: oxlint
+        name: oxlint --max-warnings 0
+        entry: npx --package=oxlint@1.87.0 oxlint --max-warnings 0
+        language: system
+        files: \.(mjs|js|ts|tsx|jsx)$
   - repo: local
     hooks:
       - id: cspell
