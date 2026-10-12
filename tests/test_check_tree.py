@@ -77,6 +77,12 @@ def test_generated_artifacts_skipped(tmp_path: pathlib.Path) -> None:
     assert check_files(root) == []
 
 
+def test_archives_skipped(tmp_path: pathlib.Path) -> None:
+    root = make_tree(tmp_path)
+    (root / "bundle.tar.gz").write_bytes(b"\x00data")
+    assert check_files(root) == []
+
+
 def test_stem_substring_does_not_satisfy_link(tmp_path: pathlib.Path) -> None:
     root = make_tree(tmp_path)
     (root / "examples" / "good-vs-bad" / "orphan.md").write_text("# O\n")

@@ -26,6 +26,7 @@ SKIP_DIRS = {
     "build",
 }
 SKIP_NAMES = {".coverage", "cover.out", "sbom.json"}
+SKIP_SUFFIXES = (".pyc", ".tar.gz", ".tgz", ".zip", ".whl")
 TEXT_SUFFIXES = {
     ".md",
     ".yml",
@@ -123,7 +124,7 @@ def check_comments(root: pathlib.Path = ROOT) -> list[str]:
         rel = p.relative_to(root)
         if any(d in rel.parts for d in SKIP_DIRS):
             continue
-        if p.name in SKIP_NAMES or p.suffix == ".pyc":
+        if p.name in SKIP_NAMES or str(rel).endswith(SKIP_SUFFIXES):
             continue
         if p.suffix == ".py":
             problems += _comment_problems_py(p, str(rel))
@@ -145,7 +146,7 @@ def check_files(root: pathlib.Path = ROOT) -> list[str]:
         rel = p.relative_to(root)
         if any(d in rel.parts for d in SKIP_DIRS):
             continue
-        if p.name in SKIP_NAMES or p.suffix == ".pyc":
+        if p.name in SKIP_NAMES or str(rel).endswith(SKIP_SUFFIXES):
             continue
         b = p.read_bytes()
         if b"\x00" in b:
