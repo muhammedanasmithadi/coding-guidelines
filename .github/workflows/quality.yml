@@ -69,3 +69,11 @@ jobs:
       - run: pip install pyyaml
       - run: python3 scripts/check_waivers.py
       - run: python3 scripts/check_tree.py
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version-file: .python-version }
+      - run: pip install 'semgrep==1.180.0'
+      - run: semgrep scan --config p/default --severity ERROR --error scripts/
