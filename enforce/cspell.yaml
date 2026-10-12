@@ -68,6 +68,8 @@ words:
     'staticcheck',
     'TIMESTAMPTZ',
     'Cppcheck',
+    'oxlint',
+    'oxfmt',
     'Holzmann',
     'MISRA',
     'postconditions',

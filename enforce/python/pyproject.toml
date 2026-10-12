@@ -1,13 +1,33 @@
-[tool.black]
-line-length = 88
-target-version = ["py312"]
-
 [tool.ruff]
 line-length = 88
 target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "BLE", "UP", "TID", "SIM", "TD", "C901", "PLR0912", "PLR0915", "PLR2004", "S110", "S112", "S113", "S311", "S501", "S502", "S602", "S608", "ERA001", "PT018"]
+select = [
+  "E",
+  "F",
+  "I",
+  "B",
+  "BLE",
+  "UP",
+  "TID",
+  "SIM",
+  "TD",
+  "C901",
+  "PLR0912",
+  "PLR0915",
+  "PLR2004",
+  "S110",
+  "S112",
+  "S113",
+  "S311",
+  "S501",
+  "S502",
+  "S602",
+  "S608",
+  "ERA001",
+  "PT018",
+]
 ignore = ["UP031"]
 
 [tool.ruff.lint.flake8-tidy-imports]

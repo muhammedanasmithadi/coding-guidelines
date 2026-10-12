@@ -12,7 +12,7 @@
   ```
 - No cross-package deep imports. Import the package root.
 
-Check: import linters (`ruff --select I`, `eslint import/no-cycle`, `go list -deps` cycle check).
+Check: import linters (`ruff --select I`, import-cycle check, `go list -deps` cycle check).
 
 ## Examples
 
