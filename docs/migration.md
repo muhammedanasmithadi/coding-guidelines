@@ -21,3 +21,4 @@ New repos adopt strict gates day one. Legacy repos use baseline + ratchet.
 - `waivers/baseline.<tool>.json` (ratchet input)
 - `scripts/make-baseline.sh` (generator)
 - `docs/tech-debt.md` (burn-down tracking)
+- `docs/adoption.md` (done checklist for the migrated repo)

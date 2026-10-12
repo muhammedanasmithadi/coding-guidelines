@@ -13,6 +13,7 @@ principle-level check exists.
 2. Copy `enforce/` + `checks/` + `.github/workflows/quality.yml` into your repo.
 3. Run `pre-commit run --all-files`. Fix failures. Push. CI runs the same commands.
 4. Pin version: reference this repo by tag `vX.Y.Z` (see `VERSION`, `CHANGELOG.md`).
+5. Declare done per `docs/adoption.md` — every item verifies with a command.
 
 ## Layout
 
