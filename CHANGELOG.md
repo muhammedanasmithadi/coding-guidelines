@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.15.0] - 2026-10-12
+
+### Added
+
+- Runnable minimal adopter: `scripts/verify-starter.sh` scaffolds a temp repo per the copy list and runs the gates; `starter` CI job proves it every build. Fixed three gaps it exposed (npx cache race, missing tool configs, missing version files).
+
 ## [0.14.0] - 2026-10-12
 
 ### Added
