@@ -28,19 +28,22 @@ repos:
         entry: npx --package=oxfmt@0.72.0 oxfmt --check
         language: system
         types: [text]
+        require_serial: true
         files: \.(md|mjs|js|ts|json|ya?ml|toml|html|css)$
   - repo: local
     hooks:
       - id: oxlint
         name: oxlint --max-warnings 0
-        entry: npx --package=oxlint@1.87.0 oxlint --max-warnings 0
+        entry: npx --package=oxlint@1.87.0 oxlint --max-warnings 0 --no-error-on-unmatched-pattern
         language: system
         files: \.(mjs|js|ts|tsx|jsx)$
+        require_serial: true
   - repo: local
     hooks:
       - id: cspell
         name: cspell lint
         entry: npx --package=cspell@10.3.6 cspell lint --no-progress --no-summary --config enforce/cspell.yaml
         language: system
+        require_serial: true
         types: [text]
         files: \.md$

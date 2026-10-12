@@ -31,6 +31,7 @@ principle-level check exists.
 - `scripts/run-codemod.sh <sgconfig.yml> [path]` — ast-grep codemod scan across adopters.
 - `scripts/make-baseline.sh` — writes current violations to `waivers/baseline.<tool>.json` for ratchet mode.
 - `scripts/check_waivers.py`, `scripts/check_tree.py` — CI gates (also run via `make check`).
+- `scripts/verify-starter.sh` — end-to-end adoption proof (scaffolds a temp repo per `examples/minimal/README.md`, runs the gates).
 
 ## Versioning
 

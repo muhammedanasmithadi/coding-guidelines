@@ -21,4 +21,4 @@ Run the commands; no item is satisfied by assertion.
 
 ## Examples
 
-- `examples/minimal/` (starter files), `docs/migration.md` (baseline flow), `docs/waivers.md` (exception format)
+- `examples/minimal/` (starter files; `scripts/verify-starter.sh` proves the flow in CI), `docs/migration.md` (baseline flow), `docs/waivers.md` (exception format)
