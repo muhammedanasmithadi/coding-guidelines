@@ -10,6 +10,9 @@ TEAM CHOICE: 80% floor is local policy, not a tool default.
 - Quarantine flaky: `pytest -m "not quarantine"` (register `quarantine` mark), `go test -shuffle=on -count=3`, `jest --runInBand --detectOpenHandles`.
 - Require mutation report on critical paths: Stryker https://stryker-mutator.io/ for JS/TS/Java/C#, `mutmut` for Python, `cargo-mutants` for Rust; gate high >=80.
 - No test hits network/disk/clock without fake. Inject clock, seed RNG.
+- Test behavior, not implementation: call the code as users do and assert literal expected values. Delete tests that pass when every import returns `undefined`.
+- Sequence work into verifiable units: before/after bracket each change and run the check before the next.
+- Prove it works: verify the real artifact, not a proxy or "it compiles"; script the check when possible.
 - Golden/snapshot tests update only in a dedicated PR with reviewed diff; never auto-accept in CI.
 - Mutation score ≥80 on critical paths; block drops (`Stryker` defaults high:80 low:60 break:null; mutation below high fails).
 - Flaky test gets quarantined with owner + expiry; no retry-loop masking in CI config.

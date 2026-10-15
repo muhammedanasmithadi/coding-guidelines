@@ -1,6 +1,8 @@
 # 17 Concurrency
 
 - Timeout + deadline on every I/O. Cancel via context. Bound every fan-out with a pool/semaphore (TEAM CHOICE cap per downstream p99).
+- Separate before serializing shared state: remove shared mutable state before adding locks/queues; make operations idempotent so retries converge.
+- Concurrency corollary: isolate state; ask what happens if another actor mutates it before sharing.
 - Bounded queues, load shedding (`429/503 + Retry-After`), retry budgets (≤10% traffic, TEAM CHOICE), DLQ + poison-pill handling.
 - Idempotency keys on POST/webhooks/queues with outbox + exactly-once-effect dedupe.
 - Isolate with bulkhead. Break with circuit breaker: https://martinfowler.com/bliki/CircuitBreaker.html

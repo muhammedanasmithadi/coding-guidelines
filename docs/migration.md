@@ -14,6 +14,8 @@ New repos adopt strict gates day one. Legacy repos use baseline + ratchet.
 
 - Baseline files live in `waivers/`, carry owner + date.
 - No edit to baseline without PR + CODEOWNER review.
+- Migrate callers then delete legacy APIs in one wave; no long-lived adapters.
+- Outcome-oriented: converge on the target architecture, not smooth intermediate compatibility states.
 - Ratchet never loosens: thresholds move one direction (stricter).
 
 ## Examples

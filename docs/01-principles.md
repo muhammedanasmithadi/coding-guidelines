@@ -6,6 +6,11 @@
 - Determinism first: pure functions for logic, explicit side effects, seeded randomness, no hidden global state in the domain layer.
 - Delete duplication by abstraction only when the third use appears.
 - Prefer composition over inheritance. Keep interfaces narrow.
+- Choose core data structures first; let downstream logic follow from them.
+- Reader load is the real metric: minimize layers to trace and mutable state to hold; inline one-caller wrappers.
+- Laziness protocol: prefer deletion, smallest change that solves the problem, no speculative layers.
+- Outcome-oriented execution: converge planned rewrites on the target design; no throwaway compatibility states without a phase boundary.
+- Attack the premise after two failed fixes: question the shared assumption, not another workaround.
 - No comments in code. Code reads by reading it: names, structure, tests.
   Behavior is documented in README and docs, never beside the code. Banned:
   explanations of what code does, commented-out code, section banners, personal
