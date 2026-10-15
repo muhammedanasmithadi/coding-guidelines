@@ -11,5 +11,5 @@ Sources: PEP 8, Google style guides, Effective Go
 
 ## Examples
 
-- `docs/languages/python.md`, `docs/languages/typescript.md`, `docs/languages/go.md`, `docs/languages/rust.md`, `docs/languages/c.md`
+- `docs/languages/python.md`, `docs/languages/typescript.md`, `docs/languages/go.md`, `docs/languages/rust.md`, `docs/languages/c.md`, `docs/languages/kotlin.md`
 - Waivers: `docs/waivers.md`

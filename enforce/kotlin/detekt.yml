@@ -1,0 +1,15 @@
+complexity:
+  LongMethod:
+    threshold: 50
+  LongParameterList:
+    functionThreshold: 5
+  CyclomaticComplexMethod:
+    threshold: 15
+
+style:
+  MagicNumber:
+    active: false
+
+coroutines:
+  GlobalCoroutineUsage:
+    active: true

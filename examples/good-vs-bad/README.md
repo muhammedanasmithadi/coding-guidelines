@@ -4,6 +4,7 @@ Each file pairs Do with Avoid per pattern. Read the file for your change.
 
 - `ai-slop.md` — AI failure modes + catches
 - `c.md` — bounds, ownership, cleanup
+- `kotlin.md` — null safety, sealed `when`, Flow
 - `rust.md` — ownership, Result, async
 - `functions.md` — size, CC<15
 - `errors.md` — typed errors, no swallow
