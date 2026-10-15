@@ -18,12 +18,14 @@ jobs:
         with: { python-version-file: .python-version }
       - uses: actions/setup-node@v4
         with: { node-version-file: .nvmrc, cache: npm }
-      - run: pip install -r requirements-ci.txt
+      - run: pip install -r requirements-ci.txt yamllint
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
       - name: Tree and waivers
         run: |
           python3 scripts/check_tree.py
           python3 scripts/check_waivers.py
+      - name: YAML hygiene
+        run: yamllint .github/workflows
       - name: Freshness report
         run: bash scripts/check-freshness.sh
       - name: Starter proof
