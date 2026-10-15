@@ -6,11 +6,21 @@ import sys
 
 try:
     import yaml
-except ImportError:  # pragma: no cover
-    raise SystemExit("pyyaml missing: pip install pyyaml")
+except ImportError as err:  # pragma: no cover
+    raise SystemExit("pyyaml missing: pip install pyyaml") from err  # noqa: TRY003
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-VALID = {"feature", "api", "prod", "data", "event", "frontend", "security", "build", "realtime"}
+VALID = {
+    "feature",
+    "api",
+    "prod",
+    "data",
+    "event",
+    "frontend",
+    "security",
+    "build",
+    "realtime",
+}
 
 
 def main() -> int:

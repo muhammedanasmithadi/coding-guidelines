@@ -35,7 +35,9 @@ def make_tree(tmp: pathlib.Path) -> pathlib.Path:
     (tmp / "CHANGELOG.md").write_text("## [0.6.0] - 2026-10-10\n")
     (tmp / "package.json").write_text('{"version": "0.6.0"}\n')
     (tmp / "docs" / "a.md").write_text("# A\n\nSources: x\n\n## Examples\n- e.md\n")
-    (tmp / "docs" / "languages" / "b.md").write_text("# B\n\nSources: y\n\n## Examples\n- y\n")
+    (tmp / "docs" / "languages" / "b.md").write_text(
+        "# B\n\nSources: y\n\n## Examples\n- y\n"
+    )
     (tmp / "examples" / "good-vs-bad" / "e.md").write_text("# E\n")
     future = (dt.datetime.now(dt.UTC).date() + dt.timedelta(days=10)).isoformat()
     write_waivers(
@@ -148,7 +150,9 @@ def test_oxlint_directive_allowed(tmp_path: pathlib.Path) -> None:
     from check_tree import check_comments
 
     root = make_tree(tmp_path)
-    (root / "w.mjs").write_text('const u = 1;\n// oxlint-disable-next-line no-console\n')
+    (root / "w.mjs").write_text(
+        'const u = 1;\n// oxlint-disable-next-line no-console\n'
+    )
     problems = check_comments(root)
     assert not [p for p in problems if "w.mjs:2" in p]
 
