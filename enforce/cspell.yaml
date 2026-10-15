@@ -86,8 +86,10 @@ words:
     'unretrieved',
     'WCET',
     'ASVS',
+    'atheris',
     'Dockerfiles',
     'Dogfooded',
+    'fuzztime',
     'tfvars',
   ]
 flagWords: []

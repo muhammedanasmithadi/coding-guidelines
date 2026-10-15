@@ -16,6 +16,7 @@ Sources: Google TS https://google.github.io/styleguide/tsguide.html, Airbnb http
 - `camelCase` vars/functions, `PascalCase` types, `UPPER_SNAKE` consts.
 - No `any` without waiver. Prefer `unknown` + narrow.
 - Validate at boundary with zod https://zod.dev/.
+- Fuzz parsers/decoders with fast-check; exhaustive switches with `never`.
 
 ## Examples
 

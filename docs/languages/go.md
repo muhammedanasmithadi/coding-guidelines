@@ -8,6 +8,7 @@ Sources: Effective Go https://go.dev/doc/effective_go, `gofmt` https://pkg.go.de
 - Vet + lint: `go vet ./...`, `golangci-lint run` (covers `govet`, `staticcheck`, `ineffassign`, `revive`, plus `errcheck`, `gosec`).
 - Test: `go test -race -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'` (80 = TEAM CHOICE).
 - Flaky: `go test -shuffle=on -count=3 ./...`.
+- Fuzz: `go test -fuzz=Fuzz -fuzztime=30s ./...` for every parser/decoder.
 
 ## Rules
 

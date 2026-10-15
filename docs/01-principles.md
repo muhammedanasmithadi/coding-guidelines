@@ -3,6 +3,7 @@
 - Write small pure functions. Return values. Avoid hidden state.
 - Name reveals intent. No abbreviations except industry standard (`id`, `url`, `api`).
 - Fail fast. Validate at boundary. Return typed errors.
+- Determinism first: pure functions for logic, explicit side effects, seeded randomness, no hidden global state in the domain layer.
 - Delete duplication by abstraction only when the third use appears.
 - Prefer composition over inheritance. Keep interfaces narrow.
 - No comments in code. Code reads by reading it: names, structure, tests.

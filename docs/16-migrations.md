@@ -2,7 +2,7 @@
 
 - Expand-contract (aka Parallel Change): expand (nullable/additive) → batched backfill (`LIMIT 1000`, throttled, kill-switch, off-peak) → switch readers → contract.
 - Reversible. No table rewrite without `CONCURRENTLY`. Single-deploy renames are forbidden.
-- Check: `squawk ./migrations/*.sql` (https://github.com/sbdchd/squawk). Waivers: `docs/waivers.md`.
+- Check: `squawk ./migrations/*.sql` (https://github.com/sbdchd/squawk), plus a dry-run/rollback drill on a production-like volume. Waivers: `docs/waivers.md`.
 
 ## Examples
 

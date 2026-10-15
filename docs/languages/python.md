@@ -15,6 +15,7 @@ Sources: PEP 8 https://peps.python.org/pep-0008/, Google Python https://google.g
 - `snake_case` vars/functions, `CapWords` classes, `UPPER` consts.
 - Imports sorted. No wildcard. Docstrings per PEP 257.
 - Validate at boundary with pydantic https://docs.pydantic.dev/latest/.
+- Fuzz parsers/decoders with atheris; property-test invariants with Hypothesis.
 - No comments in code (`docs/01-principles.md`). Config rationale lives here, not in `pyproject.toml`: `UP031` demoted (Django evidence: 62% f-string churn) — enforce the f-string end state; `TID252` parent-only (sibling relative imports are legitimate layering); `TD` requires uniform tags + author + link.
 
 ## Examples

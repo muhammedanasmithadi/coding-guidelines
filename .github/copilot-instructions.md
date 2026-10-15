@@ -5,6 +5,7 @@ This repository is a coding-guidelines project. Every change must keep `make che
 green.
 
 Rules:
+
 - No comments in code except machine directives.
 - Documentation changes need an `## Examples` section.
 - Waivers need an owner, reason, and expiry within 90 days.
@@ -13,6 +14,7 @@ Rules:
 - Keep Principles as normative text; tool configs are reference implementations.
 
 When improving:
+
 1. Run the full check suite.
 2. Prefer small, sourced, test-backed changes.
 3. Open a PR rather than pushing directly to `main`.
