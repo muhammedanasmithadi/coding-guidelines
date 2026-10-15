@@ -2,6 +2,22 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.18.0] - 2026-10-15
+
+### Added
+
+- Deepened defect-prevention rules: fuzzing, property testing, contract tests, exhaustive handling, browser E2E (Playwright), Python mutation (`mutmut`).
+- New topic docs: data correctness, event-driven systems, infra-as-code, domain modeling.
+- `CONTEXT.md` repository glossary for agent grounding.
+
+### Changed
+
+- Strengthened pstack-derived engineering principles across principles, design, errors, testing, concurrency, migration, and docs-as-code.
+
+### Fixed
+
+- Tool-version drift (`oxfmt`, `oxlint`, `cspell`, `semgrep`) brought to latest tested minor releases.
+
 ## [0.17.0] - 2026-10-12
 
 ### Added

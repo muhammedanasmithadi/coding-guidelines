@@ -1,7 +1,7 @@
 {
   "name": "coding-guidelines",
   "private": true,
-  "version": "0.17.0",
+  "version": "0.18.0",
   "scripts": {
     "check": "oxfmt --check . && oxlint --max-warnings 0 . && tsc --noEmit"
   },
@@ -9,9 +9,9 @@
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
     "@eslint/js": "10.0.1",
-    "cspell": "10.3.6",
-    "oxfmt": "0.72.0",
-    "oxlint": "1.87.0",
+    "cspell": "10.4.0",
+    "oxfmt": "0.73.0",
+    "oxlint": "1.88.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.71.1"
   }
