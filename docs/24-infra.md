@@ -7,6 +7,8 @@
 - Check: image/container lint, IaC lint+fmt+plan, manifest schema validation, image scan with 0 high/critical, and SBOM gate per release.
 - Waivers: `docs/waivers.md`.
 
+Sources: Docker docs https://docs.docker.com/, Kubernetes docs https://kubernetes.io/docs/, Terraform docs https://developer.hashicorp.com/terraform
+
 ## Examples
 
 - `examples/full/README.md` (Dockerfile + hadolint, k8s + kubeconform)

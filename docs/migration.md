@@ -18,6 +18,8 @@ New repos adopt strict gates day one. Legacy repos use baseline + ratchet.
 - Outcome-oriented: converge on the target architecture, not smooth intermediate compatibility states.
 - Ratchet never loosens: thresholds move one direction (stricter).
 
+Sources: Expand-contract / Parallel Change (Fowler)
+
 ## Examples
 
 - `waivers/baseline.<tool>.json` (ratchet input)

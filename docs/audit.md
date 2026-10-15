@@ -11,6 +11,8 @@ Owner rotates. Checklist:
 
 Record outcome as ADR if a gate changes severity.
 
+Sources: docs/audit.md template, metrics/schema.json
+
 ## Examples
 
 - `package.json` + `requirements-ci.txt` (tool versions under audit)

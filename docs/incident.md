@@ -6,6 +6,8 @@
 - Postmortem within 48h (`examples/minimal/postmortem.md`). Action items carry owner + date.
 - Quarterly game day (kill pod, inject latency, AZ failover). Record in `docs/audit.md`.
 
+Sources: SRE book https://sre.google/sre-book/table-of-contents/
+
 ## Examples
 
 - `docs/runbook-template.md`, `examples/minimal/postmortem.md`, `examples/minimal/slo.yaml`

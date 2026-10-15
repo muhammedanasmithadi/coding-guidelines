@@ -12,3 +12,5 @@
 
 - `examples/good-vs-bad/production.md` (logging, tracing, metrics)
 - `examples/good-vs-bad/python.md` §5, `typescript.md` §6
+
+Sources: https://12factor.net/logs, https://opentelemetry.io/docs/

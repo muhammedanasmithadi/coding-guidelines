@@ -6,6 +6,8 @@
 - Abuse cases: rate limits, idempotency, authz per object (no IDOR).
 - Residual risk + owner + review date.
 
+Sources: OWASP threat modeling https://owasp.org/www-community/Threat_Modeling
+
 ## Examples
 
 - `docs/04-security.md` (gates this template feeds)

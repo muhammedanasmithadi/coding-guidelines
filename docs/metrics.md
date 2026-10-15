@@ -9,6 +9,8 @@ Track monthly, per service (schema: `metrics/schema.json`):
 - Anti-gaming: team-level only, never individual. Patch-coverage over line-only. Waiver rate uses denominator (waivers per KLOC). False-positive rate counterweights noisy rules.
 - Export: monthly JSON per service to `metrics/`. Review in quarterly audit (`docs/audit.md`).
 
+Sources: DORA https://dora.dev/, this repository metrics schema
+
 ## Examples
 
 - `metrics/schema.json`, `docs/tech-debt.md`, `docs/audit.md`

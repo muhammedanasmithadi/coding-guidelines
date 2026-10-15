@@ -38,6 +38,8 @@ entries use paths relative to the repo root, so they cannot run from a URL.
 - Legacy: same list, plus a committed baseline and the first burn-down entry. See `docs/migration.md`.
 - À la carte (principles-first): each adopted principle maps to an enforcer command above or to a named reviewer check in the PR template. Unmapped principles are not adopted — say so explicitly.
 
+Sources: This repository’s own workflow and examples
+
 ## Examples
 
 - `examples/minimal/` (starter files; `scripts/verify-starter.sh` proves the flow in CI), `docs/migration.md` (baseline flow), `docs/waivers.md` (exception format)

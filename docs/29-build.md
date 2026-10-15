@@ -14,3 +14,5 @@
 - `docs/tooling.md` (single source of truth for pins)
 - `checks/security-gates.md` (SBOM, scans)
 - `.github/workflows/release.yml` (bundle + release)
+
+Sources: SLSA https://slsa.dev/, Sigstore https://www.sigstore.dev/, Reproducible Builds https://reproducible-builds.org/

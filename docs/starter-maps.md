@@ -53,6 +53,8 @@ Verify:
 - `go vet ./...`
 - `go test -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'`
 
+Sources: docs/adoption.md, examples/minimal/
+
 ## Examples
 
 - `docs/adoption.md` (done checklist), `docs/languages/` (per-language rules)

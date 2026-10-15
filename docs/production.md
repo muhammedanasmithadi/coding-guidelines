@@ -15,6 +15,8 @@
 - Classify PII. Minimize. Set retention/deletion. Test restore (RPO/RTO).
 - Run k6 https://k6.io/ on critical paths. Budget p95/p99 + bundle size + DB query count.
 
+Sources: Kubernetes docs https://kubernetes.io/docs/, SRE book https://sre.google/sre-book/table-of-contents/
+
 ## Examples
 
 - `examples/good-vs-bad/production.md` (all 14 patterns)

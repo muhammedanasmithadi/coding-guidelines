@@ -11,6 +11,8 @@
 - Deterministic concurrency tests use seeded schedulers/chaos injection; never depend on wall clock or thread scheduling.
 - Check: lint bans unbounded fan-out and retry-on-4xx; k6 holds p99 at 10x. Waivers: `docs/waivers.md`.
 
+Sources: https://martinfowler.com/bliki/CircuitBreaker.html
+
 ## Examples
 
 - `examples/good-vs-bad/production.md` (timeouts, breaker), `scaling.md` (queues, caps)

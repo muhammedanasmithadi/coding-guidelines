@@ -14,6 +14,8 @@ duplicates the lockfiles and rots; deleted in v0.11):
 - Tools are reference implementations, never mandates: principles are normative, any tool enforcing the stated principle conforms. Re-scan the landscape quarterly (`scripts/check-freshness.sh`, `docs/audit.md`) before bumping majors; record swaps as ADRs when a gate changes.
 - Adoption-level checks (`oasdiff`, `buf`, `squawk`, `hadolint`, `tflint`, `kubeconform`, `trivy`, `promtool`, `axe`/Lighthouse, Playwright, k6, Pact, CycloneDX) are not run in this repo; adopters map them to their scopes and budgets.
 
+Sources: docs/adr/0004-ts7-via-oxlint-type-aware.md, scripts/check-freshness.sh
+
 ## Examples
 
 - `package.json`, `requirements-ci.txt` (pins under audit), `scripts/check-drift.sh`, `scripts/bootstrap.sh`

@@ -15,3 +15,5 @@
 - `docs/17-concurrency.md` (queues, caps, circuit breaker)
 - `docs/12-api-rest.md` (auth, pagination, idempotency)
 - `checks/performance-budgets.md` (latency)
+
+Sources: RFC 6455 https://datatracker.ietf.org/doc/html/rfc6455, MDN https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events

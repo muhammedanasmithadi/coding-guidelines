@@ -7,6 +7,8 @@
 
 Check: commitlint + lychee for changelog links + cspell for typos.
 
+Sources: https://www.conventionalcommits.org/en/v1.0.0/., https://semver.org/., https://keepachangelog.com/en/1.0.0/.
+
 ## Examples
 
 - `examples/good-vs-bad/commits.md`

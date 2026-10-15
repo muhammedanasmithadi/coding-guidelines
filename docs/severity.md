@@ -10,6 +10,8 @@ Stages: `pilot` (2-4 weeks as warning) -> `enforcing` (blocking).
 
 New rules start pilot. Promote with data: false-positive rate <5%, pilot repos green.
 
+Sources: Severity model docs/incident.md
+
 ## Examples
 
 - `docs/audit.md` (promotion review)

@@ -5,6 +5,8 @@
 - Debt sprint carve-out 15% (TEAM CHOICE). Track per-repo baseline age in `metrics/`.
 - Waiver renewal is not debt rollover: expired waivers fail CI (`scripts/check_waivers.py`).
 
+Sources: docs/metrics.md, docs/migration.md
+
 ## Examples
 
 - `waivers/active.yml`, `docs/migration.md`, `docs/metrics.md`

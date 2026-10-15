@@ -4,6 +4,8 @@
 - Fleet waves (repos): pilot → 25% → 100% with dates. Per-region progression for releases.
 - Record outcome as ADR (`docs/audit.md` rule). Version MAJOR + CHANGELOG.
 
+Sources: RFC template in .github/ISSUE_TEMPLATE/breaking-change-rfc.md
+
 ## Examples
 
 - `.github/ISSUE_TEMPLATE/breaking-change-rfc.md`, `docs/adr/0002-health-endpoints.md`

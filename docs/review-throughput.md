@@ -5,6 +5,8 @@
 - Merge queue on main. Auto-merge `chore(deps)` when green.
 - Small, reviewable, revertible beats large and blocked.
 
+Sources: Software Engineering at Google (Winters, Manshreck, Wright)
+
 ## Examples
 
 - `.github/workflows/quality.yml`, `.github/pull_request_template.md`

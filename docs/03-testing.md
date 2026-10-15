@@ -24,6 +24,8 @@ Commands:
 - TS: `jest --coverage --coverageThreshold='{"global":{"lines":80,"branches":80}}'`
 - Go: `go test -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'`
 
+Sources: https://hypothesis.works/, https://github.com/dubzzz/fast-check., https://pact.io/, https://stryker-mutator.io/
+
 ## Examples
 
 - `examples/good-vs-bad/python.md` §9 (fixtures, Hypothesis)

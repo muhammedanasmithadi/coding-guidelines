@@ -14,6 +14,8 @@
 
 Check: import linters (`ruff --select I`, import-cycle check, `go list -deps` cycle check).
 
+Sources: https://monorepo.tools/
+
 ## Examples
 
 - `examples/good-vs-bad/design-solid.md` (boundaries, no cycles)

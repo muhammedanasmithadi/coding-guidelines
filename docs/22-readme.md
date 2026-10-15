@@ -4,6 +4,8 @@
 - Setup must be one command (`scripts/bootstrap.sh` + `.devcontainer`). Badges for gates (quality, coverage).
 - Check: `lychee` links green, required headings present (review checklist). Waivers: N/A.
 
+Sources: Write the Docs https://www.writethedocs.org/
+
 ## Examples
 
 - `examples/minimal/README.md`, `examples/full/README.md`

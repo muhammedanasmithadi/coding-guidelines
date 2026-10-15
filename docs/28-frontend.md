@@ -16,3 +16,5 @@
 - `examples/good-vs-bad/typescript.md` (narrowing, strict)
 - `examples/good-vs-bad/typescript-robust.md` (caller tests, exhaustive `never`)
 - `checks/performance-budgets.md` (bundle, CWV)
+
+Sources: MDN https://developer.mozilla.org/en-US/docs/Web, Web.dev https://web.dev/, WCAG 2.2 https://www.w3.org/TR/WCAG22/

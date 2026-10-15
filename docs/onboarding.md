@@ -13,6 +13,8 @@ Declare done per `docs/adoption.md`.
 7. Browse `examples/good-vs-bad/README.md` for Do/Avoid per pattern.
 8. For fleet use see `docs/ownership.md`, `docs/rollout.md`, `scripts/bootstrap.sh`, `.devcontainer/devcontainer.json`.
 
+Sources: docs/adoption.md, examples/minimal/
+
 ## Examples
 
 - `examples/good-vs-bad/README.md` (Do/Avoid index)

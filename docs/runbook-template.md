@@ -7,6 +7,8 @@
 - Escalation: when to SEV1, who pages next, comms channel.
 - Post-incident: postmortem issue link within 48h.
 
+Sources: SRE postmortem / runbook practice
+
 ## Examples
 
 - `examples/minimal/slo.yaml` (alert source this runbook answers)

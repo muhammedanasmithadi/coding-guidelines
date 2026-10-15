@@ -8,6 +8,8 @@
 - Exhaustive handling: `match`/`switch` over closed sets must include a `never`/`assert never` branch; exhaustive `Result` match blocks forgotten cases.
 - Check: `ruff --select BLE`, no-`any` rule (`typescript/no-explicit-any` under oxlint, `@typescript-eslint/no-explicit-any` in the service template). Waivers: `docs/waivers.md`.
 
+Sources: https://cloud.google.com/apis/design/errors
+
 ## Examples
 
 - `examples/good-vs-bad/errors.md`, `python.md` §4, `typescript.md` §4

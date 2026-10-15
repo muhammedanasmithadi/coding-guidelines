@@ -8,6 +8,8 @@ Contest a blocking gate:
 
 No personal disputes. Cite data. See `CODE_OF_CONDUCT.md`.
 
+Sources: docs/waivers.md
+
 ## Examples
 
 - `docs/waivers.md` (temp waiver while contest is pending)

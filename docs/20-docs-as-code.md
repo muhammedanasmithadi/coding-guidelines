@@ -6,6 +6,8 @@
 - Format: root `.oxfmtrc.json` (migrated from Prettier config via `oxfmt --migrate=prettier`; same printWidth/singleQuote/trailingComma, `proseWrap: preserve` keeps prose diffs small, code fences still formatted).
 - Check: `lychee "**/*.md"`, `cspell --config enforce/cspell.yaml`, `oxfmt --check .`. Waivers: `docs/waivers.md`.
 
+Sources: https://www.writethedocs.org/guide/docs-as-code/
+
 ## Examples
 
 - `examples/minimal/README.md` (skeleton this doc's rule produces)

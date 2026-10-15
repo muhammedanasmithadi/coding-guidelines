@@ -12,6 +12,8 @@
 - Prefer total functions: no panics/exceptions for expected branches; handle every constructor of a union (exhaustive match).
 - Check: `ruff --select I`, import-cycle check, export/API linters. Waivers: `docs/waivers.md`.
 
+Sources: SOLID, Clean Architecture (Martin), Parse, don't validate
+
 ## Examples
 
 - `examples/good-vs-bad/design-solid.md`, `structure.md`

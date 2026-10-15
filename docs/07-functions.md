@@ -7,6 +7,8 @@
 - Blocking for new application code. Existing complex code (framework-scale hot spots) uses warning + waiver with justification — Django evidence: 1.7% breach, including battle-tested code (`Model.__new__` CC 68).
 - Check: `lizard -C 15 -L 200 .`, Ruff `B`/`SIM`. Waivers: `docs/waivers.md`.
 
+Sources: Clean Code, Refactoring (Fowler)
+
 ## Examples
 
 - `examples/good-vs-bad/functions.md`, `python.md` §2, `typescript.md` §2

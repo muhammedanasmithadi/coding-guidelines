@@ -21,6 +21,8 @@ Strict gates need an escape hatch with expiry. No silent `nolint`.
 - CI fails on expired waiver or missing approval.
 - Baseline files for legacy live here too: `waivers/baseline.<tool>.json`.
 
+Sources: docs/waivers.md
+
 ## Examples
 
 - `waivers/active.yml` (live waivers)

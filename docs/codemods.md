@@ -6,6 +6,8 @@ Breaking gate (MAJOR) ships with a codemod, not manual edits:
 - Open auto-PR to all adopters. Ratchet after merge (`docs/migration.md`).
 - Rule PRs require codemod artifact or written why-not (`CONTRIBUTING.md` checklist).
 
+Sources: ast-grep https://ast-grep.github.io/
+
 ## Examples
 
 - `scripts/run-codemod.sh`, `scripts/make-baseline.sh`

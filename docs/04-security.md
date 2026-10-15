@@ -9,6 +9,8 @@
 
 No secrets in logs, URLs, or git history. Use Vault / cloud secret manager + rotation.
 
+Sources: https://docs.pydantic.dev/latest/, https://zod.dev/, https://oauth.net/2/, https://owasp.org/www-project-top-ten/, https://owasp.org/www-project-application-security-verification-standard/, https://codeql.github.com/
+
 ## Examples
 
 - `examples/good-vs-bad/production.md` (secrets, auth, injection, Dockerfile, K8s)

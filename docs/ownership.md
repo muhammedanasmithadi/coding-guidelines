@@ -12,6 +12,8 @@ enforce/ @platform-team
 - Review SLA: first review 24h, nudge 48h (stale-review bot).
 - Appeals keep 5d SLA (`docs/appeals.md`). Gate contests do not block security fixes.
 
+Sources: CODEOWNERS https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
 ## Examples
 
 - `docs/ownership.md` (this file), `CODEOWNERS`, `docs/appeals.md`

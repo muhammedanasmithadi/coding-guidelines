@@ -7,6 +7,8 @@ Applies to all languages. Appendices add tool commands.
 - No secrets in code. No TODO without issue link.
 - Errors typed. Logs structured with trace ID.
 
+Sources: PEP 8, Google style guides, Effective Go
+
 ## Examples
 
 - `docs/languages/python.md`, `docs/languages/typescript.md`, `docs/languages/go.md`
