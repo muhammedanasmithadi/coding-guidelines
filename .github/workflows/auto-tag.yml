@@ -1,0 +1,28 @@
+name: auto-tag
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Create tag when VERSION is unreleased
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          VERSION="$(cat VERSION)"
+          TAG="v${VERSION}"
+          if git rev-parse "${TAG}" >/dev/null 2>&1; then
+            echo "${TAG} already exists; nothing to do."
+            exit 0
+          fi
+          git tag -a "${TAG}" -m "${TAG}"
+          git push origin "${TAG}"
