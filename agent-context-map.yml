@@ -1,0 +1,40 @@
+feature:
+  - docs/01-principles.md
+  - docs/07-functions.md
+  - docs/08-design.md
+  - docs/09-errors.md
+  - docs/03-testing.md
+  - docs/languages/core.md
+api:
+  - docs/12-api-rest.md
+  - docs/13-api-grpc.md
+  - docs/14-api-graphql.md
+  - docs/15-versioning.md
+  - docs/23-deprecation.md
+prod:
+  - docs/10-observability.md
+  - docs/17-concurrency.md
+  - docs/production.md
+  - checks/performance-budgets.md
+  - checks/observability-budgets.md
+data:
+  - docs/25-data.md
+  - docs/16-migrations.md
+event:
+  - docs/26-events.md
+  - docs/17-concurrency.md
+frontend:
+  - docs/18-a11y.md
+  - docs/19-i18n.md
+  - docs/28-frontend.md
+security:
+  - docs/04-security.md
+  - checks/security-gates.md
+  - docs/threat-model-template.md
+build:
+  - docs/29-build.md
+  - docs/tooling.md
+  - checks/security-gates.md
+realtime:
+  - docs/30-realtime.md
+  - checks/performance-budgets.md
