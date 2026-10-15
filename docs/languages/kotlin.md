@@ -1,6 +1,6 @@
 # Kotlin
 
-Sources: Kotlin coding conventions https://kotlinlang.org/docs/coding-conventions.html, Android Kotlin style guide https://developer.android.com/kotlin/style-guide, ktlint https://pinterest.github.io/ktlint/, detekt https://detekt.dev/
+Sources: Kotlin coding conventions https://kotlinlang.org/docs/coding-conventions.html, Android Kotlin style guide https://developer.android.com/kotlin/style-guide, ktlint https://github.com/pinterest/ktlint, detekt https://detekt.dev/
 
 ## Enforce
 

@@ -1,6 +1,6 @@
 # C
 
-Sources: CERT C Secure Coding https://wiki.sei.cmu.edu/confluence/display/c, C standard https://www.iso.org/standard/74534.html, clang-format https://clang.llvm.org/docs/ClangFormat.html, clang-tidy https://clang.llvm.org/extra/clang-tidy/
+Sources: CERT C Secure Coding (SEI CMU), ISO C standard, clang-format https://clang.llvm.org/docs/ClangFormat.html, clang-tidy https://clang.llvm.org/extra/clang-tidy/
 
 ## Enforce
 
