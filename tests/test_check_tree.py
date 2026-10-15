@@ -151,7 +151,7 @@ def test_oxlint_directive_allowed(tmp_path: pathlib.Path) -> None:
 
     root = make_tree(tmp_path)
     (root / "w.mjs").write_text(
-        'const u = 1;\n// oxlint-disable-next-line no-console\n'
+        "const u = 1;\n// oxlint-disable-next-line no-console\n"
     )
     problems = check_comments(root)
     assert not [p for p in problems if "w.mjs:2" in p]
