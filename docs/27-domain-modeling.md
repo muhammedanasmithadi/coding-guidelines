@@ -13,6 +13,8 @@ Waivers: N/A (process doc, exempt from examples? Actually doc itself includes Ex
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `docs/21-adr.md` (decision records)
 - `docs/02-structure.md` (boundaries, no cycles)
 - `docs/08-design.md` (composition, parse don't validate)

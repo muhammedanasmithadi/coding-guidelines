@@ -11,4 +11,6 @@ Sources: Clean Code, Refactoring (Fowler)
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/functions.md`, `python.md` §2, `typescript.md` §2

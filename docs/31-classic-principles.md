@@ -17,6 +17,8 @@ Waivers: `docs/waivers.md`.
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `docs/01-principles.md` (pure functions, naming, no comments in code)
 - `docs/08-design.md` (composition, dependency inversion, parse don't validate)
 - `docs/09-errors.md` (typed errors, exhaustive handling)

@@ -8,4 +8,6 @@ Sources: IETF Sunset https://datatracker.ietf.org/doc/html/rfc8594
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/api.md` (GraphQL `@deprecated`, SemVer)

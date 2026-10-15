@@ -9,4 +9,6 @@ Sources: Nygard ADR https://cognitect.com/blog/2011/11/15/documenting-architectu
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `docs/adr/0001-template.md`, `docs/adr/0002-health-endpoints.md`, `docs/adr/0003-supported-languages.md`

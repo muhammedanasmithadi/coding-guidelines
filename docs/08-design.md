@@ -16,4 +16,6 @@ Sources: SOLID, Clean Architecture (Martin), Parse, don't validate
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/design-solid.md`, `structure.md`

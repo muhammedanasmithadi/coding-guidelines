@@ -10,4 +10,6 @@ Sources: https://www.writethedocs.org/guide/docs-as-code/
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/minimal/README.md` (skeleton this doc's rule produces)

@@ -9,5 +9,7 @@ Sources: https://12factor.net/config
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/python.md` §6 (pydantic-settings), `production.md` (secrets)
 - `examples/good-vs-bad/typescript-robust.md` §1 (t3-env validated config)

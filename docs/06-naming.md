@@ -9,4 +9,6 @@ Sources: https://peps.python.org/pep-0008/, https://google.github.io/styleguide/
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/python.md` §1, `typescript.md` §1

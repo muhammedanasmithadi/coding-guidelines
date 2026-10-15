@@ -11,4 +11,6 @@ Sources: https://www.conventionalcommits.org/en/v1.0.0/., https://semver.org/., 
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/commits.md`

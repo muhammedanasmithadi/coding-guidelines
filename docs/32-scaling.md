@@ -14,6 +14,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/scaling.md` (keyset, cache, queues, pools, compat)
 - `docs/17-concurrency.md` (timeouts, caps, circuit breaker)
 - `docs/15-versioning.md` (compat readers)

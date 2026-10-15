@@ -18,5 +18,7 @@ Sources: https://monorepo.tools/
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+
 - `examples/good-vs-bad/design-solid.md` (boundaries, no cycles)
 - `examples/good-vs-bad/structure.md` (root vs deep imports)
