@@ -6,6 +6,9 @@
 - Subtract before you add: remove dead code and redundant validators before building; prefer deletion over accumulation.
 - Compose behaviors. Inject deps via constructor. Keep public surface small: package root re-exports only (`__all__`/barrel). No cycles (`api -> service -> repo`).
 - Parse, don't validate: turn inputs into typed values at boundaries; unrepresentable states cannot be constructed anywhere else.
+- Deep modules: hide complexity behind small, stable interfaces; shallow wrappers add reader load (Ousterhout).
+- Hexagonal/ports-and-adapters: domain depends on interfaces, not frameworks; infra implements ports.
+- Functional core, imperative shell: pure domain; side effects at the boundary.
 - Prefer total functions: no panics/exceptions for expected branches; handle every constructor of a union (exhaustive match).
 - Check: `ruff --select I`, import-cycle check, export/API linters. Waivers: `docs/waivers.md`.
 

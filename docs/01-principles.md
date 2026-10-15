@@ -4,6 +4,10 @@
 - Name reveals intent. No abbreviations except industry standard (`id`, `url`, `api`).
 - Fail fast. Validate at boundary. Return typed errors.
 - Determinism first: pure functions for logic, explicit side effects, seeded randomness, no hidden global state in the domain layer.
+- Functional core, imperative shell: domain logic pure and total; I/O and side effects at the edges.
+- Defense in depth: validate at every trust boundary; never assume an internal caller is safe.
+- Privacy by design: minimize PII, classify, retain/delete by policy; never log secrets.
+- Crash-only software: design for restart; state recovery over graceful degradation when forced.
 - Delete duplication by abstraction only when the third use appears.
 - Prefer composition over inheritance. Keep interfaces narrow.
 - Choose core data structures first; let downstream logic follow from them.

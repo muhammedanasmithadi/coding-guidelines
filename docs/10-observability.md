@@ -5,6 +5,7 @@
 - Sources: https://12factor.net/logs, https://opentelemetry.io/docs/
 - Traces: OTel SDK + OTLP + W3C `traceparent`. Head ≤1% above 10k RPS + tail 100% errors/slow (TEAM CHOICE).
 - Metrics: RED per route + USE per node. Cardinality budget per `checks/observability-budgets.md`. Alert on burn, not raw errors.
+- SLO/SLI + error budgets drive release policy; toil reduction tracked and eliminated.
 - Check: OTel collector present, `promtool` cardinality, burn-rate alerts. Waivers: `docs/waivers.md`.
 
 ## Examples
