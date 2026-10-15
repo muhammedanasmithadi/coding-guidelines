@@ -92,4 +92,4 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version-file: .python-version }
       - run: pip install 'semgrep==1.181.0'
-      - run: semgrep scan --config p/default --severity ERROR --error scripts/
+      - run: semgrep scan --config p/default --severity ERROR --error --jobs 1 --max-memory 1000 scripts/
