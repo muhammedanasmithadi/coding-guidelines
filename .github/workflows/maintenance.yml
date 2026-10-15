@@ -1,0 +1,38 @@
+name: maintenance
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version-file: .python-version }
+      - uses: actions/setup-node@v4
+        with: { node-version-file: .nvmrc, cache: npm }
+      - run: pip install -r requirements-ci.txt
+      - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
+      - name: Tree and waivers
+        run: |
+          python3 scripts/check_tree.py
+          python3 scripts/check_waivers.py
+      - name: Freshness report
+        run: bash scripts/check-freshness.sh
+      - name: Starter proof
+        run: bash scripts/verify-starter.sh
+      - name: Open issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --title "Scheduled maintenance audit failed" \
+            --body "The weekly maintenance audit failed. Inspect the workflow run and cut a fix. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" || true

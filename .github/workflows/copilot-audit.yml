@@ -35,7 +35,7 @@ jobs:
           BRANCH="copilot/audit-$(date -u +%Y%m%d-%H%M%S)"
           git checkout -b "$BRANCH"
 
-          PROMPT="Audit this repository's coding guidelines. Identify concrete improvements versus authoritative language-specific sources and community-backed principles. Edit files directly where safe, keep all checks green, and cite sources in docs. Do not remove tests. Prefer small, reversible changes."
+          PROMPT="Audit this repository's coding guidelines. Check tool-version freshness, docs/examples drift, and policy contradictions. Identify concrete improvements versus authoritative sources and community principles. Edit files directly where safe, keep all checks green, and cite sources in docs. Do not remove tests. Prefer small, reversible changes."
 
           copilot --allow-all-tools --no-ask-user -p "$PROMPT" || true
 
