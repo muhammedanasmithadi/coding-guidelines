@@ -94,6 +94,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version-file: guidelines/.python-version }
+        with: { python-version: '3.14' }
       - run: pip install 'semgrep==1.181.0'
       - run: semgrep scan --config p/default --severity ERROR --error --jobs 1 --max-memory 1000 scripts/
