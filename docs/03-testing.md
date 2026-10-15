@@ -6,9 +6,9 @@ TEAM CHOICE: 80% floor is local policy, not a tool default.
 - Write property tests for parsers/math/state machines: Hypothesis https://hypothesis.works/, fast-check https://github.com/dubzzz/fast-check.
 - Fuzz every untrusted parser/decoder/serializer and public endpoint shape: Python `atheris`, Go `go test -fuzz`, JS `fast-check` (arbitrary bytes), Rust `cargo fuzz`.
 - Contract tests across services: Pact https://pact.io/ (or schema conformance) blocks breaking responses.
-- E2E only for critical user journeys; deterministic seeds and isolated fixtures (`jest --runInBand --detectOpenHandles`).
+- E2E only for critical user journeys; deterministic seeds and isolated fixtures (`jest --runInBand --detectOpenHandles`). Browser E2E: Playwright with traced failures and hermetic test data.
 - Quarantine flaky: `pytest -m "not quarantine"` (register `quarantine` mark), `go test -shuffle=on -count=3`, `jest --runInBand --detectOpenHandles`.
-- Require mutation report on critical paths: Stryker https://stryker-mutator.io/ (defaults high:80 low:60 break:null), cargo-mutants.
+- Require mutation report on critical paths: Stryker https://stryker-mutator.io/ for JS/TS/Java/C#, `mutmut` for Python, `cargo-mutants` for Rust; gate high >=80.
 - No test hits network/disk/clock without fake. Inject clock, seed RNG.
 - Golden/snapshot tests update only in a dedicated PR with reviewed diff; never auto-accept in CI.
 - Mutation score ≥80 on critical paths; block drops (`Stryker` defaults high:80 low:60 break:null; mutation below high fails).
