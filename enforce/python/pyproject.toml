@@ -28,6 +28,7 @@ select = [
   "S608",
   "ERA001",
   "PT018",
+  "PT",
   "DTZ",
   "PTH",
   "TRY",

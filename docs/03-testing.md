@@ -18,13 +18,26 @@ TEAM CHOICE: 80% floor is local policy, not a tool default.
 - Flaky test gets quarantined with owner + expiry; no retry-loop masking in CI config.
 - Verify adoption with the project's own runner (Django evidence: bare `DiscoverRunner` fails a test that `runtests.py` passes — harness fidelity decides "no regression").
 
+## Test quality (anti-slop)
+
+- One behavior per test; title names the observable outcome (`test_expired_checkout_rejected`), not the function (`test_checkout`).
+- Every test has at least one assertion on real observable state. No assertion-free test counts toward coverage.
+- No tautological assertions: `assert True`, `x == x`, or `assert result is not None` as the only check. `B011`, `PT018`, and mutation runs catch vacuity.
+- A mock call assertion is support, not proof: add at least one assertion on produced state or returned data.
+- Derive edges from input partitions and boundary values; do not paste the happy path 10 times.
+- Kill surviving mutants on touched code; an un-killed mutant means the edge the test misses.
+- Quarantine flaky tests with owner and expiry; no `pytest.skip`, no commented asserts, no retry-loop masking.
+- Tests are independent: no execution-order or shared-global-state dependence.
+- Snapshot and golden updates only in a dedicated reviewed PR; never auto-accept.
+- Test behavior as users see it; tests pass only when the behavior holds, including when every import returns `undefined` if the design is wrong.
+
+Sources: https://hypothesis.works/, https://github.com/dubzzz/fast-check., https://pact.io/, https://stryker-mutator.io/, https://arxiv.org/abs/2406.10279
+
 Commands:
 
 - Python: `coverage run -m pytest && coverage report --fail-under=80`
 - TS: `jest --coverage --coverageThreshold='{"global":{"lines":80,"branches":80}}'`
 - Go: `go test -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'`
-
-Sources: https://hypothesis.works/, https://github.com/dubzzz/fast-check., https://pact.io/, https://stryker-mutator.io/
 
 ## Examples
 

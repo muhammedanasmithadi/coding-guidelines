@@ -4,6 +4,10 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 
 ## [Unreleased]
 
+### Added
+
+- Testing guidance and examples for useful tests, including anti-slop test quality rules.
+
 ### Changed
 
 - Moved runtime baselines to the latest Python stable release and the active Node.js LTS major, with weekly patch bump automation.
