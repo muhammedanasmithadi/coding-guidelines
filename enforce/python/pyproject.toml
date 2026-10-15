@@ -7,6 +7,7 @@ select = [
   "E",
   "F",
   "I",
+  "N",
   "B",
   "BLE",
   "UP",
@@ -27,6 +28,14 @@ select = [
   "S608",
   "ERA001",
   "PT018",
+  "DTZ",
+  "PTH",
+  "TRY",
+  "LOG",
+  "RET",
+  "ARG",
+  "TC",
+  "ASYNC",
 ]
 ignore = ["UP031"]
 

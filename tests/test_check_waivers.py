@@ -23,11 +23,11 @@ def write_waivers(tmp: pathlib.Path, entries: list[dict]) -> pathlib.Path:
 
 def test_missing_file_ok(tmp_path: pathlib.Path) -> None:
     assert main(tmp_path / "waivers" / "active.yml") == 0
-    assert find_expired(tmp_path / "nope.yml", dt.date.today()) == []
+    assert find_expired(tmp_path / "nope.yml", dt.datetime.now(dt.UTC).date()) == []
 
 
 def test_future_waiver_passes(tmp_path: pathlib.Path) -> None:
-    future = (dt.date.today() + dt.timedelta(days=30)).isoformat()
+    future = (dt.datetime.now(dt.UTC).date() + dt.timedelta(days=30)).isoformat()
     path = write_waivers(
         tmp_path,
         [
@@ -41,13 +41,13 @@ def test_future_waiver_passes(tmp_path: pathlib.Path) -> None:
             }
         ],
     )
-    assert find_expired(path, dt.date.today()) == []
-    assert find_invalid(path, dt.date.today()) == []
+    assert find_expired(path, dt.datetime.now(dt.UTC).date()) == []
+    assert find_invalid(path, dt.datetime.now(dt.UTC).date()) == []
     assert main(path) == 0
 
 
 def test_expired_fails(tmp_path: pathlib.Path) -> None:
-    past = (dt.date.today() - dt.timedelta(days=1)).isoformat()
+    past = (dt.datetime.now(dt.UTC).date() - dt.timedelta(days=1)).isoformat()
     path = write_waivers(
         tmp_path,
         [
@@ -61,12 +61,12 @@ def test_expired_fails(tmp_path: pathlib.Path) -> None:
             }
         ],
     )
-    assert find_expired(path, dt.date.today()) == [("WAIV-E", past)]
+    assert find_expired(path, dt.datetime.now(dt.UTC).date()) == [("WAIV-E", past)]
     assert main(path) == 1
 
 
 def test_over_90d_and_missing_owner_fail(tmp_path: pathlib.Path) -> None:
-    far = (dt.date.today() + dt.timedelta(days=91)).isoformat()
+    far = (dt.datetime.now(dt.UTC).date() + dt.timedelta(days=91)).isoformat()
     path = write_waivers(
         tmp_path,
         [
@@ -80,7 +80,7 @@ def test_over_90d_and_missing_owner_fail(tmp_path: pathlib.Path) -> None:
             }
         ],
     )
-    invalid = find_invalid(path, dt.date.today())
+    invalid = find_invalid(path, dt.datetime.now(dt.UTC).date())
     assert any("missing owner" in p for p in invalid)
     assert any("exceeds 90d" in p for p in invalid)
     assert main(path) == 1
@@ -91,8 +91,11 @@ def test_missing_expires_is_invalid_not_crash(tmp_path: pathlib.Path) -> None:
         tmp_path,
         [{"id": "W9", "rule": "r", "reason": "t", "owner": "@t"}],
     )
-    assert find_expired(path, dt.date.today()) == []
-    assert any("missing expires" in p for p in find_invalid(path, dt.date.today()))
+    assert find_expired(path, dt.datetime.now(dt.UTC).date()) == []
+    assert any(
+        "missing expires" in p
+        for p in find_invalid(path, dt.datetime.now(dt.UTC).date())
+    )
     assert main(path) == 1
 
 
@@ -102,7 +105,7 @@ def test_malformed_yaml_reports_not_crash(tmp_path: pathlib.Path) -> None:
     path = wdir / "active.yml"
     path.write_text("::: not yaml [[[\n- just a string\n")
     try:
-        find_expired(path, dt.date.today())
+        find_expired(path, dt.datetime.now(dt.UTC).date())
         crashed = False
     except ValueError:
         crashed = True

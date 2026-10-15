@@ -4,7 +4,9 @@ dictionaryDefinitions: []
 ignorePaths: ['node_modules/**', '.git/**', 'waivers/baseline.*']
 words:
   [
+    'errcheck',
     'gofmt',
+    'gosec',
     'rustfmt',
     'clippy',
     'squawk',
@@ -82,6 +84,7 @@ words:
     'stdlib',
     'unretrieved',
     'WCET',
+    'ASVS',
     'Dogfooded',
   ]
 flagWords: []

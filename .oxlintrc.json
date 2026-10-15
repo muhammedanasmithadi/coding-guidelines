@@ -6,7 +6,9 @@
       "error",
       { "terms": ["todo", "fixme", "hack"], "location": "anywhere" }
     ],
-    "typescript/no-explicit-any": "error"
+    "typescript/no-explicit-any": "error",
+    "no-floating-promises": "error",
+    "no-misused-promises": "error"
   },
   "ignorePatterns": ["dist/", "node_modules/", "enforce/"]
 }

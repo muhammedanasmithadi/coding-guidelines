@@ -23,14 +23,14 @@ def load_entries(path: pathlib.Path) -> list[dict[str, Any]]:
     try:
         data = yaml.safe_load(path.read_text())
     except yaml.YAMLError as e:
-        raise ValueError(f"invalid YAML: {e}") from e
+        raise ValueError(f"invalid YAML: {e}") from e  # noqa: TRY003
     if data is None:
         return []
     if not isinstance(data, list):
-        raise ValueError("top level must be a list")
+        raise TypeError("top level must be a list")  # noqa: TRY003
     for w in data:
         if not isinstance(w, dict):
-            raise ValueError(f"entry must be a mapping: {w!r}")
+            raise TypeError(f"entry must be a mapping: {w!r}")  # noqa: TRY003
     return data
 
 
@@ -74,7 +74,7 @@ def main(path: pathlib.Path = DEFAULT_PATH) -> int:
     if not path.exists():
         print("no waivers file, ok")
         return 0
-    today = dt.date.today()
+    today = dt.datetime.now(dt.UTC).date()
     expired = find_expired(path, today)
     invalid = find_invalid(path, today)
     if expired:

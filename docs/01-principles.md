@@ -13,7 +13,7 @@
   docs/ADRs with an ID, not in a comment.
 
 Check: Ruff, ESLint, golangci-lint enforce size/complexity (see `docs/languages/`). `ERA001`/`F841` delete dead and commented-out code. Other languages per `docs/adr/0003-supported-languages.md`. Review enforces the rest — see PR checklist.
-Sources: Clean Code, https://martinfowler.com/books/refactoring.html, https://web.stanford.edu/~ouster/cgi-bin/book.php
+Sources: Clean Code, https://martinfowler.com/books/refactoring.html, https://web.stanford.edu/~ouster/cgi-bin/book.php, Parse, don't validate https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/, Make illegal states unrepresentable (common functional-programming practice).
 
 ## Examples
 

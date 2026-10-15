@@ -1,6 +1,6 @@
-.PHONY: check check-py check-waivers test spell
+.PHONY: check check-py check-waivers test spell links
 
-check: check-py check-waivers spell
+check: check-py check-waivers spell links
 	@echo "all local gates passed"
 
 check-py:
@@ -20,6 +20,8 @@ test:
 spell:
 	npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
 
+links:
+	@if command -v lychee >/dev/null 2>&1; then lychee --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'; else echo "lychee not installed; CI enforces links"; fi
 release:
 	npx oxfmt --check CHANGELOG.md package.json
 	python3 scripts/check_tree.py

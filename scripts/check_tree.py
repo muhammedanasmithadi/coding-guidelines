@@ -49,7 +49,10 @@ COMMENT_SCAN_SUFFIXES = {".py", ".mjs", ".js", ".ts", ".sh", ".yml", ".yaml", ".
 COMMENT_SCAN_NAMES = {"Makefile"}
 DIRECTIVE_RE = re.compile(
     r"(#\s*(noqa|pragma|type:|fmt:|isort:|cspell:|!|coding[:=])"
-    r"|//\s*eslint-(disable|enable))"
+    r"|//\s*eslint-(disable|enable)"
+    r"|(?://|/\*+)\s*(?:istanbul|v8|c8)\s+ignore"
+    r"|//\s*prettier-ignore"
+    r"|#\s*(?:pragma|coverage):\s*(?:no|nocover)\b)"
 )
 
 
@@ -236,7 +239,7 @@ def check_docs_examples(root: pathlib.Path = ROOT) -> list[str]:
 
 def check_waivers(root: pathlib.Path = ROOT) -> list[str]:
     path = root / "waivers" / "active.yml"
-    today = dt.date.today()
+    today = dt.datetime.now(dt.UTC).date()
     try:
         expired = find_expired(path, today)
         invalid = find_invalid(path, today)

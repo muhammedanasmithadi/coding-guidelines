@@ -37,7 +37,7 @@ def make_tree(tmp: pathlib.Path) -> pathlib.Path:
     (tmp / "docs" / "a.md").write_text("# A\n\n## Examples\n- e.md\n")
     (tmp / "docs" / "languages" / "b.md").write_text("# B\n\n## Examples\n- y\n")
     (tmp / "examples" / "good-vs-bad" / "e.md").write_text("# E\n")
-    future = (dt.date.today() + dt.timedelta(days=10)).isoformat()
+    future = (dt.datetime.now(dt.UTC).date() + dt.timedelta(days=10)).isoformat()
     write_waivers(
         tmp,
         [
@@ -117,7 +117,7 @@ def test_package_version_enforced(tmp_path: pathlib.Path) -> None:
 
 def test_bad_waivers_fail(tmp_path: pathlib.Path) -> None:
     root = make_tree(tmp_path)
-    past = (dt.date.today() - dt.timedelta(days=1)).isoformat()
+    past = (dt.datetime.now(dt.UTC).date() - dt.timedelta(days=1)).isoformat()
     write_waivers(
         tmp_path,
         [

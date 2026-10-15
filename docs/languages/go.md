@@ -5,8 +5,8 @@ Sources: Effective Go https://go.dev/doc/effective_go, `gofmt` https://pkg.go.de
 ## Enforce
 
 - Format: `gofmt -l .` must print nothing.
-- Vet + lint: `go vet ./...`, `golangci-lint run` (covers `govet`, `staticcheck`, `ineffassign`, `revive`).
-- Test: `go test -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'` (80 = TEAM CHOICE).
+- Vet + lint: `go vet ./...`, `golangci-lint run` (covers `govet`, `staticcheck`, `ineffassign`, `revive`, plus `errcheck`, `gosec`).
+- Test: `go test -race -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'` (80 = TEAM CHOICE).
 - Flaky: `go test -shuffle=on -count=3 ./...`.
 
 ## Rules
