@@ -15,6 +15,8 @@ Sources: Google TS https://google.github.io/styleguide/tsguide.html, Airbnb http
 
 - `camelCase` vars/functions, `PascalCase` types, `UPPER_SNAKE` consts.
 - No `any` without waiver. Prefer `unknown` + narrow.
+- Matt Pocock style: discriminated unions with exhaustive `switch` + `asserts`/`satisfies`; branded types for IDs; `NoInfer` on generic helpers; avoid `as` beyond boundaries; derive types from Zod schemas.
+- Parse, don't validate: Zod at the edge; internal code uses the inferred type only.
 - Validate at boundary with zod https://zod.dev/.
 - Fuzz parsers/decoders with fast-check; exhaustive switches with `never`.
 
