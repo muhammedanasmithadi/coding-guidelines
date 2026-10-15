@@ -2,6 +2,12 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [Unreleased]
+
+### Changed
+
+- Moved runtime baselines to the latest Python stable release and the active Node.js LTS major, with weekly patch bump automation.
+
 ## [0.18.0] - 2026-10-15
 
 ### Added

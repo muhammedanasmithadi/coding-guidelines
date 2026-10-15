@@ -25,7 +25,7 @@ jobs:
           python3 scripts/check_tree.py
           python3 scripts/check_waivers.py
       - name: YAML hygiene
-        run: yamllint .github/workflows
+        run: yamllint -c .yamllint .github/workflows
       - name: Freshness report
         run: bash scripts/check-freshness.sh
       - name: Starter proof

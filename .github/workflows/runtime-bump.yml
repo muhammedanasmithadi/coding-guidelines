@@ -1,0 +1,44 @@
+name: runtime-bump
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - name: Bump runtime patch versions
+        run: python3 scripts/bump-runtime-versions.py
+      - name: Check repo hygiene
+        run: |
+          python3 scripts/check_tree.py
+          python3 scripts/check_waivers.py
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet; then
+            echo "No runtime version changes."
+            exit 0
+          fi
+          BRANCH="bot/runtime-bump-$(date -u +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH"
+          git add .python-version .nvmrc enforce/python/pyproject.toml
+          git commit -m "chore: bump runtime patch versions"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Automated runtime patch version bump" \
+            --body "Automated update of Python and Node patch releases. Created by runtime-bump workflow after local hygiene checks."
+          gh pr merge "$BRANCH" --auto --squash || true

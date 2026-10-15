@@ -91,7 +91,7 @@ def _comment_problems_py(path: pathlib.Path, rel: str) -> list[str]:
             if DIRECTIVE_RE.search(tok.string):
                 continue
             problems.append(f"{rel}:{tok.start[0]}: comment")
-    except (OSError, SyntaxError, tokenize.TokenError):
+    except OSError, SyntaxError, tokenize.TokenError:
         problems.append(f"{rel}: unparseable")
     return problems
 
