@@ -6,7 +6,7 @@
 - Accessibility is a gate: real elements, focus, `aria-live`, keyboard paths (see `docs/18-a11y.md`).
 - Internationalization per `docs/19-i18n.md`; pseudo-loc and RTL in CI.
 - Performance: bundle budgets (`checks/performance-budgets.md`), Lighthouse CWV, route-level code splitting, images with dimensions + modern formats.
-- Check: `tsc --noEmit`, eslint/oxlint, component tests (RTL/Vitest), Playwright E2E for critical journeys, Storybook + a11y addon in dev, bundle analyzer in CI.
+- Check: `tsc --noEmit`, eslint/oxlint, component tests (Testing Library or equivalent) with a JS runner, Playwright E2E for critical journeys, axe 0 critical/serious, Lighthouse a11y category, bundle analyzer and pseudo-loc/RTL snapshots in CI.
 - Sources: MDN https://developer.mozilla.org/en-US/docs/Web, Web.dev https://web.dev/, WCAG 2.2 https://www.w3.org/TR/WCAG22/
 - Waivers: `docs/waivers.md`.
 

@@ -1,6 +1,6 @@
 # 25 Data correctness
 
-- Transaction boundary equals use-case boundary. One transaction per request; no long-lived transactions. Retry on deadlock/serialization failure with idempotency key.
+- Transaction boundary equals use-case boundary. One transaction per request; no long-lived transactions (abort >5s). Retry on deadlock/serialization failure at most 3 times with full jitter and an idempotency key.
 - Isolation: default READ COMMITTED; stronger levels only with measured need. Explain every new index and lock.
 - Backfill with bounded batches (`LIMIT 1000`, off-peak, throttled, kill-switch); never table rewrite without `CONCURRENTLY` (expand-contract).
 - Referential integrity enforced in DB, not only app. Migrations reversible and tested on production-like volume (dry-run + rollback drill).

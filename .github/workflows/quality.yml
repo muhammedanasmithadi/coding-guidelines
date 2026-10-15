@@ -20,6 +20,7 @@ jobs:
         with: { python-version-file: .python-version }
       - run: pip install -r requirements-ci.txt
       - run: ruff check . --config enforce/python/pyproject.toml
+      - run: ruff format --check . --config enforce/python/pyproject.toml
       - run: lizard -C 15 -L 200 .
       - run: mypy scripts/ --config-file enforce/python/pyproject.toml
       - run: coverage run -m pytest && coverage report --include="scripts/*,tests/*" --fail-under=80

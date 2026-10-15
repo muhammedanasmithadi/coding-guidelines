@@ -5,7 +5,7 @@
 - Provenance: SLSA ≥2 for releases, signed artifacts (Sigstore/cosign), SBOM (CycloneDX) published per release.
 - Build from a clean checkout in CI; no ambient machine state; cache keys include all inputs.
 - Third-party actions pinned by SHA; dependency updates reviewed, not auto-merged silently for critical packages.
-- Check: `docker build --no-cache` in CI smoke test, `cosign verify`, SBOM generation in `release.yml`, `actions/checkout` + pinned action SHAs.
+- Check: `docker build --no-cache` smoke test, `cosign verify` (or equivalent), `slsa-verifier`, SBOM (CycloneDX or SPDX), reproducibility diff, and pinned action SHA scan.
 - Sources: SLSA https://slsa.dev/, Sigstore https://www.sigstore.dev/, Reproducible Builds https://reproducible-builds.org/
 - Waivers: `docs/waivers.md`.
 

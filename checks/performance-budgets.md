@@ -8,3 +8,4 @@ All numbers are TEAM CHOICE per service. Calibrate by load test, do not copy bli
 - Profiling: `py-spy`, `node --prof`/`0x`, or `pprof` for hot paths before a perf PR merges.
 - DB: <5 queries per request, no N+1. Explain on new query.
 - Complexity: Lizard `CC<15` (upstream default), file <200 LOC (TEAM CHOICE, upstream default 1000).
+- Real-time: connection p95 handshake <100ms, message fanout <50ms, memory growth <5% over soak.

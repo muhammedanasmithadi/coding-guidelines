@@ -1,10 +1,10 @@
 # 24 Infra as code
 
-- Dockerfiles: `hadolint` for Dockerfile lint, non-root user, pinned base image digest, multi-stage build.
-- Terraform/OpenTofu: `tflint` + `terraform fmt` + plan review. No secrets in tfvars.
-- Kubernetes: `kubeconform` against pinned schema, resource requests/limits, no `latest` tag, Pod Security Standards restricted.
-- Supply chain: SBOM (CycloneDX) + `trivy` image scan, 0 high/critical before deploy.
-- Check: `hadolint Dockerfile`, `tflint`, `kubeconform -strict manifests/`, `trivy image --exit-code 1 --severity HIGH,CRITICAL app:tag`, SBOM gate per release.
+- Dockerfiles: lint (hadolint or equivalent), non-root user, pinned base image digest, multi-stage build.
+- Terraform/OpenTofu: lint + format + plan review (tflint or equivalent). No secrets in tfvars.
+- Kubernetes: schema validation (kubeconform or equivalent), pinned schema, resource requests/limits (calibrated CPU/memory), no `latest` tag, Pod Security Standards restricted.
+- Supply chain: SBOM (CycloneDX or SPDX) + container image scan (trivy or equivalent), 0 high/critical before deploy.
+- Check: image/container lint, IaC lint+fmt+plan, manifest schema validation, image scan with 0 high/critical, and SBOM gate per release.
 - Waivers: `docs/waivers.md`.
 
 ## Examples

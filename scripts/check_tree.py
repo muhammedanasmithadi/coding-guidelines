@@ -50,6 +50,7 @@ COMMENT_SCAN_NAMES = {"Makefile"}
 DIRECTIVE_RE = re.compile(
     r"(#\s*(noqa|pragma|type:|fmt:|isort:|cspell:|!|coding[:=])"
     r"|//\s*eslint-(disable|enable)"
+    r"|//\s*oxlint-disable(?:-next-line|-line)?"
     r"|(?://|/\*+)\s*(?:istanbul|v8|c8)\s+ignore"
     r"|//\s*prettier-ignore"
     r"|#\s*(?:pragma|coverage):\s*(?:no|nocover)\b)"
@@ -150,6 +151,8 @@ def check_files(root: pathlib.Path = ROOT) -> list[str]:
         if any(d in rel.parts for d in SKIP_DIRS):
             continue
         if p.name in SKIP_NAMES or str(rel).endswith(SKIP_SUFFIXES):
+            continue
+        if p.name.startswith("baseline."):
             continue
         b = p.read_bytes()
         if b"\x00" in b:

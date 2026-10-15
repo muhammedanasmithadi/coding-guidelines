@@ -11,9 +11,9 @@ drift, version pinned by tag:
 ```yaml
 jobs:
   guidelines:
-    uses: muhammedanasmithadi/coding-guidelines/.github/workflows/reusable.yml@v0.16.0
+    uses: muhammedanasmithadi/coding-guidelines/.github/workflows/reusable.yml@v0.18.0
     with:
-      guidelines-ref: v0.16.0
+      guidelines-ref: v0.18.0
 ```
 
 The tag in `uses:` and `guidelines-ref` must match. Local hooks still need the
