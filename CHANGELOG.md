@@ -12,7 +12,7 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 
 ### Changed
 
-- Strengthened pstack-derived engineering principles across principles, design, errors, testing, concurrency, migration, and docs-as-code.
+- Strengthened agent-engineering principles across principles, design, errors, testing, concurrency, migration, and docs-as-code.
 
 ### Fixed
 

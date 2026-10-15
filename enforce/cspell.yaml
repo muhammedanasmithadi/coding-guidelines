@@ -16,6 +16,8 @@ words:
     'trivy',
     'semgrep',
     'shellcheck',
+    'Sigstore',
+    'SLSA',
     'dataclass',
     'dataclasses',
     'structlog',
@@ -92,6 +94,7 @@ words:
     'atheris',
     'Dockerfiles',
     'Dogfooded',
+    'fanout',
     'fuzztime',
     'tfvars',
   ]
