@@ -8,7 +8,7 @@
 - Parse, don't validate: untrusted data becomes typed domain values at the boundary; the rest of the code assumes validity.
 
 Check: `CONTEXT.md` updated in the same PR as terminology changes; `CONTEXT.md` links from `docs/22-readme.md`; ADR present for breaking domain decisions.
-Sources: Matt Pocock (Total TypeScript), Domain-Driven Design, parse-don't-validate essay.
+Sources: TypeScript advanced type patterns, Domain-Driven Design, parse-don't-validate essay.
 Waivers: N/A (process doc, exempt from examples? Actually doc itself includes Examples).
 
 ## Examples
