@@ -136,6 +136,23 @@ def test_bad_waivers_fail(tmp_path: pathlib.Path) -> None:
     assert check_waivers(root) != []
 
 
+def test_baseline_artifacts_skipped(tmp_path: pathlib.Path) -> None:
+    root = make_tree(tmp_path)
+    wdir = root / "waivers"
+    wdir.mkdir(parents=True, exist_ok=True)
+    (wdir / "baseline.ruff.json").write_bytes(b"\x00bad")
+    assert check_files(root) == []
+
+
+def test_oxlint_directive_allowed(tmp_path: pathlib.Path) -> None:
+    from check_tree import check_comments
+
+    root = make_tree(tmp_path)
+    (root / "w.mjs").write_text('const u = 1;\n// oxlint-disable-next-line no-console\n')
+    problems = check_comments(root)
+    assert not [p for p in problems if "w.mjs:2" in p]
+
+
 def test_comments_banned_except_directives(tmp_path: pathlib.Path) -> None:
     from check_tree import check_comments
 
