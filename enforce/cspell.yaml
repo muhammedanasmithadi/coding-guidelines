@@ -81,6 +81,7 @@ words:
     'Cppcheck',
     'oxlint',
     'oxfmt',
+    'HATEOAS',
     'Holzmann',
     'MISRA',
     'postconditions',
