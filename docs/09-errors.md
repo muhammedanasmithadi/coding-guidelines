@@ -12,4 +12,6 @@ Sources: https://cloud.google.com/apis/design/errors
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/errors.md`, `python.md` §4, `typescript.md` §4

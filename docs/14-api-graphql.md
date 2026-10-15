@@ -6,6 +6,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/api.md` (connections, deprecation)
 
 Sources: https://graphql.org/learn/pagination/, https://graphql.org/learn/governance-versioning/, https://graphql.org/learn/best-practices/

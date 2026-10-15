@@ -10,6 +10,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/production.md` (logging, tracing, metrics)
 - `examples/good-vs-bad/python.md` §5, `typescript.md` §6
 

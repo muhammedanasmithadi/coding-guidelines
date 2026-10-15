@@ -11,6 +11,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `docs/tooling.md` (single source of truth for pins)
 - `checks/security-gates.md` (SBOM, scans)
 - `.github/workflows/release.yml` (bundle + release)

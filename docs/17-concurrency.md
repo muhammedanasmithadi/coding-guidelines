@@ -15,4 +15,6 @@ Sources: https://martinfowler.com/bliki/CircuitBreaker.html
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/production.md` (timeouts, breaker), `scaling.md` (queues, caps)

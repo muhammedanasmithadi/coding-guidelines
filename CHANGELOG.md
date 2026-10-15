@@ -10,7 +10,12 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 
 ### Changed
 
-- Moved runtime baselines to the latest Python stable release and the active Node.js LTS major, with weekly patch bump automation.
+- Moved the Python runtime baseline to 3.14.x using the active stable series, kept Node on the 24 LTS series, and retained weekly patch-update automation.
+- Cross-linked agent failure-mode guidance from high-risk rule docs.
+
+### Added
+
+- Python pytest lint rules and anti-slop test quality guidance.
 
 ## [0.18.0] - 2026-10-15
 

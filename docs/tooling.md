@@ -6,9 +6,10 @@ duplicates the lockfiles and rots; deleted in v0.11):
 - JS: exact pins in `package.json` + `package-lock.json` (committed).
 - Python CI: exact pins in `requirements-ci.txt` (monitored by Dependabot pip).
 - Runtimes: `.python-version` (mise, setup-python `version-file`) and `.nvmrc`
-  (mise, setup-node `node-version-file`). Track the latest Python stable release and
-  the active Node.js LTS major, and auto-bump patch releases weekly via
-  `.github/workflows/runtime-bump.yml`. CI reads the same files developers use.
+  (mise, setup-node `node-version-file`). Track the active Python supported stable
+  series and the active Node.js LTS major, auto-bump patch releases weekly via
+  `.github/workflows/runtime-bump.yml`, and change either major only through an
+  ADR when the current series nears end-of-life. CI reads the same files developers use.
 - Gitleaks tracks its GitHub Action major (`gitleaks/gitleaks-action@v3`); semgrep runs `p/default` at ERROR severity on `scripts/` in CI (see `checks/security-gates.md`).
 - Shell scripts lint with `shellcheck`, Dockerfiles with `hadolint`, Terraform with `tflint`, Kubernetes manifests with `kubeconform`, container images with `trivy`.
 - Link checking runs only in CI (`lycheeverse/lychee-action`): the pre-commit lychee hook needs a local binary and duplicates the CI gate.

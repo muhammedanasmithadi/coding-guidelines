@@ -12,6 +12,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `docs/17-concurrency.md` (queues, caps, circuit breaker)
 - `docs/12-api-rest.md` (auth, pagination, idempotency)
 - `checks/performance-budgets.md` (latency)

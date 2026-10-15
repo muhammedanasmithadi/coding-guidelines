@@ -11,6 +11,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/api.md` (naming, status, pagination, idempotency), `scaling.md` (keyset)
 
 Sources: https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design, https://github.com/microsoft/api-guidelines, https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm

@@ -11,6 +11,8 @@ Sources: Docker docs https://docs.docker.com/, Kubernetes docs https://kubernete
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/full/README.md` (Dockerfile + hadolint, k8s + kubeconform)
 - `checks/security-gates.md` (image scan, SBOM)
 - `docs/production.md` (probes, drain, SLO)

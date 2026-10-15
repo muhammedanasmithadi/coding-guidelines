@@ -13,6 +13,8 @@ Sources: https://docs.pydantic.dev/latest/, https://zod.dev/, https://oauth.net/
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/production.md` (secrets, auth, injection, Dockerfile, K8s)
 - `docs/threat-model-template.md` (required for auth/billing/PII changes)
 - `examples/good-vs-bad/ai-slop.md` (insecure defaults, hallucinated deps)

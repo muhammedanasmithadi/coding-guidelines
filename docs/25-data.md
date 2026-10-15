@@ -14,6 +14,8 @@ Waivers: `docs/waivers.md`.
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `docs/16-migrations.md` (expand-contract)
 - `docs/17-concurrency.md` (timeouts, breaker, outbox)
 - `examples/good-vs-bad/production.md` (SQLi, transactions)

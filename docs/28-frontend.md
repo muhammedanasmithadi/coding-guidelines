@@ -12,6 +12,8 @@
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/a11y-i18n.md` (WCAG, ICU, UTC)
 - `examples/good-vs-bad/typescript.md` (narrowing, strict)
 - `examples/good-vs-bad/typescript-robust.md` (caller tests, exhaustive `never`)

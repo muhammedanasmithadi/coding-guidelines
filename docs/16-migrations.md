@@ -8,4 +8,6 @@ Sources: https://github.com/sbdchd/squawk
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `examples/good-vs-bad/api.md` (expand-contract)

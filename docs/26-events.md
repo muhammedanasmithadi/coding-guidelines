@@ -13,6 +13,8 @@ Waivers: `docs/waivers.md`.
 
 ## Examples
 
+- `examples/good-vs-bad/ai-slop.md` (agent failure modes in this area)
+
 - `docs/17-concurrency.md` (queues, caps, exactly-once)
 - `docs/15-versioning.md` (SemVer for schemas)
 - `docs/runbook-template.md` (DLQ replay)
