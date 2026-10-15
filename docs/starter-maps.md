@@ -53,6 +53,15 @@ Verify:
 - `go vet ./...`
 - `go test -coverprofile=cover.out ./... && go tool cover -func=cover.out | awk '/total:/{exit ($3+0<80)}'`
 
+## Minimal read set (for agents)
+
+- Start: `docs/01-principles.md`, `docs/languages/core.md`, your language appendix.
+- Change feature: add `03-testing.md`, `07-functions.md`, `08-design.md`, `09-errors.md`.
+- Change API: add `12/13/14-api-*.md`, `15-versioning.md`, `23-deprecation.md`.
+- Change prod path: add `10-observability.md`, `17-concurrency.md`, `production.md`, `checks/performance-budgets.md`.
+- Change data/event: add `25-data.md`, `26-events.md`, `16-migrations.md`.
+- Then follow `check_*.py` and `make check`.
+
 ## Examples
 
 - `docs/adoption.md` (done checklist), `docs/languages/` (per-language rules)
