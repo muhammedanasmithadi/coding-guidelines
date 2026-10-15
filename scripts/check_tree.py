@@ -240,6 +240,23 @@ def check_docs_examples(root: pathlib.Path = ROOT) -> list[str]:
     return missing
 
 
+SOURCES_RE = re.compile(r"^\s*sources?:", re.MULTILINE | re.IGNORECASE)
+
+
+def check_sources(root: pathlib.Path = ROOT) -> list[str]:
+    missing = []
+    for base in ("docs", "docs/languages"):
+        for f in sorted((root / base).glob("*.md")):
+            if any(str(f.relative_to(root)).startswith(e) for e in EXEMPT_DIRS):
+                continue
+            if not SOURCES_RE.search(f.read_text()):
+                missing.append(f"{f.relative_to(root)}: no Sources")
+    return missing
+
+
+check_docs_sources = check_sources
+
+
 def check_waivers(root: pathlib.Path = ROOT) -> list[str]:
     path = root / "waivers" / "active.yml"
     today = dt.datetime.now(dt.UTC).date()
@@ -260,6 +277,7 @@ def main(root: pathlib.Path = ROOT) -> int:
         + check_examples_linked(root)
         + check_dangling(root)
         + check_docs_examples(root)
+        + check_sources(root)
         + check_comments(root)
         + check_waivers(root)
     )

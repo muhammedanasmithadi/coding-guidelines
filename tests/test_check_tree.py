@@ -34,8 +34,8 @@ def make_tree(tmp: pathlib.Path) -> pathlib.Path:
     (tmp / "VERSION").write_text("0.6.0\n")
     (tmp / "CHANGELOG.md").write_text("## [0.6.0] - 2026-10-10\n")
     (tmp / "package.json").write_text('{"version": "0.6.0"}\n')
-    (tmp / "docs" / "a.md").write_text("# A\n\n## Examples\n- e.md\n")
-    (tmp / "docs" / "languages" / "b.md").write_text("# B\n\n## Examples\n- y\n")
+    (tmp / "docs" / "a.md").write_text("# A\n\nSources: x\n\n## Examples\n- e.md\n")
+    (tmp / "docs" / "languages" / "b.md").write_text("# B\n\nSources: y\n\n## Examples\n- y\n")
     (tmp / "examples" / "good-vs-bad" / "e.md").write_text("# E\n")
     future = (dt.datetime.now(dt.UTC).date() + dt.timedelta(days=10)).isoformat()
     write_waivers(
@@ -167,6 +167,14 @@ def test_comments_banned_except_directives(tmp_path: pathlib.Path) -> None:
     assert "z.yaml:1: comment" in problems
     assert "w.mjs:2: comment" in problems
     assert not [p for p in problems if "x.py:1" in p]
+
+
+def test_missing_source_fails(tmp_path: pathlib.Path) -> None:
+    from check_tree import check_sources
+
+    root = make_tree(tmp_path)
+    (root / "docs" / "a.md").write_text("# A\n\n## Examples\n- e.md\n")
+    assert any("no Sources" in p for p in check_sources(root))
 
 
 def test_cli_root_override(tmp_path: pathlib.Path) -> None:
