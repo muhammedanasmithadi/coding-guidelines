@@ -1,7 +1,7 @@
 ---
 name: Standard feedback
 about: Report friction with a guideline or rule
-title: "[feedback] "
+title: '[feedback] '
 labels: standard-feedback
 ---
 
