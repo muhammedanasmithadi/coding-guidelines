@@ -13,6 +13,8 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 - Performance: optional performance-budget validator for adopters.
 - Observability: cardinality and alert-runbook validators for adopters.
 - Supply chain: SBOM in release, osv-scanner workflow, action-pin advisory.
+- Supply chain: all GitHub Actions pinned to commit SHAs; Copilot audit now opens draft PRs.
+- Testing: coverage floor raised to 90%; osv-scanner and SBOM targets in Makefile.
 - Research backlog and source-citation rule for Copilot-driven improvements.
 - Testing guidance and examples for useful tests, including anti-slop test quality rules.
 

@@ -10,30 +10,30 @@ jobs:
   python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: { fetch-depth: 0 }
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: muhammedanasmithadi/coding-guidelines
           ref: ${{ inputs.guidelines-ref }}
           path: guidelines
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with: { python-version-file: guidelines/.python-version }
       - run: pip install -r guidelines/requirements-ci.txt
       - run: ruff check . --config guidelines/enforce/python/pyproject.toml
       - run: lizard -C 15 -L 200 .
       - run: mypy . --config-file guidelines/enforce/python/pyproject.toml
-      - run: coverage run -m pytest && coverage report --fail-under=85
+      - run: coverage run -m pytest && coverage report --fail-under=90
       - run: pip-audit --strict --ignore-vuln CVE-2026-59951
   typescript:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: { fetch-depth: 0 }
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with: { node-version-file: guidelines/.nvmrc, cache: npm }
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: muhammedanasmithadi/coding-guidelines
           ref: ${{ inputs.guidelines-ref }}
@@ -45,11 +45,11 @@ jobs:
   contract:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with: { node-version-file: guidelines/.nvmrc, cache: npm }
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: muhammedanasmithadi/coding-guidelines
           ref: ${{ inputs.guidelines-ref }}
@@ -58,34 +58,34 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: { fetch-depth: 0 }
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with: { node-version-file: guidelines/.nvmrc, cache: npm }
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: muhammedanasmithadi/coding-guidelines
           ref: ${{ inputs.guidelines-ref }}
           path: guidelines
       - run: npx cspell --no-progress --fail-fast --config guidelines/enforce/cspell.yaml "**/*.md"
-      - uses: lycheeverse/lychee-action@v2.9.0
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8
         with:
           args: --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'
       - run: npx commitlint --from HEAD~1 --to HEAD
       - run: python3 guidelines/scripts/check_changelog.py --root . --base HEAD~1 --head HEAD
-      - uses: gitleaks/gitleaks-action@v3
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e
   tree:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: { fetch-depth: 0 }
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: muhammedanasmithadi/coding-guidelines
           ref: ${{ inputs.guidelines-ref }}
           path: guidelines
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with: { python-version-file: guidelines/.python-version }
       - run: pip install pyyaml
       - run: python3 guidelines/scripts/check_waivers.py .
@@ -101,8 +101,8 @@ jobs:
   semgrep:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with: { python-version-file: guidelines/.python-version }
       - run: pip install 'semgrep==1.181.0'
       - run: semgrep scan --config p/default --severity ERROR --error --jobs 1 --max-memory 1000 scripts/

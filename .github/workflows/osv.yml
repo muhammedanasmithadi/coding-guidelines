@@ -12,7 +12,7 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: google/osv-scanner-action@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: google/osv-scanner-action@b1d267aea5211fa648d9d442fa64b90dbdcbdd36
         with:
           scan-args: --lockfile=package-lock.json --lockfile=requirements-ci.txt

@@ -18,13 +18,20 @@ check-waivers:
 
 test:
 	python3 -m coverage run -m pytest tests/ -q
-	python3 -m coverage report --include="scripts/*,tests/*" --fail-under=85
+	python3 -m coverage report --include="scripts/*,tests/*" --fail-under=90
 
 spell:
 	npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
 
 links:
 	@if command -v lychee >/dev/null 2>&1; then lychee --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'; else echo "lychee not installed; CI enforces links"; fi
+
+osv:
+	@if command -v osv-scanner >/dev/null 2>&1; then osv-scanner scan --lockfile package-lock.json; else echo "osv-scanner not installed; CI enforces"; fi
+
+sbom:
+	python3 -m pip install cyclonedx-bom >/dev/null 2>&1 || true
+	cyclonedx-py environment -o sbom.json || true
 release:
 	npm run check
 	npx oxfmt --check CHANGELOG.md package.json

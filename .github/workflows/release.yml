@@ -9,8 +9,8 @@ jobs:
   bundle:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with: { python-version-file: .python-version }
       - run: test "$(cat VERSION)" = "${GITHUB_REF_NAME#v}"
       - run: pip install cyclonedx-bom
@@ -21,7 +21,7 @@ jobs:
           VERSION CHANGELOG.md enforce checks scripts/check_waivers.py
           scripts/check_tree.py scripts/verify-starter.sh
           .github/workflows/quality.yml examples/minimal sbom.json
-      - uses: softprops/action-gh-release@v3.0.3
+      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
         with:
           files: |
             coding-guidelines-${{ github.ref_name }}.tar.gz
