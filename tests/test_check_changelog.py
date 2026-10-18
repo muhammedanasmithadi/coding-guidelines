@@ -53,3 +53,47 @@ def test_watched_change_with_changelog_ok(tmp_path: pathlib.Path) -> None:
 def test_needs_changelog() -> None:
     assert needs_changelog(["docs/a.md"]) is True
     assert needs_changelog(["scripts/x.py"]) is False
+
+
+def test_bad_git_ref_raises(tmp_path: pathlib.Path) -> None:
+    import subprocess
+
+    root = tmp_path
+    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    try:
+        main("nonexistent-base", "HEAD", root)
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("expected RuntimeError")  # noqa: TRY003
+
+
+def test_cli_entrypoint(tmp_path: pathlib.Path) -> None:
+    import subprocess
+    import sys
+
+    root = tmp_path
+    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    subprocess.run(["git", "config", "user.email", "t@t.com"], cwd=root, check=True)
+    subprocess.run(["git", "config", "user.name", "t"], cwd=root, check=True)
+    (root / "README.md").write_text("hi\n")
+    subprocess.run(["git", "add", "README.md"], cwd=root, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "base"], cwd=root, check=True)
+    (root / "README.md").write_text("hi2\n")
+    subprocess.run(["git", "add", "README.md"], cwd=root, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "second"], cwd=root, check=True)
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(
+                pathlib.Path(__file__).resolve().parents[1]
+                / "scripts"
+                / "check_changelog.py"
+            ),
+            "--root",
+            str(root),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0

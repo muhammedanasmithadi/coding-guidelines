@@ -54,7 +54,11 @@ def imports_of(path: pathlib.Path, current: str) -> set[str]:
                 found.add(alias.name)
         elif isinstance(node, ast.ImportFrom):
             if node.level and node.level > 0:
-                found.add(resolve_relative(current, node.level, node.module))
+                if node.module:
+                    found.add(resolve_relative(current, node.level, node.module))
+                else:
+                    for alias in node.names:
+                        found.add(resolve_relative(current, node.level, alias.name))
             elif node.module:
                 found.add(node.module)
     return found

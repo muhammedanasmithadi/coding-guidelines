@@ -1,6 +1,6 @@
 {
   "name": "coding-guidelines-dev",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "features": [{ "id": "ghcr.io/devcontainers/features/node:1", "options": { "version": "22" } }],
+  "image": "mcr.microsoft.com/devcontainers/python:3.14",
+  "features": [{ "id": "ghcr.io/devcontainers/features/node:1", "options": { "version": "24" } }],
   "postCreateCommand": "bash scripts/bootstrap.sh"
 }
