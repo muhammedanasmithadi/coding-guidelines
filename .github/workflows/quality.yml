@@ -86,6 +86,7 @@ jobs:
       - run: python3 scripts/check_layer_boundaries.py
       - run: python3 scripts/check_no_any.py
       - run: python3 scripts/check_openapi_breaking.py
+      - run: python3 scripts/check_perf_budgets.py
   starter:
     runs-on: ubuntu-latest
     steps:

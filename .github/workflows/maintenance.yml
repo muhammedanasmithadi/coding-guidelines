@@ -29,6 +29,7 @@ jobs:
           python3 scripts/check_layer_boundaries.py
           python3 scripts/check_no_any.py
           python3 scripts/check_openapi_breaking.py
+          python3 scripts/check_perf_budgets.py
           python3 scripts/check_mutation.py
       - name: YAML hygiene
         run: yamllint -c .yamllint .github/workflows
