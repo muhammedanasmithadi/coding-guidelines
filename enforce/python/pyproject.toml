@@ -37,6 +37,7 @@ select = [
   "ARG",
   "TC",
   "ASYNC",
+  "ANN",
 ]
 ignore = ["UP031"]
 

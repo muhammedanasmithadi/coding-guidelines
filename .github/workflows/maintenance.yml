@@ -27,6 +27,8 @@ jobs:
           python3 scripts/check_version_drift.py
           python3 scripts/check_import_cycles.py
           python3 scripts/check_layer_boundaries.py
+          python3 scripts/check_no_any.py
+          python3 scripts/check_openapi_breaking.py
       - name: YAML hygiene
         run: yamllint -c .yamllint .github/workflows
       - name: Freshness report

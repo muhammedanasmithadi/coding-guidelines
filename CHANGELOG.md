@@ -8,6 +8,7 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 
 - Automation: version drift guard, changelog enforcement, feedback digest, link freshness retries, and optional AI draft PR workflow.
 - Enforcement: import-cycle checker and optional layer-boundary checker.
+- Enforcement: bare-Any boundary checker and optional OpenAPI breaking-change checker.
 - Research backlog and source-citation rule for Copilot-driven improvements.
 - Testing guidance and examples for useful tests, including anti-slop test quality rules.
 

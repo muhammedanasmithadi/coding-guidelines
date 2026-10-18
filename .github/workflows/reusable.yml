@@ -93,6 +93,8 @@ jobs:
       - run: python3 guidelines/scripts/check_version_drift.py
       - run: python3 guidelines/scripts/check_import_cycles.py
       - run: python3 guidelines/scripts/check_layer_boundaries.py
+      - run: python3 guidelines/scripts/check_no_any.py
+      - run: python3 guidelines/scripts/check_openapi_breaking.py
   semgrep:
     runs-on: ubuntu-latest
     steps:
