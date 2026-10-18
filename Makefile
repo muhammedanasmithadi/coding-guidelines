@@ -18,7 +18,7 @@ check-waivers:
 
 test:
 	python3 -m coverage run -m pytest tests/ -q
-	python3 -m coverage report --include="scripts/*,tests/*" --fail-under=80
+	python3 -m coverage report --include="scripts/*,tests/*" --fail-under=85
 
 spell:
 	npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"

@@ -23,7 +23,7 @@ jobs:
       - run: ruff format --check . --config enforce/python/pyproject.toml
       - run: lizard -C 15 -L 200 .
       - run: mypy scripts/ --config-file enforce/python/pyproject.toml
-      - run: coverage run -m pytest && coverage report --include="scripts/*,tests/*" --fail-under=80
+      - run: coverage run -m pytest && coverage report --include="scripts/*,tests/*" --fail-under=85
       - run: pip-audit --strict --ignore-vuln CVE-2026-59951
   typescript:
     runs-on: ubuntu-latest

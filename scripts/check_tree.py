@@ -24,6 +24,7 @@ SKIP_DIRS = {
     ".venv",
     "dist",
     "build",
+    ".hypothesis",
 }
 SKIP_NAMES = {".coverage", "cover.out", "sbom.json"}
 SKIP_SUFFIXES = (".pyc", ".tar.gz", ".tgz", ".zip", ".whl")
