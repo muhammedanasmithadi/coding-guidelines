@@ -24,12 +24,18 @@ jobs:
         run: |
           python3 scripts/check_tree.py
           python3 scripts/check_waivers.py
+          python3 scripts/check_version_drift.py
       - name: YAML hygiene
         run: yamllint -c .yamllint .github/workflows
       - name: Freshness report
         run: bash scripts/check-freshness.sh
       - name: Starter proof
         run: bash scripts/verify-starter.sh
+      - name: Feedback digest
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/digest_feedback.py || true
       - name: Open issue on failure
         if: failure()
         env:

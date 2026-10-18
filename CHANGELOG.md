@@ -6,6 +6,7 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 
 ### Added
 
+- Automation: version drift guard, changelog enforcement, feedback digest, link freshness retries, and optional AI draft PR workflow.
 - Testing guidance and examples for useful tests, including anti-slop test quality rules.
 
 ### Changed

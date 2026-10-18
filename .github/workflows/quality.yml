@@ -57,12 +57,18 @@ jobs:
       - run: npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
       - uses: lycheeverse/lychee-action@v2.9.0
         with:
-          args: --no-progress './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'
+          args: --no-progress --max-retries 3 --retry-wait-time 5 './*.md' './docs/**/*.md' './checks/**/*.md' './examples/**/*.md' './.github/**/*.md'
       - run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
           else
             npx commitlint --from HEAD~1 --to HEAD
+          fi
+      - run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 scripts/check_changelog.py --base ${{ github.event.pull_request.base.sha }} --head ${{ github.event.pull_request.head.sha }}
+          else
+            python3 scripts/check_changelog.py --base HEAD~1 --head HEAD
           fi
       - uses: gitleaks/gitleaks-action@v3
   tree:
@@ -75,6 +81,7 @@ jobs:
       - run: pip install pyyaml
       - run: python3 scripts/check_waivers.py
       - run: python3 scripts/check_tree.py
+      - run: python3 scripts/check_version_drift.py
   starter:
     runs-on: ubuntu-latest
     steps:
