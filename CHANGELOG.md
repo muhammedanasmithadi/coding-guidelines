@@ -11,6 +11,7 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 - Enforcement: bare-Any boundary checker and optional OpenAPI breaking-change checker.
 - Testing: coverage floor raised to 85%, optional mutation testing, property-based tests.
 - Performance: optional performance-budget validator for adopters.
+- Observability: cardinality and alert-runbook validators for adopters.
 - Research backlog and source-citation rule for Copilot-driven improvements.
 - Testing guidance and examples for useful tests, including anti-slop test quality rules.
 
