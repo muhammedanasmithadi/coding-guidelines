@@ -32,6 +32,8 @@ jobs:
           python3 scripts/check_perf_budgets.py
           python3 scripts/check_cardinality.py
           python3 scripts/check_alert_runbooks.py
+          python3 scripts/check_action_pins.py
+          python3 scripts/check_osv.py
           python3 scripts/check_mutation.py
       - name: YAML hygiene
         run: yamllint -c .yamllint .github/workflows
