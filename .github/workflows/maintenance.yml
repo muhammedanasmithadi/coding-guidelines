@@ -25,6 +25,8 @@ jobs:
           python3 scripts/check_tree.py
           python3 scripts/check_waivers.py
           python3 scripts/check_version_drift.py
+          python3 scripts/check_import_cycles.py
+          python3 scripts/check_layer_boundaries.py
       - name: YAML hygiene
         run: yamllint -c .yamllint .github/workflows
       - name: Freshness report
