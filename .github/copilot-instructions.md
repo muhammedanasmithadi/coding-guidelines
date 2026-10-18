@@ -18,3 +18,4 @@ When improving:
 1. Run the full check suite.
 2. Prefer small, sourced, test-backed changes.
 3. Open a PR rather than pushing directly to `main`.
+4. For research-driven changes, use public and permissive sources; cite them; never copy verbatim text from copyrighted books.
