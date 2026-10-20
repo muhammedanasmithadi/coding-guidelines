@@ -106,7 +106,7 @@ def main(dry_run: bool = False) -> int:
     title = "AI-proposed guideline improvements (draft)"
     body = "Automated draft. Review before merge."
     subprocess.run(
-        ["gh", "pr", "create", "--draft", "--title", title, "--body", body],
+        ["gh", "pr", "create", "--title", title, "--body", body],
         cwd=ROOT,
         check=True,
     )
