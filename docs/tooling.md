@@ -10,7 +10,7 @@ duplicates the lockfiles and rots; deleted in v0.11):
   series and the active Node.js LTS major, auto-bump patch releases weekly through
   `.github/workflows/runtime-bump.yml`, and change either major only through an ADR
   (`docs/adr/0006-runtime-lts-majors.md`) when the current series nears end-of-life
-  (`docs/adr/0007-runtime-major-upgrade-policy.md`). `enforce/runtime-baseline.yml`
+  (`docs/adr/0007-runtime-major-upgrade-policy.md`). `runtime-baseline.yml`
   holds the tracked series and the ADR that authorized each; `scripts/check_tree.py`
   fails when a pin leaves its series. CI reads the same files developers use.
 - Gitleaks tracks its GitHub Action major (`gitleaks/gitleaks-action@v3`); semgrep runs `p/default` at ERROR severity on `scripts/` in CI (see `checks/security-gates.md`).

@@ -25,6 +25,7 @@ entries use paths relative to the repo root, so they cannot run from a URL.
 ## Done checklist
 
 - [ ] Local gates green: `pre-commit run --all-files` (or `prek run --all-files`).
+- [ ] Decision records: `docs/adr/0001-template.md` copied, one row per record in `docs/adr/README.md`.
 - [ ] CI `quality` green on main, including coverage floor with no drop vs main.
 - [ ] `python3 scripts/check_waivers.py` prints `waivers ok` — every exception is filed in `waivers/active.yml` with owner + expiry ≤90d, or the file is absent.
 - [ ] `python3 scripts/check_tree.py` prints `tree ok` — no orphans, no dangling refs, every doc has examples, no docstrings, ADR fields and links valid.

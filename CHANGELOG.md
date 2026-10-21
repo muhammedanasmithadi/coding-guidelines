@@ -8,7 +8,7 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 
 - `docs/adr/0008-rationale-routing.md`: rationale routing — comments banned unless a named tool or contract requires them; ADR fields, supersede chain, and link conventions made normative.
 - `scripts/check_tree.py` checks: ADR required fields and numbering, supersede chain, ADR doc links, Python docstrings, JS/TS block comments, language enforce configs, `enforce/` path references, deprecated `/healthz` usage, and runtime pins against the tracked series.
-- `enforce/runtime-baseline.yml`: tracked Python and Node series with the ADR that authorized each.
+- `runtime-baseline.yml`: tracked Python and Node series with the ADR that authorized each.
 - `scripts/check-comments.sh`: advisory comment scan for Rust/Kotlin/C/Go sources.
 - `enforce/go/.golangci.yml`, `enforce/c/.clang-format`, `enforce/c/.clang-tidy`: the enforce configs two accepted ADRs already promised.
 - `docs/adr/README.md`: ADR index.
@@ -27,6 +27,7 @@ Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://sem
 - 30 module docstrings removed from `scripts/` and `tests/`; their content now lives in `docs/tooling.md`.
 - `examples/minimal/README.md` lists the ADR record format adopters copy.
 - `waivers/baseline.*.json` is no longer git-ignored, so a burn-down record is reviewable in history like any other file.
+- `scripts/verify-starter.sh` copies the ADR template so the starter proves the record format; shared artifacts (`checks/`, `examples/`) no longer cite record numbers, so an adopting repo does not inherit dangling references.
 
 ## [Unreleased]
 

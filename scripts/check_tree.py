@@ -495,15 +495,16 @@ def _adr_enforcement_problems(root: pathlib.Path, entry: _AdrEntry) -> list[str]
 ADR_INDEX_ROW_RE = re.compile(r"^\|\s*(\d{4})\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|$")
 
 
-def _adr_index_problems(root: pathlib.Path, entries: list[_AdrEntry]) -> list[str]:
-    index = root / ADR_DIR / "README.md"
-    if not index.exists():
-        return []
+def _adr_index_rows(index: pathlib.Path) -> dict[str, tuple[str, str]]:
     rows: dict[str, tuple[str, str]] = {}
     for line in index.read_text().splitlines():
         m = ADR_INDEX_ROW_RE.match(line.strip())
         if m:
             rows[m.group(1)] = (m.group(2), m.group(3))
+    return rows
+
+
+def _adr_superseders(entries: list[_AdrEntry]) -> dict[str, str]:
     superseders: dict[str, str] = {}
     for e in entries:
         sup = e["supersedes"]
@@ -512,6 +513,17 @@ def _adr_index_problems(root: pathlib.Path, entries: list[_AdrEntry]) -> list[st
         m = re.search(r"(\d{4})", sup)
         if m:
             superseders[m.group(1)] = e["num"]
+    return superseders
+
+
+def _adr_index_problems(root: pathlib.Path, entries: list[_AdrEntry]) -> list[str]:
+    index = root / ADR_DIR / "README.md"
+    if not index.exists():
+        if not _adr_records_exist(root):
+            return []
+        return [f"{ADR_DIR}/README.md: missing index for the ADR set"]
+    rows = _adr_index_rows(index)
+    superseders = _adr_superseders(entries)
     problems: list[str] = []
     known = {e["num"] for e in entries}
     for e in entries:
@@ -566,9 +578,10 @@ def check_adr_records(root: pathlib.Path = ROOT) -> list[str]:
     return problems
 
 
-def _live_docs(root: pathlib.Path) -> list[pathlib.Path]:
+def _live_docs(root: pathlib.Path, with_examples: bool = True) -> list[pathlib.Path]:
     files = []
-    for base in ("docs", "checks", "examples"):
+    bases = ("docs", "checks", "examples") if with_examples else ("docs", "checks")
+    for base in bases:
         p = root / base
         if not p.is_dir():
             continue
@@ -596,7 +609,7 @@ def check_adr_links(root: pathlib.Path = ROOT) -> list[str]:
         _adr_num(p.name) for p in adr_dir.glob("*.md") if ADR_FILE_RE.match(p.name)
     }
     referenced = set()
-    for f in _live_docs(root):
+    for f in _live_docs(root, with_examples=False):
         rel = f.relative_to(root)
         for m in ADR_REF_RE.finditer(f.read_text()):
             num = m.group(1) or m.group(2)
@@ -635,7 +648,7 @@ def check_language_configs(root: pathlib.Path = ROOT) -> list[str]:
 
 def check_enforce_refs(root: pathlib.Path = ROOT) -> list[str]:
     problems: list[str] = []
-    for f in _live_docs(root):
+    for f in _live_docs(root, with_examples=False):
         rel = f.relative_to(root)
         for m in ENFORCE_REF_RE.finditer(f.read_text()):
             target = root / m.group(0).rstrip(".")
@@ -662,8 +675,12 @@ def check_health_endpoints(root: pathlib.Path = ROOT) -> list[str]:
     return problems
 
 
-RUNTIME_BASELINE = "enforce/runtime-baseline.yml"
+RUNTIME_BASELINE = "runtime-baseline.yml"
 RUNTIME_PINS = (("python", ".python-version"), ("node", ".nvmrc"))
+
+
+def _adr_records_exist(root: pathlib.Path) -> bool:
+    return any(p.name != ADR_TEMPLATE for p in _adr_files(root))
 
 
 def _adr_accepted(root: pathlib.Path, num: str) -> bool:
@@ -679,6 +696,8 @@ def _runtime_adr_problems(
     rationale = entry.get("rationale")
     if not rationale:
         return [f"{RUNTIME_BASELINE}: {runtime} needs a 'rationale' ADR id"]
+    if not _adr_records_exist(root):
+        return []
     m = re.search(r"(\d{4})", str(rationale))
     if not m:
         return [
@@ -709,9 +728,12 @@ def _runtime_pin_problems(
 
 
 def check_runtime_baseline(root: pathlib.Path = ROOT) -> list[str]:
+    pinned = [name for _, name in RUNTIME_PINS if (root / name).exists()]
+    if not pinned:
+        return []
     path = root / RUNTIME_BASELINE
     if not path.exists():
-        return []
+        return [f"{RUNTIME_BASELINE}: missing, but the repo pins {', '.join(pinned)}"]
     try:
         data = yaml.safe_load(path.read_text())
     except yaml.YAMLError as e:
@@ -720,6 +742,8 @@ def check_runtime_baseline(root: pathlib.Path = ROOT) -> list[str]:
         return [f"{RUNTIME_BASELINE}: top level must be a mapping"]
     problems: list[str] = []
     for runtime, pin_name in RUNTIME_PINS:
+        if not (root / pin_name).exists():
+            continue
         entry = data.get(runtime)
         if not isinstance(entry, dict) or not entry.get("series"):
             problems.append(f"{RUNTIME_BASELINE}: missing '{runtime}.series'")

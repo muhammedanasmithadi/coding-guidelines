@@ -3,6 +3,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import pathlib
+import re
 import subprocess
 import sys
 
@@ -61,7 +62,40 @@ def write_adr(root: pathlib.Path, num: str, slug: str, body: str) -> pathlib.Pat
     d.mkdir(parents=True, exist_ok=True)
     p = d / f"{num}-{slug}.md"
     p.write_text(body)
+    write_adr_index(root)
     return p
+
+
+def write_adr_index(root: pathlib.Path) -> None:
+    d = root / "docs" / "adr"
+    if not d.is_dir():
+        return
+    records = {}
+    superseders = {}
+    for p in sorted(d.glob("*.md")):
+        if not re.match(r"^\d{4}-", p.name) or p.name == "0001-template.md":
+            continue
+        text = p.read_text()
+        title = re.search(r"^# ADR \d{4}: (.+)$", text, re.MULTILINE)
+        status = re.search(r"^- Status: *(.*)$", text, re.MULTILINE)
+        sup = re.search(r"^- Supersedes: *ADR-(\d{4})", text, re.MULTILINE)
+        if not title or not status:
+            continue
+        records[p.name[:4]] = (title.group(1), status.group(1))
+        if sup:
+            superseders[sup.group(1)] = p.name[:4]
+    rows = []
+    for num, (title, status) in records.items():
+        if num in superseders:
+            status = f"superseded by {superseders[num]}"
+        rows.append(f"| {num} | {title} | {status} |")
+    index = d / "README.md"
+    if rows:
+        index.write_text(
+            "| ADR | Title | Status |\n|---|---|---|\n" + "\n".join(rows) + "\n"
+        )
+    elif index.exists():
+        index.unlink()
 
 
 def make_tree(tmp: pathlib.Path) -> pathlib.Path:
@@ -410,7 +444,7 @@ def test_enforce_reference_must_exist(tmp_path: pathlib.Path) -> None:
 
 def test_runtime_baseline_mismatch_fails(tmp_path: pathlib.Path) -> None:
     root = make_tree(tmp_path)
-    (root / "enforce" / "runtime-baseline.yml").write_text(
+    (root / "runtime-baseline.yml").write_text(
         'python:\n  series: "3.14"\n  rationale: ADR-0001\n'
         'node:\n  series: "24"\n  rationale: ADR-0001\n'
     )
@@ -421,9 +455,11 @@ def test_runtime_baseline_mismatch_fails(tmp_path: pathlib.Path) -> None:
     assert not [p for p in problems if ".nvmrc" in p]
 
 
-def test_runtime_baseline_needs_accepted_rationale(tmp_path: pathlib.Path) -> None:
+def test_runtime_baseline_needs_a_series_per_pinned_runtime(
+    tmp_path: pathlib.Path,
+) -> None:
     root = make_tree(tmp_path)
-    (root / "enforce" / "runtime-baseline.yml").write_text(
+    (root / "runtime-baseline.yml").write_text(
         'python:\n  series: "3.14"\n  rationale: ADR-0001\n'
         "node:\n  rationale: ADR-0001\n"
     )
@@ -431,7 +467,36 @@ def test_runtime_baseline_needs_accepted_rationale(tmp_path: pathlib.Path) -> No
     (root / ".nvmrc").write_text("24.1.0\n")
     problems = check_runtime_baseline(root)
     assert any("missing 'node.series'" in p for p in problems)
+
+
+def test_runtime_baseline_rationale_must_be_accepted(tmp_path: pathlib.Path) -> None:
+    root = make_tree(tmp_path)
+    write_adr(root, "0001", "one", adr_body("0001", "One", status="superseded"))
+    (root / "runtime-baseline.yml").write_text(
+        'python:\n  series: "3.14"\n  rationale: ADR-0001\n'
+    )
+    (root / ".python-version").write_text("3.14.1\n")
+    problems = check_runtime_baseline(root)
     assert any("rationale ADR-0001 is not an accepted ADR" in p for p in problems)
+
+
+def test_runtime_baseline_ignored_when_no_runtime_is_pinned(
+    tmp_path: pathlib.Path,
+) -> None:
+    root = make_tree(tmp_path)
+    (root / "runtime-baseline.yml").write_text(
+        'python:\n  series: "3.14"\n  rationale: ADR-0001\n'
+    )
+    assert check_runtime_baseline(root) == []
+
+
+def test_runtime_baseline_required_when_a_runtime_is_pinned(
+    tmp_path: pathlib.Path,
+) -> None:
+    root = make_tree(tmp_path)
+    (root / ".python-version").write_text("3.14.1\n")
+    problems = check_runtime_baseline(root)
+    assert any("runtime-baseline.yml: missing" in p for p in problems)
 
 
 def test_adr_requires_enforcement_field(tmp_path: pathlib.Path) -> None:

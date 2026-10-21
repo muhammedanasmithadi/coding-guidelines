@@ -69,5 +69,5 @@ Avoid: single deploy renames `name -> first_name`. Old code writes missing colum
 
 ## Docs-as-code / ADR
 
-Do: `docs/api/orders.md` + `openapi.yaml` linted (`spectral lint`) with code. ADR `adr/0007-*.md` records context/decision.
+Do: `docs/api/orders.md` + `openapi.yaml` linted (`spectral lint`) with code. ADR `adr/NNNN-*.md` records context/decision.
 Avoid: wiki edited out of band. Code ships, docs stale in 2 weeks.

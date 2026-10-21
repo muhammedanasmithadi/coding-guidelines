@@ -8,6 +8,6 @@ Copy to new repo:
 - `checks/*.md` thresholds in CI
 - `.github/workflows/quality.yml`
 - `VERSION` + `CHANGELOG.md` (pin record; `check_tree` verifies they match)
-- `docs/adr/0001-template.md` + `docs/adr/README.md` (decision record format, when the repo records decisions)
+- `docs/adr/0001-template.md` (decision record format; add your own `docs/adr/README.md` index once you have records)
 
 Run: `pre-commit run --all-files`.
