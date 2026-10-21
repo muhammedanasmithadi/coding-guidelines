@@ -70,6 +70,16 @@ jobs:
           else
             python3 scripts/check_changelog.py --base HEAD~1 --head HEAD
           fi
+      - run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            gh pr view ${{ github.event.pull_request.number }} --json body --jq .body > pr-body.md
+            python3 scripts/check_decision_note.py --base ${{ github.event.pull_request.base.sha }} --head ${{ github.event.pull_request.head.sha }} --body-file pr-body.md
+            rm pr-body.md
+          else
+            echo "not a pull request; skipping decision-note check"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e
   tree:
     runs-on: ubuntu-latest

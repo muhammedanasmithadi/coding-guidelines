@@ -1,5 +1,3 @@
-"""Fail when a module imports from a disallowed architectural layer."""
-
 from __future__ import annotations
 
 import argparse

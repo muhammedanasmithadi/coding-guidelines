@@ -1,5 +1,3 @@
-"""Fail when a function boundary is typed as bare Any."""
-
 from __future__ import annotations
 
 import argparse

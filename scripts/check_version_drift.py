@@ -1,5 +1,3 @@
-"""Fail when duplicated tool pins drift apart."""
-
 from __future__ import annotations
 
 import json

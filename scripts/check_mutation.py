@@ -1,5 +1,3 @@
-"""Run mutation testing when mutmut is available (advisory)."""
-
 from __future__ import annotations
 
 import argparse

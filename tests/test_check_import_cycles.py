@@ -1,5 +1,3 @@
-"""Tests for scripts/check_import_cycles gate logic."""
-
 import pathlib
 import sys
 

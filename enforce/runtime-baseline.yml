@@ -1,0 +1,7 @@
+python:
+  series: '3.14'
+  rationale: ADR-0006
+
+node:
+  series: '24'
+  rationale: ADR-0006

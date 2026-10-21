@@ -1,5 +1,3 @@
-"""Run oasdiff breaking-change check when a baseline spec exists."""
-
 from __future__ import annotations
 
 import argparse

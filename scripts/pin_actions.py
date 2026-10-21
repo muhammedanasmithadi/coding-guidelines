@@ -1,5 +1,3 @@
-"""Pin GitHub Actions to commit SHAs (run once, then keep tags in release notes)."""
-
 from __future__ import annotations
 
 import argparse

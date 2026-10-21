@@ -2,5 +2,7 @@
 
 - Status: accepted
 - Context: Patch bumps are automated, but major runtime moves can break linters, type checkers, SDKs, and adopters.
+- Options: (A) take each major move as it lands; (B) move a major only near end-of-life, after a compatibility branch proves the gates pass, or when a security boundary requires it.
 - Decision: Change a runtime major only near its predecessor's end-of-life, after a temporary compatibility branch proves all gates pass, or when a security boundary requires it.
 - Consequences: The automated patch job stays within the active series; every major upgrade gets a separate ADR or migration note, and adopters observe the change as a major guideline release.
+- Enforcement: `scripts/check_tree.py` (`check_runtime_baseline`)

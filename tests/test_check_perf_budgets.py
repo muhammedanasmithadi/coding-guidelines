@@ -1,5 +1,3 @@
-"""Tests for scripts/check_perf_budgets gate logic."""
-
 import pathlib
 import sys
 

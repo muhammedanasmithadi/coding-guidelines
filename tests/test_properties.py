@@ -1,5 +1,3 @@
-"""Property-based tests for pure helper functions."""
-
 import ast
 import pathlib
 import sys

@@ -1,0 +1,20 @@
+version: '2'
+
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - gosec
+    - godox
+    - ineffassign
+    - nolintlint
+    - revive
+    - staticcheck
+    - unused
+
+formatters:
+  enable:
+    - gofmt

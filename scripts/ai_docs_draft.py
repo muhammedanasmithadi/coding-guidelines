@@ -1,5 +1,3 @@
-"""Open a draft PR with AI-proposed guideline improvements (optional)."""
-
 from __future__ import annotations
 
 import argparse

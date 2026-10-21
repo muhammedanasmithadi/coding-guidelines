@@ -19,5 +19,6 @@ Each file pairs Do with Avoid per pattern. Read the file for your change.
 - `commits.md` — conventional messages
 - `a11y-i18n.md` — WCAG, ICU, UTC
 - `structure.md` — public surface, layers, no cycles
+- `comments-and-adrs.md` — comment ban, docstrings, ADR fields, supersede chain
 
 Rule: copy the Do block. Cite the Avoid smell in PR if you see it.

@@ -1,5 +1,3 @@
-"""Tests for scripts/check_cardinality gate logic."""
-
 import pathlib
 import sys
 

@@ -1,5 +1,3 @@
-"""Tests for scripts/check_changelog gate logic."""
-
 import pathlib
 import subprocess
 import sys

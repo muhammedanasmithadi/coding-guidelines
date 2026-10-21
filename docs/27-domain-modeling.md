@@ -3,7 +3,7 @@
 - Ubiquitous language lives in `CONTEXT.md` (glossary only; no implementation details). Rename code when the glossary renames a term.
 - Bounded contexts are separate modules with explicit public surfaces; no cross-context deep imports (enforce with import-linter/dependency-cruiser).
 - Make illegal states unrepresentable: discriminated unions, branded IDs, total functions, invariants enforced by constructors (not comments).
-- Domain decisions with two real alternatives and high reversal cost become ADRs (`docs/21-adr.md`) using `docs/adr/` format.
+- Domain decisions with two real alternatives and high reversal cost become ADRs (`docs/21-adr.md`, format in `docs/adr/0008-rationale-routing.md`) using `docs/adr/` format.
 - Stress-test relationships with concrete scenarios before coding; challenge fuzzy or overloaded terms.
 - Parse, don't validate: untrusted data becomes typed domain values at the boundary; the rest of the code assumes validity.
 
@@ -14,6 +14,7 @@ Waivers: N/A (process doc, exempt from examples? Actually doc itself includes Ex
 ## Examples
 
 - `examples/good-vs-bad/ai-slop.md` (agent failure modes + catches)
+- `examples/good-vs-bad/comments-and-adrs.md` (ADR fields, supersede chain)
 
 - `docs/21-adr.md` (decision records)
 - `docs/02-structure.md` (boundaries, no cycles)

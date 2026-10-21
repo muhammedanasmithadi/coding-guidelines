@@ -5,7 +5,7 @@
 - Reversibility: keep decisions easy to change; prefer strategies/config over hard-coded policy; use ADRs for hard-to-reverse choices.
 - Tracer bullets: ship a thin end-to-end slice first, then deepen; each commit is a working checkpoint (`docs/07-functions.md`, `docs/03-testing.md`).
 - Broken windows: fix small defects and style violations on touch; ratchet baselines downward, never up.
-- Clean Code (Robert C. Martin): names reveal intent, small functions, no hidden state, comments only for why-rationale in docs, tests are part of the product.
+- Clean Code (Robert C. Martin): names reveal intent, small functions, no hidden state, comments only for why-rationale in docs, tests are part of the product. The comment rule itself lives in `docs/01-principles.md`.
 - Pragmatic Programmer: don't duplicate knowledge, keep knowledge in code, automate routine work, name things precisely.
 - Design by Contract: preconditions at boundaries, postconditions at returns, invariants continuously checked in tests (`docs/09-errors.md`).
 - SE at Google: readability review, design docs for cross-team changes, small CLs, deprecation and migration windows, blameless postmortems (`docs/05-commits.md`, `docs/09-errors.md`, `docs/incident.md`).

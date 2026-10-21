@@ -1,5 +1,3 @@
-"""Print the curated docs/checks for a task type from agent-context-map.yml."""
-
 from __future__ import annotations
 
 import pathlib

@@ -1,5 +1,3 @@
-"""Tests for scripts/check_version_drift gate logic."""
-
 import json
 import pathlib
 import sys

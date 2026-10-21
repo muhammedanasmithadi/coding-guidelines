@@ -1,5 +1,3 @@
-"""Validate a performance-budgets config when present."""
-
 from __future__ import annotations
 
 import argparse

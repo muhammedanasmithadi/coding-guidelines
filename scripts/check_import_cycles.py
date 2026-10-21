@@ -1,5 +1,3 @@
-"""Fail when Python modules import each other in a cycle."""
-
 from __future__ import annotations
 
 import argparse

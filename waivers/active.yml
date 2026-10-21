@@ -4,3 +4,4 @@
   owner: '@guidelines-core'
   expires: 2026-12-31
   issue: https://example.com/issues/0
+  adr: ADR-0008

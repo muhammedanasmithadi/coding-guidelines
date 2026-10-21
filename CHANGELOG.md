@@ -2,6 +2,32 @@
 
 Format follows https://keepachangelog.com/en/1.0.0/. Version follows https://semver.org/.
 
+## [0.19.0] - 2026-10-21
+
+### Added
+
+- `docs/adr/0008-rationale-routing.md`: rationale routing — comments banned unless a named tool or contract requires them; ADR fields, supersede chain, and link conventions made normative.
+- `scripts/check_tree.py` checks: ADR required fields and numbering, supersede chain, ADR doc links, Python docstrings, JS/TS block comments, language enforce configs, `enforce/` path references, deprecated `/healthz` usage, and runtime pins against the tracked series.
+- `enforce/runtime-baseline.yml`: tracked Python and Node series with the ADR that authorized each.
+- `scripts/check-comments.sh`: advisory comment scan for Rust/Kotlin/C/Go sources.
+- `enforce/go/.golangci.yml`, `enforce/c/.clang-format`, `enforce/c/.clang-tidy`: the enforce configs two accepted ADRs already promised.
+- `docs/adr/README.md`: ADR index.
+- `examples/good-vs-bad/comments-and-adrs.md`: Do vs Avoid for the comment ban, docstrings, ADR fields, and the supersede chain.
+- `waivers/active.yml` entries accept an optional `adr` field naming the record the exception bends; `scripts/check_tree.py` fails when it names a record that does not exist.
+- Ratchet for tree-gate findings: `waivers/baseline.check-tree.json` holds accepted findings, `scripts/check_tree.py` reports them as `baseline:` and fails only on new ones, and `scripts/make-baseline.sh` writes both baselines. `scripts/check_tree.py --format=json` emits the finding list.
+- `scripts/check_decision_note.py` and a CI step: a PR touching `docs/`, `checks/`, `enforce/`, `scripts/`, or `.github/workflows/` must carry a `Decision:` or `Rationale:` note, which the squash commit keeps.
+- `scripts/check_tree.py` verifies that an ADR's `Enforcement` names a real artifact and function, and that `docs/adr/README.md` matches the records it indexes.
+- Script purposes moved to a table in `docs/tooling.md`.
+
+### Changed
+
+- `docs/01-principles.md` states one canonical comment clause: avoid at all costs, add only when a named tool or external contract forces it. `docs/31-classic-principles.md` and `docs/20-docs-as-code.md` point at it instead of restating it.
+- `docs/21-adr.md`: the bar for writing an ADR is two real alternatives and high reversal cost; required fields (`Status`, `Context`, `Options`, `Decision`, `Consequences`, `Enforcement`), link convention, and supersede rule stated once.
+- ADR-0003 marked superseded by ADR-0005; ADR-0002 to ADR-0007 backfilled with the `Options` and `Enforcement` fields the template requires.
+- 30 module docstrings removed from `scripts/` and `tests/`; their content now lives in `docs/tooling.md`.
+- `examples/minimal/README.md` lists the ADR record format adopters copy.
+- `waivers/baseline.*.json` is no longer git-ignored, so a burn-down record is reviewable in history like any other file.
+
 ## [Unreleased]
 
 ### Added

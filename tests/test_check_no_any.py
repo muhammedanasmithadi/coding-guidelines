@@ -1,5 +1,3 @@
-"""Tests for scripts/check_no_any gate logic."""
-
 import pathlib
 import subprocess
 import sys

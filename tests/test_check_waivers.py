@@ -1,5 +1,3 @@
-"""Tests for scripts/check_waivers gate logic."""
-
 from __future__ import annotations
 
 import datetime as dt

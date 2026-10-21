@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""Bump .python-version and .nvmrc within their pinned majors."""
-
 from __future__ import annotations
 
 import argparse

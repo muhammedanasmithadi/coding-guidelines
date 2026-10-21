@@ -1,5 +1,3 @@
-"""Ensure alerting rules reference a runbook when present."""
-
 from __future__ import annotations
 
 import argparse

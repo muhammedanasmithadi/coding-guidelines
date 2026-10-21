@@ -1,5 +1,3 @@
-"""Digest open standard-feedback issues into a summary issue."""
-
 from __future__ import annotations
 
 import argparse

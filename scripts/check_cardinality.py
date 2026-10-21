@@ -1,5 +1,3 @@
-"""Fail when forbidden high-cardinality labels appear in metric code."""
-
 from __future__ import annotations
 
 import argparse

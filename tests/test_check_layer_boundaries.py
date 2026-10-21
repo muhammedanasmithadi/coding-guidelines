@@ -1,5 +1,3 @@
-"""Tests for scripts/check_layer_boundaries gate logic."""
-
 import pathlib
 import sys
 

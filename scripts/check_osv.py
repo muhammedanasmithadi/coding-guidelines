@@ -1,5 +1,3 @@
-"""Run osv-scanner when installed (advisory)."""
-
 from __future__ import annotations
 
 import argparse

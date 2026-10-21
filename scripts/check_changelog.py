@@ -1,5 +1,3 @@
-"""Fail when docs or checks change without a CHANGELOG entry."""
-
 from __future__ import annotations
 
 import argparse

@@ -1,5 +1,3 @@
-"""Fail CI on expired or over-long waivers in waivers/active.yml."""
-
 from __future__ import annotations
 
 import datetime as dt

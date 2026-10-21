@@ -1,5 +1,3 @@
-"""Report workflow actions that are not pinned to a commit SHA."""
-
 from __future__ import annotations
 
 import argparse
