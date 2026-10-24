@@ -13,6 +13,6 @@
     "oxfmt": "0.74.0",
     "oxlint": "1.88.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.71.2"
+    "typescript-eslint": "8.72.0"
   }
 }
