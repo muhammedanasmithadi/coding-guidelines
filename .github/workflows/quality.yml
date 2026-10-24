@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: { fetch-depth: 0 }
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
       - run: npx oxfmt --check .
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
       - run: npx @stoplight/spectral-cli lint examples/minimal/openapi.yaml -r enforce/.spectral.yaml
@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: { fetch-depth: 0 }
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --ignore-scripts || npm install --no-audit --no-fund
       - run: npx cspell --no-progress --fail-fast --config enforce/cspell.yaml "**/*.md"
@@ -105,7 +105,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with: { python-version-file: .python-version }
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with: { node-version-file: .nvmrc }
       - run: pip install pre-commit
       - run: bash scripts/verify-starter.sh
