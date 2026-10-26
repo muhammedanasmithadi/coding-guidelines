@@ -38,8 +38,8 @@ jobs:
           repository: muhammedanasmithadi/coding-guidelines
           ref: ${{ inputs.guidelines-ref }}
           path: guidelines
-      - run: npx --package=oxfmt@0.73.0 oxfmt --check --config guidelines/.oxfmtrc.json .
-      - run: npx --package=oxlint@1.88.0 oxlint --max-warnings 0 --no-error-on-unmatched-pattern --config guidelines/.oxlintrc.json .
+      - run: npx --package=oxfmt@0.74.0 oxfmt --check --config guidelines/.oxfmtrc.json .
+      - run: npx --package=oxlint@1.89.0 oxlint --max-warnings 0 --no-error-on-unmatched-pattern --config guidelines/.oxlintrc.json .
       - run: npx tsc --noEmit
       - run: npm audit --audit-level=high
   contract:
@@ -104,5 +104,5 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with: { python-version-file: guidelines/.python-version }
-      - run: pip install 'semgrep==1.181.0'
+      - run: pip install 'semgrep==1.182.0'
       - run: semgrep scan --config p/default --severity ERROR --error --jobs 1 --max-memory 1000 scripts/

@@ -4,8 +4,8 @@ check: check-py check-ts check-waivers spell links
 	@echo "all local gates passed"
 
 check-py:
-	uvx ruff==0.17.0 check . --config enforce/python/pyproject.toml
-	uvx ruff==0.17.0 format --check . --config enforce/python/pyproject.toml
+	uvx ruff==0.17.1 check . --config enforce/python/pyproject.toml
+	uvx ruff==0.17.1 format --check . --config enforce/python/pyproject.toml
 	uvx --with types-pyyaml mypy==2.4.0 scripts/ --config-file enforce/python/pyproject.toml
 	python3 scripts/check_waivers.py
 	python3 scripts/check_tree.py
