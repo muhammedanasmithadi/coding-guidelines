@@ -1,5 +1,5 @@
 # Pinned CI toolchain (single source; monitored by Dependabot pip).
-ruff==0.17.1
+ruff==0.17.3
 coverage==7.16.2
 lizard==1.24.3
 pip-audit==2.10.1
