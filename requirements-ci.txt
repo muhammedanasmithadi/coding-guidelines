@@ -4,7 +4,7 @@ coverage==7.16.2
 lizard==1.25.0
 pip-audit==2.10.1
 mypy==2.4.1
-types-pyyaml==6.0.12.20260906
+types-pyyaml==6.0.12.20261103
 pyyaml==6.0.3
 pytest==9.2.0
 hypothesis==6.170.5
