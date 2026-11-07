@@ -1,7 +1,7 @@
 # Pinned CI toolchain (single source; monitored by Dependabot pip).
 ruff==0.17.3
 coverage==7.16.2
-lizard==1.24.3
+lizard==1.25.0
 pip-audit==2.10.1
 mypy==2.4.1
 types-pyyaml==6.0.12.20260906
