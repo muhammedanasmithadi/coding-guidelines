@@ -7,5 +7,5 @@ mypy==2.4.1
 types-pyyaml==6.0.12.20261103
 pyyaml==6.0.3
 pytest==9.2.0
-hypothesis==6.170.5
+hypothesis==6.170.14
 semgrep==1.183.0
