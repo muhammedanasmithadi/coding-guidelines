@@ -8,4 +8,4 @@ types-pyyaml==6.0.12.20261103
 pyyaml==6.0.3
 pytest==9.2.0
 hypothesis==6.170.14
-semgrep==1.183.0
+semgrep==1.185.0
